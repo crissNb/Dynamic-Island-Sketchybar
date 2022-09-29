@@ -31,6 +31,7 @@ Some features (islands) rely on making a "cache" file inside of a SketchyBar con
 - Pause / Resume
 - App switch
 - Lock / Unlock
+- make github wiki page <--
 - ...and more!
 
 ## Tested devices
