@@ -3,8 +3,40 @@ Dynamic Island on iPhone 14 Pro implementation on Mac using SketchyBar
 
 ***NOTE: Majority of the code are hardcoded. This is my first time making a project using Shell Scripts. Some features require constantly rewriting a file instead of relying on a event system. With that being said, I have yet experienced a large impact on performance on my machine.***
 
-## Installation / Getting Started
-coming soon
+## Installation
+
+### Requirements
+- [Homebrew](https://brew.sh/)
+- [SketchyBar](https://github.com/FelixKratz/SketchyBar)
+- sf-symbols (`brew install --cask sf-symbols`)
+
+### Getting Started
+Clone the repository inside your `~/.config/sketchybar/` folder
+```bash
+cd ~/.config/sketchybar
+git clone https://github.com/crissNb/Dynamic-Island-Sketchybar.git
+```
+*if you have just installed sketchybar, sketchybar folder in your config may not be present. If this is the case, make a folder on your own:*
+```bash
+mkdir ~/.config/sketchybar
+```
+
+### Setting up notifications
+In order for Dynamic Island configuration to deliver the notifications to you, a notification database has to be provided. The database's file location is unique to every computer, however.
+
+
+### For existing SketchyBar users
+Add this line of code to your `sketchybarrc` file.
+```bash
+source "$HOME/.config/sketchybar/items/dynamic_island.sh"
+```
+You may have to adjust default settings with `sketchybar --default`. See `sketchybarrc` of this repository for details.
+
+### Optimal Setup
+I highly suggest you to use SketchyBar and the dynamic island config files with Yabai.
+
+## Configuration
+For some variables, they can be adjusted by changing the variables in {module_name}_settings.sh file. However, it is not yet recommended to do so, as I have not organized the configuration files properly just yet. Refactoring is needed.
 
 ## Features / Working Islands
 The following table describes the capabilities of this dynamic island project. Some islands do not work properly just yet. Thus, you may experience some glitches when using them.
