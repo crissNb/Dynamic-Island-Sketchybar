@@ -7,13 +7,13 @@ Dynamic Island on iPhone 14 Pro implementation on Mac using SketchyBar
 coming soon
 
 ## Features / Working Islands
+The following table describes the capabilities of this dynamic island project. Some islands do not work properly just yet. Thus, you may experience some glitches when using them.
+
 |               | General Notifications           | Volume  | Music |
 | ------------- |:-------------:| :-----:| ---------: |
 | **Cache File**      | yes | yes | yes |
 | **Event System?**      | no      |   no | yes |
 | **How well does it work?** | 5/5      |    1/5 | 5/5 |
-
-The following table describes the capabilities of this dynamic island project. Some islands do not work properly just yet. Thus, you may experience some glitches when using them.
 
 Some features (islands) rely on a script that gets called every second, instead of using NSDistributedNotficationCenter. In other words, these islands will have slower response times compared to those using the event system.
 
@@ -31,7 +31,7 @@ Some features (islands) rely on making a "cache" file inside of a SketchyBar con
 - ...and more!
 
 ## Tested devices
-2021 MacBook Pro 14
+- 2021 MacBook Pro 14
 
 ## FAQ
 **Q:** Can I use this on MacBook without a notch?
