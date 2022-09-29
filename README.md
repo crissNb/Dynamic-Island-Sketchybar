@@ -34,8 +34,6 @@ Some features (islands) rely on making a "cache" file inside of a SketchyBar con
 - Less hardcoded system...
 
 ### Upcoming Features / Upcoming Islands
-- Pause / Resume
-- App switch
 - Lock / Unlock
 - ...and more!
 
