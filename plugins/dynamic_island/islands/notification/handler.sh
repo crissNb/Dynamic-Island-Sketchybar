@@ -1,12 +1,15 @@
 #!/usr/bin/env sh
 
+NOTIFICATION_DATABASE="/private/var/folders/fp/..."
+# CHANGE THIS LINE ^^^^^^^^^^^^^
+
 cache="$HOME/.config/sketchybar/plugins/dynamic_island/islands/notification/data/notifications"
 changed="$HOME/.config/sketchybar/plugins/dynamic_island/islands/notification/data/notifications_changed"
 lastLine="$HOME/.config/sketchybar/plugins/dynamic_island/islands/notification/data/notifications_last"
 lastNotifCount="$HOME/.config/sketchybar/plugins/dynamic_island/islands/notification/data/notifications_count_last"
 
 # fetch notifications
-python3 $HOME/.config/sketchybar/plugins/dynamic_island/islands/notification/FetchNotifications.py /private/var/folders/fp/zmbcqg310sl24n424_r5p8wr0000gn/0/com.apple.notificationcenter/db2/db $cache $lastLine
+python3 $HOME/.config/sketchybar/plugins/dynamic_island/islands/notification/FetchNotifications.py $NOTIFICATION_DATABASE $cache $lastLine
 
 changed () {
 	if cmp -s "$lastLine" "$changed"; then
