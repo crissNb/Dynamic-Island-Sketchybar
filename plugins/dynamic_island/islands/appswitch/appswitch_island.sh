@@ -37,15 +37,15 @@ sketchybar --add item island.appname popup.island \
 							background.drawing=false \
 							popup.horizontal=on
 
-sketchybar --animate sin 20 --set island.appbackground width=$SQUISH_SIZE width=$MAX_EXPAND_SQUISH_SIZE width=$MAX_EXPAND_SIZE\
-		   --animate sin 35 --set island popup.height=70 popup.height=65 \
-		   --animate sin 35 --set island popup.background.corner_radius=15
+sketchybar --animate sin 15 --set island.appbackground width=$SQUISH_SIZE width=$MAX_EXPAND_SQUISH_SIZE width=$MAX_EXPAND_SIZE\
+		   --animate sin 20 --set island popup.height=70 popup.height=65 \
+		   --animate sin 20 --set island popup.background.corner_radius=15
 
-sleep 0.45
+sleep 0.25
 
-sketchybar --animate sin 25 --set island.appname label.color=$DEFAULT_LABEL \
-		   --animate sin 25 --set island.applogo background.color=$TRANSPARENT_LABEL
+sketchybar --animate sin 15 --set island.appname label.color=$DEFAULT_LABEL \
+		   --animate sin 15 --set island.applogo background.color=$TRANSPARENT_LABEL
 
-sleep 1.5
+sleep 0.75
 
 source "$HOME/.config/sketchybar/plugins/dynamic_island/islands/appswitch/reset.sh"
