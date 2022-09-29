@@ -27,4 +27,7 @@ sketchybar --add item     island center               \
 		   --add event	  music_change "com.apple.Music.playerInfo" \
 		   --add item	  musicListener\
 		   --set musicListener	script="$PLUGIN_DIR/dynamic_island/islands/music/music_island.sh" \
-		   --subscribe musicListener music_change
+		   --subscribe musicListener music_change \
+		   --add item	  frontAppSwitchListener \
+		   --set frontAppSwitchListener script="$PLUGIN_DIR/dynamic_island/islands/appswitch/handler.sh" \
+		   --subscribe frontAppSwitchListener front_app_switched
