@@ -46,6 +46,6 @@ sleep 0.45
 sketchybar --animate sin 25 --set island.appname label.color=$DEFAULT_LABEL \
 		   --animate sin 25 --set island.applogo background.color=$TRANSPARENT_LABEL
 
-sleep 3
+sleep 1.5
 
 source "$HOME/.config/sketchybar/plugins/dynamic_island/islands/appswitch/reset.sh"
