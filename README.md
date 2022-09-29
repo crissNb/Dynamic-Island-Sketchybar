@@ -30,6 +30,7 @@ Some features (islands) rely on making a "cache" file inside of a SketchyBar con
 ## Todo
 - Make GitHub Wiki
 - More configuration options
+- Fix dynamic island to behave incorrectly when there's something is already being displayed.
 - Less hardcoded system...
 
 ### Upcoming Features / Upcoming Islands
