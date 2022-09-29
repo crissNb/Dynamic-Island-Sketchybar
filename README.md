@@ -35,6 +35,8 @@ Some features (islands) rely on making a "cache" file inside of a SketchyBar con
 
 ### Upcoming Features / Upcoming Islands
 - Lock / Unlock
+- Bluetooth status
+- Do not disturb
 - ...and more!
 
 ## Tested devices
