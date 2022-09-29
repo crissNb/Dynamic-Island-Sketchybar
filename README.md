@@ -9,12 +9,12 @@ coming soon
 ## Features / Working Islands
 The following table describes the capabilities of this dynamic island project. Some islands do not work properly just yet. Thus, you may experience some glitches when using them.
 
-|               | General Notifications           | Volume  | Music | Pause/Resume |
-| ------------- |:-------------:| :-----: | :---------: | :------: |
-| **Cache File**      | yes | yes | yes* | yes |
-| **Event System?**      | no      |   no | yes | yes |
-| **How well does it work?** | 5/5      |    1/5 | 5/5 | 3/5 |
-| **Known Bugs** | None | - Animation bug when volume changes multiple times while the UI is active | None | - Animation bug when play / pause happens multiple times while the UI is active |
+|               | General Notifications | Volume  | Music | Pause/Resume | App Switch |
+| ------------- |:-------------:| :-----: | :---------: | :------: | :--------: |
+| **Cache File**      | yes | yes | yes* | yes | no |
+| **Event System?**      | no      |   no | yes | yes | yes |
+| **How well does it work?** | 5/5      |    1/5 | 5/5 | 3/5 | 5/5 |
+| **Known Bugs** | None | - Animation bug when volume changes multiple times while the UI is active | None | - Animation bug when play / pause happens multiple times while the UI is active | None |
 
 *saves the artwork temporarily to display it on the dynamic island.
 
