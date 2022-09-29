@@ -50,3 +50,7 @@ Some features (islands) rely on making a "cache" file inside of a SketchyBar con
 
 **A:** It's possible, but there will be a notch on all displays. The dynamic island will only appear on one active display, though. This project is not intended to be used with multiple monitors.
 ##
+
+## Credits
+Base sketchybarrc was taken from FelixKratz's [dotfiles](https://github.com/FelixKratz/dotfiles).
+[Python script](https://github.com/ydkhatri/MacForensics) to get all notifications from the macOS's database.
