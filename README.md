@@ -53,4 +53,5 @@ Some features (islands) rely on making a "cache" file inside of a SketchyBar con
 
 ## Credits
 Base sketchybarrc was taken from FelixKratz's [dotfiles](https://github.com/FelixKratz/dotfiles).
+
 [Python script](https://github.com/ydkhatri/MacForensics) to get all notifications from the macOS's database.
