@@ -27,11 +27,15 @@ Some features (islands) rely on making a "cache" file inside of a SketchyBar con
 - General Notifications
 - Music
 
-## Upcoming Features / Upcoming Islands
+## Todo
+- Make GitHub Wiki
+- More configuration options
+- Less hardcoded system...
+
+### Upcoming Features / Upcoming Islands
 - Pause / Resume
 - App switch
 - Lock / Unlock
-- make github wiki page <--
 - ...and more!
 
 ## Tested devices
