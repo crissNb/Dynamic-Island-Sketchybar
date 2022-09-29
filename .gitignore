@@ -1,2 +1,5 @@
 artwork*
 **data/
+
+# macos files
+.DS_Store
