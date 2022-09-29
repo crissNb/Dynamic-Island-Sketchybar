@@ -7,11 +7,87 @@ cache="$HOME/.config/sketchybar/plugins/dynamic_island/islands/music/data/cache"
 PLAYER_STATE=$(osascript -e "tell application \"Music\" to set playerState to (get player state) as text")
 
 if [[ $(cat $cache) == 0 ]]; then
+	# add
+	sketchybar --add item	island.resume_text popup.island \
+			   --set island.resume_text	label.color=$TRANSPARENT_LABEL \
+			   							label.padding_left=235 	\
+										label.padding_right=0 	\
+										label="Resumed"	\
+										label.font="$FONT:Bold:11.0" \
+										label.y_offset=-20		\
+										background.padding_left=0 \
+										background.padding_right=0 \
+										width=30			\
+			   --add item island.resume_bar popup.island \
+			   --set island.resume_bar width=$RESUME_EXPAND_SIZE \
+									   background.height=$DEFAULT_HEIGHT \
+									   background.color=$PITCH_BLACK \
+									   background.border_color=$PITCH_BLACK \
+									   background.corner_radius=$DEFAULT_CORNER_RADIUS \
+									   background.padding_left=0 \
+									   background.padding_right=0 \
+									   background.y_offset=0 \
+									   background.shadow.drawing=off \
+			   --set island		popup.drawing=true \
+								background.drawing=false \
+								popup.horizontal=on
+
+
+	# animate
+	sketchybar --animate sin 20 --set island.resume_bar width=$RESUME_SQUISH_SIZE width=$MAX_RESUME_EXPAND_SQUISH_SIZE width=$MAX_RESUME_EXPAND_SIZE\
+			   --animate sin 35 --set island popup.height=$RESUME_HEIGHT_SQUISH popup.height=$RESUME_HEIGHT \
+			   --animate sin 35 --set island popup.background.corner_radius=$RESUME_CORNER_RADIUS
+
+	sleep 0.45
+	sketchybar --animate sin 25 --set island.resume_text label.color=$DEFAULT_LABEL
+
+	sleep 3
+
+	source "$HOME/.config/sketchybar/plugins/dynamic_island/islands/music/reset-resume.sh"
+
 	printf 1 > "$cache"
 	exit 0
 fi
 
 if [[ $PLAYER_STATE == "paused" ]]; then
+	# add
+	sketchybar --add item	island.resume_text popup.island \
+			   --set island.resume_text	label.color=$TRANSPARENT_LABEL \
+			   							label.padding_left=0 	\
+										label.padding_right=0 	\
+										label="Paused"	\
+										label.font="$FONT:Bold:11.0" \
+										label.y_offset=-20		\
+										background.padding_left=0 \
+										background.padding_right=0 \
+										width=30			\
+			   --add item island.resume_bar popup.island \
+			   --set island.resume_bar width=$RESUME_EXPAND_SIZE \
+									   background.height=$DEFAULT_HEIGHT \
+									   background.color=$PITCH_BLACK \
+									   background.border_color=$PITCH_BLACK \
+									   background.corner_radius=$DEFAULT_CORNER_RADIUS \
+									   background.padding_left=0 \
+									   background.padding_right=0 \
+									   background.y_offset=0 \
+									   background.shadow.drawing=off \
+			   --set island		popup.drawing=true \
+								background.drawing=false \
+								popup.horizontal=on
+
+
+	# animate
+	sketchybar --animate sin 20 --set island.resume_bar width=$RESUME_SQUISH_SIZE width=$MAX_RESUME_EXPAND_SQUISH_SIZE width=$MAX_RESUME_EXPAND_SIZE\
+			   --animate sin 35 --set island popup.height=$RESUME_HEIGHT_SQUISH popup.height=$RESUME_HEIGHT \
+			   --animate sin 35 --set island popup.background.corner_radius=$RESUME_CORNER_RADIUS
+
+	sleep 0.45
+	sketchybar --animate sin 25 --set island.resume_text label.color=$DEFAULT_LABEL
+
+	sleep 3
+
+	source "$HOME/.config/sketchybar/plugins/dynamic_island/islands/music/reset-resume.sh"
+
 	printf 0 > "$cache"
 	exit 0
 fi
@@ -71,7 +147,7 @@ sketchybar --add item		island.music_artwork	 popup.island \
    						    popup.horizontal=on
 
 sketchybar --animate sin 20 --set island.music_placeholder width=$SQUISH_SIZE width=$MAX_EXPAND_SQUISH_SIZE width=$MAX_EXPAND_SIZE\
-		   --animate sin 35 --set island popup.height=125 popup.height=120 \
+		   --animate sin 35 --set island popup.height=$MUSIC_INFO_HEIGHT_SQUISH popup.height=$MUSIC_INFO_HEIGHT \
 		   --animate sin 35 --set island popup.background.corner_radius=34
 
 sleep 0.45
