@@ -15,7 +15,7 @@ The following table describes the capabilities of this dynamic island project. S
 | **Event System?**      | no      |   no | yes |
 | **How well does it work?** | 5/5      |    1/5 | 5/5 |
 
-Some features (islands) rely on a script that gets called every second, instead of using NSDistributedNotficationCenter. In other words, these islands will have slower response times compared to those using the event system.
+Some features (islands) rely on a script that gets called every second instead of using NSDistributedNotficationCenter. In other words, these islands will have slower response times compared to those using the event system.
 
 Some features (islands) rely on making a "cache" file inside of a SketchyBar config directory.
 
