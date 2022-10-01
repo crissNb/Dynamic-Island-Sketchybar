@@ -31,7 +31,7 @@ sketchybar --add item island.appname popup.island \
 							 background.padding_left=20 \
 							 background.padding_right=5 \
 							 background.image="app.$BUNDLENAME" \
-							 background.image.scale=0.4 \
+							 background.image.scale=0.7 \
 							 y_offset=-16 \
 		   --set island		popup.drawing=true \
 							background.drawing=false \
