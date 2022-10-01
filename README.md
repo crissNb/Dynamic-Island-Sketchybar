@@ -85,6 +85,45 @@ Configuration
 =============
 For some variables, they can be adjusted by changing the variables in {module_name}_settings.sh file. However, it is not yet recommended to do so, as I have not organized the configuration files properly just yet. Refactoring is needed.
 
+### Disabling features
+Unwanted dynamic island features can be disabled. Dynamic island features that do not use "Event System" (see [features](#features)) can be disabled by commenting out their handler script.
+
+E.g. Disabling volume dynamic island:
+`~/.config/sketchybar/plugins/dynamic_island/dynamic_island.sh`:
+```bash
+#!/usr/bin/env sh
+
+# Notifications
+bash "$HOME/.config/sketchybar/plugins/dynamic_island/islands/notification/handler.sh"
+
+# VOLUME
+# bash "$HOME/.config/sketchybar/plugins/dynamic_island/islands/volume/handler.sh"
+```
+
+##
+
+Features that use Event system can be disabled by removing their event listeners.
+
+E.g. Disabling app switcher:
+`~/.config/sketchybar/items/dynamic_island.sh`:
+```bash
+...
+        popup.background.shadow.drawing=off \
+        popup.drawing=false \
+        horizontal=off \
+--add event	  music_change "com.apple.Music.playerInfo" \
+--add item	  musicListener\
+--set musicListener	script="$PLUGIN_DIR/dynamic_island/islands/music/music_island.sh" \
+--subscribe musicListener music_change \
+# REMOVE START
+--add item	  frontAppSwitchListener \
+--set frontAppSwitchListener script="$PLUGIN_DIR/dynamic_island/islands/appswitch/handler.sh" \
+--subscribe frontAppSwitchListener front_app_switched
+# REMOVE END
+...
+```
+Note that there should be a backslash after each line to append the command.
+
 Features
 ========
 The following table describes the capabilities of this dynamic island project (working islands). Some islands do not work properly just yet. Thus, you may experience some glitches when using them.
@@ -107,6 +146,9 @@ Some features (islands) rely on making a "cache" file inside of a SketchyBar con
 *For the best experience, I suggest you to use the following features (for now):*
 - General Notifications
 - Music
+- App Switch
+
+For General Notification feature, I suggest you to turn on the "Do Not Disturb" on your macOS settings. This way the notifications will only be shown via the dynamic island.
 
 Todo
 ====
