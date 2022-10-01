@@ -157,6 +157,7 @@ Todo
 - Make GitHub Wiki
 - More configuration options
 - Fix dynamic island to behave incorrectly when there's something is already being displayed.
+- Hide the notch on non-notched laptops
 - Less hardcoded system...
 
 ### Upcoming Features / Upcoming Islands
