@@ -19,6 +19,8 @@ Table of Contents
 
 [Todo](#todo)
 
+[Bugs](#bugs)
+
 [FAQ](#faq)
 
 [Credits](#credits)
@@ -162,6 +164,10 @@ Todo
 - Bluetooth status
 - Do not disturb
 - ...and more!
+
+Bugs
+====
+If you encounter any bugs, feel free to open up an issue! Pull requests are also welcome
 
 Tested devices
 ==============
