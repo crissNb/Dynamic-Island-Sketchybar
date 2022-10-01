@@ -4,6 +4,8 @@ Dynamic Island on iPhone 14 Pro implementation on Mac using SketchyBar
 ***NOTE: Majority of the code are hardcoded. This is my first time making a project using Shell Scripts. Some features require constantly rewriting a file instead of relying on a event system. With that being said, I have yet experienced a large impact on performance on my machine.***
 ***This project is yet to be used daily and be functional. It's more of a concept.***
 
+![](images/full.png)
+
 Table of Contents
 =================
 
@@ -93,6 +95,7 @@ The following table describes the capabilities of this dynamic island project (w
 | **Event System?**      | no      |   no | yes | yes | yes |
 | **How well does it work?** | 5/5      |    1/5 | 5/5 | 3/5 | 5/5 |
 | **Known Bugs** | None | - Animation bug when volume changes multiple times while the UI is active | None | - Animation bug when play / pause happens multiple times while the UI is active | None |
+| **Screenshot** | ![](images/notification.png) | ![](images/volume.png) | ![](images/music.png) | ![](images/pause.png) | ![](appswitch.png) |
 
 *saves the artwork temporarily to display it on the dynamic island.
 
