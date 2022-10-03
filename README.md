@@ -11,6 +11,8 @@ Table of Contents
 
 [Installation](#installation)
 
+[Updating](#updating)
+
 [Optimal Setup](#optimal-setup)
 
 [Configuration](#configuration)
@@ -34,7 +36,7 @@ Installation
 - [Homebrew](https://brew.sh/)
 - [SketchyBar](https://github.com/FelixKratz/SketchyBar)
 - sf-symbols (`brew install --cask sf-symbols`)
-- biplist (`pip3 install biplist`)
+- biplist (`pip3 install biplist`) (only required for notification feature)
 
 ### Getting Started
 Clone the repository inside your `~/.config/sketchybar/` folder
@@ -75,7 +77,9 @@ source "$HOME/.config/sketchybar/items/dynamic_island.sh"
 ```
 You may have to adjust default settings with `sketchybar --default`. See `sketchybarrc` of this repository for details.
 
-
+Updating
+=============
+If you are already using my configuration files for dynamic island sketchybar and would like to update to the newer version, it is recommended to delete the entire configuration folder and follow the installation steps again. As of right now, there is no update system built in.
 
 Optimal Setup
 =============
