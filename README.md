@@ -34,6 +34,7 @@ Installation
 - [Homebrew](https://brew.sh/)
 - [SketchyBar](https://github.com/FelixKratz/SketchyBar)
 - sf-symbols (`brew install --cask sf-symbols`)
+- biplist (`pip3 install biplist`)
 
 ### Getting Started
 Clone the repository inside your `~/.config/sketchybar/` folder
