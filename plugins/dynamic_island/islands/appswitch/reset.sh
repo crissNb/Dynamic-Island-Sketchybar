@@ -11,7 +11,7 @@ sketchybar --animate tanh 20 --set island popup.height=$DEFAULT_HEIGHT \
 		   --animate  sin 25 --set island popup.background.corner_radius=$DEFAULT_CORNER_RADIUS \
 		   --animate tanh 15 --set island.appbackground width=$SQUISH_SIZE width=$EXPAND_SIZE
 
-sleep 1
+sleep 0.4
 
 sketchybar --set island		popup.drawing=false \
 		   					background.drawing=true \

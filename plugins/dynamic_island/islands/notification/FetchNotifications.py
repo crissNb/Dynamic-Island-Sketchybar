@@ -141,7 +141,7 @@ def ProcessNotificationDb(inputPath, outputPath, lastLinePath):
                             message = RemoveTabsNewLines(plist['$objects'][text_index])
                         except: pass
                     except (InvalidPlistException, NotBinaryPlistException, Exception) as e:
-                        print ("Invalid plist in table.", e )
+                        print ("Invalid plist in table.", e)
                     try:
                         csv.write ('%s;%s;%s;%s;%s;%s;%s;%s\n' %(ReadMacAbsoluteTime(row['time']), row['shown'], row['bundle'], row['appPath'], row['uuid'], title, subtitle, message))
                     except Exception as ex:

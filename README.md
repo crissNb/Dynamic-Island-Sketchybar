@@ -149,6 +149,8 @@ Some features (islands) rely on a script that gets called every second instead o
 
 Some features (islands) rely on making a "cache" file inside of a SketchyBar config directory.
 
+***Volume feature has been disabled by default until a more optimal solution is found.***
+
 ### Recommended Features
 *For the best experience, I suggest you to use the following features (for now):*
 - General Notifications
@@ -161,7 +163,6 @@ Todo
 ====
 - Make GitHub Wiki
 - More configuration options
-- Fix dynamic island to behave incorrectly when there's something is already being displayed.
 - Hide the notch on non-notched laptops
 - Less hardcoded system...
 

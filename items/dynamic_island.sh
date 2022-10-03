@@ -1,5 +1,9 @@
 #!/usr/bin/env sh
 
+# create cache file to check when dynamic_island is active
+active="$HOME/.config/sketchybar/plugins/dynamic_island/data/active"
+printf "0" > "$active"
+
 source "$HOME/.config/sketchybar/dynamic_island_settings.sh"
 
 sketchybar --add item     island center               \
@@ -26,7 +30,7 @@ sketchybar --add item     island center               \
 						  horizontal=off \
 		   --add event	  music_change "com.apple.Music.playerInfo" \
 		   --add item	  musicListener\
-		   --set musicListener	script="$PLUGIN_DIR/dynamic_island/islands/music/music_island.sh" \
+		   --set musicListener	script="$PLUGIN_DIR/dynamic_island/islands/music/handler.sh" \
 		   --subscribe musicListener music_change \
 		   --add item	  frontAppSwitchListener \
 		   --set frontAppSwitchListener script="$PLUGIN_DIR/dynamic_island/islands/appswitch/handler.sh" \
