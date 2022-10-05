@@ -39,11 +39,19 @@ Installation
 - biplist (`pip3 install biplist`) (only required for notification feature)
 
 ### Getting Started
-Clone the repository inside your `~/.config/sketchybar/` folder
+1. Clone the repository
 ```bash
-cd ~/.config/sketchybar
 git clone https://github.com/crissNb/Dynamic-Island-Sketchybar.git
 ```
+
+2. Copy all the contents of the repository in `~/.config/sketchybar` folder
+```bash
+cd Dynamic-Island-Sketchybar/
+cp -r . ~/.config/sketchybar/
+```
+
+You may then delete the original folder.
+
 *if you have just installed sketchybar, sketchybar folder in your config may not be present. If this is the case, make a folder on your own:*
 ```bash
 mkdir ~/.config/sketchybar
