@@ -69,6 +69,7 @@ In order for Dynamic Island configuration to deliver the notifications to you, a
 6. Navigate to: `~/.config/sketchybar/plugins/dynamic_island/islands/notification`
 
 *If you would like to do this process using Finder, you can press `Cmd + Shift + G` in Finder or `Go -> Go to Folder...`*
+
 7. Open `init.sh` with a text editor and modify `NOTIFICATION_DATABASE` variable (replace the path in the quotes with what you've copied before).
 
 *Alternatively, users can also find the location to the notification database by using the following command:
