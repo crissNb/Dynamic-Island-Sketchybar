@@ -2,7 +2,7 @@
 queuedList="$HOME/.config/sketchybar/plugins/dynamic_island/data/queued"
 override="$HOME/.config/sketchybar/plugins/dynamic_island/data/override"
 
-# $1 - type
+# $1 - identifier
 # $2 - duration
 # $3 - command
 # $4 - exit command
@@ -11,14 +11,15 @@ override="$HOME/.config/sketchybar/plugins/dynamic_island/data/override"
 entry=$*
 
 validEntry=$(head -n 1 $queuedList)
-
 if [ -n "$validEntry" ]
 then
 	IFS=';'
 	read -ra strarr <<< "$validEntry"
 	unset IFS
 
-	if [[ ${strarr[0]} == $1 ]]
+	thisId=${entry%% *}
+
+	if [[ ${strarr[0]} == "${thisId//;}" ]]
 	then
 		# add to queuedList
 		ex -sc "1i|$entry" -cx "$queuedList"

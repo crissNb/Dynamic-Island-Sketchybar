@@ -2,11 +2,18 @@
 source "$HOME/.config/sketchybar/dynamic_island_settings.sh"
 source "$HOME/.config/sketchybar/plugins/dynamic_island/islands/appswitch/appswitch_island_settings.sh"
 
+args=$*
+IFS='|'
+read -ra strarr <<< "$args"
+unset IFS
+
 # $1 - front app name
 # $2 - override
-BUNDLENAME=$(osascript -e "id of app \"$1\"")
+appName="${strarr[0]}"
+override="${strarr[1]}"
+BUNDLENAME=$(osascript -e "id of app \"$appName\"")
 
-if [[ $2 == 0 ]]; then
+if [[ $override == " 0" ]]; then
 	sketchybar --add item island.appname popup.island \
 			   --set island.appname		width=0 \
 										label.color=$TRANSPARENT_LABEL \
@@ -38,10 +45,10 @@ if [[ $2 == 0 ]]; then
 								popup.horizontal=on
 fi
 
-sketchybar --set island.appname		label="$1" \
+sketchybar --set island.appname		label="$appName" \
 		   --set island.applogo 	background.image="app.$BUNDLENAME"
 
-if [[ $2 == 0 ]]; then
+if [[ $override == " 0" ]]; then
 	sketchybar --animate sin 15 --set island.appbackground width=$SQUISH_SIZE width=$MAX_EXPAND_SQUISH_SIZE width=$MAX_EXPAND_SIZE\
 			   --animate sin 20 --set island popup.height=70 popup.height=65 \
 			   --animate sin 20 --set island popup.background.corner_radius=15
