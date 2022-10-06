@@ -99,7 +99,13 @@ If you have been using the macOS's default menu bar, I suggest you to enable the
 
 Configuration
 =============
-For some variables, they can be adjusted by changing the variables in {module_name}_settings.sh file. However, it is not yet recommended to do so, as I have not organized the configuration files properly just yet. Refactoring is needed.
+All Dynamic Island configuration files can be found in `~/.config/sketchybar/plugins/dynamic_island/configs/`.
+
+`general.sh` contains settings to adjust the notch size. As of right now, users need to manually adjust the notch size in pixels. If you have found an optimal notch size for MacBook with a notch, please let me know. Once enough data has been gathered, preset system will be implemented.
+
+For module specific configurations (e.g. module sizes) can be configured individually (also in configs folder).
+
+The default configuration files are meant for 2021 MacBook Pro 14.
 
 ### Disabling features
 Unwanted dynamic island features can be disabled. Dynamic island features that do not use "Event System" (see [features](#features)) can be disabled by commenting out their handler script.
@@ -171,7 +177,6 @@ For General Notification feature, I suggest you to turn on the "Do Not Disturb" 
 Todo
 ====
 - Make GitHub Wiki
-- More configuration options
 - Hide the notch on non-notched laptops
 - Less hardcoded system...
 

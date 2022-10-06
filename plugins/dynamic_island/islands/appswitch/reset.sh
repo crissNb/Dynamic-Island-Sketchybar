@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
-source "$HOME/.config/sketchybar/dynamic_island_settings.sh"
-source "$HOME/.config/sketchybar/plugins/dynamic_island/islands/appswitch/appswitch_island_settings.sh"
+source "$HOME/.config/sketchybar/plugins/dynamic_island/configs/appswitch.sh"
 
 sketchybar --animate tanh 15 --set island.appname label.color=$TRANSPARENT_LABEL \
 		   --animate tanh 15 --set island.applogo background.color=$ICON_HIDDEN
@@ -9,7 +8,7 @@ sleep 0.1
 
 sketchybar --animate tanh 20 --set island popup.height=$DEFAULT_HEIGHT \
 		   --animate  sin 25 --set island popup.background.corner_radius=$DEFAULT_CORNER_RADIUS \
-		   --animate tanh 15 --set island.appbackground width=$SQUISH_SIZE width=$EXPAND_SIZE
+		   --animate tanh 15 --set island.appbackground width=$SQUISH_WIDTH width=$EXPAND_WIDTH
 
 sleep 0.4
 

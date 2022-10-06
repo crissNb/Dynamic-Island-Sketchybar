@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
-source "$HOME/.config/sketchybar/dynamic_island_settings.sh"
-source "$HOME/.config/sketchybar/plugins/dynamic_island/islands/music/music_island_settings.sh"
+source "$HOME/.config/sketchybar/plugins/dynamic_island/configs/music.sh"
 
 # add
 sketchybar --add item	island.resume_text popup.island \
@@ -12,7 +11,7 @@ sketchybar --add item	island.resume_text popup.island \
 									background.padding_right=0 \
 									width=30			\
 		   --add item island.resume_bar popup.island \
-		   --set island.resume_bar width=$RESUME_EXPAND_SIZE \
+		   --set island.resume_bar width=$RESUME_EXPAND_WIDTH \
 								   background.height=$DEFAULT_HEIGHT \
 								   background.color=$PITCH_BLACK \
 								   background.border_color=$PITCH_BLACK \
@@ -35,9 +34,9 @@ else
 fi
 
 # animate
-sketchybar --animate sin 20 --set island.resume_bar width=$RESUME_SQUISH_SIZE width=$MAX_RESUME_EXPAND_SQUISH_SIZE width=$MAX_RESUME_EXPAND_SIZE\
-		   --animate sin 35 --set island popup.height=$RESUME_HEIGHT_SQUISH popup.height=$RESUME_HEIGHT \
-		   --animate sin 35 --set island popup.background.corner_radius=$RESUME_CORNER_RADIUS
+sketchybar --animate sin 20 --set island.resume_bar width=$RESUME_SQUISH_WIDTH width=$RESUME_MAX_EXPAND_SQUISH_WIDTH width=$RESUME_MAX_EXPAND_WIDTH\
+		   --animate sin 35 --set island popup.height=$RESUME_MAX_EXPAND_HEIGHT popup.height=$RESUME_EXPAND_HEIGHT \
+		   --animate sin 35 --set island popup.background.corner_radius=$RESUME_CORNER_RAD
 
 sleep 0.45
 sketchybar --animate sin 25 --set island.resume_text label.color=$DEFAULT_LABEL

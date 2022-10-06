@@ -31,7 +31,7 @@ def GetText(string_or_binary):
             print('Error trying to convert binary value to hex text. Details: ' + str(ex))
     return uuid_text
 
-def ReadNotifications(conn, outputPath, lastLinePath):
+def ReadNotifications(conn):
     try:
         conn.row_factory = sqlite3.Row
         cursor = conn.execute("SELECT Count(*) FROM record")
@@ -50,7 +50,8 @@ def ReadNotifications(conn, outputPath, lastLinePath):
                 message = RemoveTabsNewLines(req.get('body', ''))
 
                 home = expanduser("~")
-                subprocess.check_call(["../../queue_island.sh", \
+                queueIslandScript = "~/.config/sketchybar/plugins/dynamic_island/queue_island.sh"
+                subprocess.check_call([expanduser(queueIslandScript), \
                                           "notifications;", \
                                           "3;", \
                                           "{}/.config/sketchybar/plugins/dynamic_island/islands/notification/notification_island.sh {}|{}|{}|{};".format(home, title, subtitle, message, appId), \
@@ -61,12 +62,9 @@ def ReadNotifications(conn, outputPath, lastLinePath):
     except Exception as ex:
         print ("Sqlite error - \nError details: \n" + str(ex))
 
-if len(sys.argv) > 2:
-    inputPath = sys.argv[1]
-    outputPath = sys.argv[2]
-    lastLinePath = sys.argv[3]
-    while True:
-        conn = sqlite3.connect(inputPath)
-        ReadNotifications(conn, outputPath, lastLinePath)
-        conn.close()
-        time.sleep(5)
+inputPath = sys.argv[1]
+while True:
+    conn = sqlite3.connect(inputPath)
+    ReadNotifications(conn)
+    conn.close()
+    time.sleep(5)

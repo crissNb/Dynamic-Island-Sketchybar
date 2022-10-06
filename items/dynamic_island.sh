@@ -4,12 +4,12 @@
 active="$HOME/.config/sketchybar/plugins/dynamic_island/data/active"
 printf "0" > "$active"
 
-source "$HOME/.config/sketchybar/dynamic_island_settings.sh"
+source "$HOME/.config/sketchybar/plugins/dynamic_island/configs/general.sh"
 
 sketchybar --add item     island center               \
            --set island   update_freq=1               \
 		   				  script="$PLUGIN_DIR/dynamic_island/dynamic_island.sh" \
-                          width=205          \
+                          width=$DEFAULT_WIDTH          \
                           align=center                 \
                           background.height=50         \
 						  background.y_offset=9         \
@@ -22,6 +22,7 @@ sketchybar --add item     island center               \
 						  popup.align=center \
 						  popup.y_offset=-69 \
 						  popup.horizontal=on \
+						  popup.background.width=0 \
 						  popup.background.border_color=$PITCH_BLACK \
 						  popup.background.color=$PITCH_BLACK \
 						  popup.background.corner_radius=$DEFAULT_CORNER_RADIUS \
@@ -36,4 +37,4 @@ sketchybar --add item     island center               \
 		   --set frontAppSwitchListener script="$PLUGIN_DIR/dynamic_island/islands/appswitch/handler.sh" \
 		   --subscribe frontAppSwitchListener front_app_switched
 
-bash "$HOME/.config/sketchybar/plugins/dynamic_island/islands/notification/init.sh"
+source "$HOME/.config/sketchybar/plugins/dynamic_island/islands/notification/init.sh"

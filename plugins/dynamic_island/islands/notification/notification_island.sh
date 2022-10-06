@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
-source "$HOME/.config/sketchybar/dynamic_island_settings.sh"
-source "$HOME/.config/sketchybar/plugins/dynamic_island/islands/notification/notification_island_settings.sh"
+source "$HOME/.config/sketchybar/plugins/dynamic_island/configs/notifications.sh"
 
 args=$*
 IFS='|'
@@ -49,7 +48,7 @@ sketchybar --add item	  island.title popup.island \
 								  label.width=$MAX_ALLOWED_BODY \
 								  width=50 \
 		   --add item     island.expanding popup.island	\
-		   --set island.expanding width=$EXPAND_SIZE			\
+		   --set island.expanding width=$EXPAND_WIDTH			\
 		   						  background.height=$DEFAULT_HEIGHT \
 								  background.color=$PITCH_BLACK \
 								  background.border_color=$PITCH_BLACK \
@@ -69,9 +68,9 @@ sketchybar --add item	  island.title popup.island \
 							 background.drawing=false \
 							 popup.horizontal=on
 
-sketchybar --animate sin 20 --set island.expanding width=$SQUISH_SIZE width=$MAX_EXPAND_SQUISH_SIZE width=$MAX_EXPAND_SIZE\
-		   --animate sin 35 --set island popup.height=145 popup.height=140 \
-		   --animate sin 35 --set island popup.background.corner_radius=42
+sketchybar --animate sin 20 --set island.expanding width=$SQUISH_WIDTH width=$MAX_EXPAND_SQUISH_WIDTH width=$MAX_EXPAND_WIDTH\
+		   --animate sin 35 --set island popup.height=$MAX_EXPAND_HEIGHT popup.height=$EXPAND_HEIGHT \
+		   --animate sin 35 --set island popup.background.corner_radius=$CORNER_RAD
 
 sleep 0.45
 sketchybar --animate sin 25 --set island.title label.color=$DEFAULT_LABEL \

@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
-source "$HOME/.config/sketchybar/dynamic_island_settings.sh"
-source "$HOME/.config/sketchybar/plugins/dynamic_island/islands/music/music_island_settings.sh"
+source "$HOME/.config/sketchybar/plugins/dynamic_island/configs/music.sh"
 
 # fetch music info
 TITLE=$(osascript -e 'tell application "Music" to get name of current track')
@@ -43,7 +42,7 @@ sketchybar --add item		island.music_artwork	 popup.island \
 										label.font="$FONT:Semibold:14.0" \
 										label.y_offset=-40 \
 		   --add item		island.music_placeholder popup.island \
-		   --set island.music_placeholder width=$EXPAND_SIZE \
+		   --set island.music_placeholder width=$INFO_EXPAND_WIDTH \
 		   											 background.height=$DEFAULT_HEIGHT \
 													 background.color=$PITCH_BLACK \
 													 background.border_color=$PITCH_BLACK \
@@ -56,9 +55,9 @@ sketchybar --add item		island.music_artwork	 popup.island \
 						    background.drawing=false \
    						    popup.horizontal=on
 
-sketchybar --animate sin 20 --set island.music_placeholder width=$SQUISH_SIZE width=$MAX_EXPAND_SQUISH_SIZE width=$MAX_EXPAND_SIZE\
-		   --animate sin 35 --set island popup.height=$MUSIC_INFO_HEIGHT_SQUISH popup.height=$MUSIC_INFO_HEIGHT \
-		   --animate sin 35 --set island popup.background.corner_radius=34
+sketchybar --animate sin 20 --set island.music_placeholder width=$INFO_SQUISH_WIDTH width=$INFO_MAX_EXPAND_SQUISH_WIDTH width=$INFO_MAX_EXPAND_WIDTH\
+		   --animate sin 35 --set island popup.height=$INFO_MAX_EXPAND_HEIGHT popup.height=$INFO_EXPAND_HEIGHT \
+		   --animate sin 35 --set island popup.background.corner_radius=$INFO_CORNER_RAD
 
 sleep 0.45
 sketchybar --animate sin 25 --set island.music_title label.color=$DEFAULT_LABEL \
