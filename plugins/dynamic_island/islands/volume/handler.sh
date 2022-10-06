@@ -50,7 +50,7 @@ if changed; then
 		exit 0
 	fi
 
-	source "$HOME/.config/sketchybar/plugins/dynamic_island/islands/volume/reset.sh"
+	bash "$HOME/.config/sketchybar/plugins/dynamic_island/islands/volume/reset.sh"
 
 	DISPLAYING=0
 	cache_data="${VOLUME};${DISPLAYING}"

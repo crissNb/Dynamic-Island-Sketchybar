@@ -35,3 +35,5 @@ sketchybar --add item     island center               \
 		   --add item	  frontAppSwitchListener \
 		   --set frontAppSwitchListener script="$PLUGIN_DIR/dynamic_island/islands/appswitch/handler.sh" \
 		   --subscribe frontAppSwitchListener front_app_switched
+
+bash "$HOME/.config/sketchybar/plugins/dynamic_island/islands/notification/init.sh"

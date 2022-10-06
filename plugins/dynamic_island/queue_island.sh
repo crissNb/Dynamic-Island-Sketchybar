@@ -7,7 +7,8 @@ override="$HOME/.config/sketchybar/plugins/dynamic_island/data/override"
 # $3 - command
 # $4 - exit command
 # $5 - exit duration
-entry="$1;$2;$3;$4;$5"
+# given with separated using ';'
+entry=$*
 
 validEntry=$(head -n 1 $queuedList)
 
@@ -26,11 +27,11 @@ then
 		overrideVal=$(cat $override)
 		priority="$((overrideVal + 1))"
 		printf $priority > "$override"
-		source "$HOME/.config/sketchybar/plugins/dynamic_island/draw.sh" $priority
+		bash "$HOME/.config/sketchybar/plugins/dynamic_island/draw.sh" $priority
 		exit 0
 	fi
 fi
 
 
 echo $entry >> $queuedList
-source "$HOME/.config/sketchybar/plugins/dynamic_island/draw.sh" 0
+bash "$HOME/.config/sketchybar/plugins/dynamic_island/draw.sh" 0
