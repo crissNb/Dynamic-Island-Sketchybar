@@ -90,6 +90,8 @@ Updating
 =============
 If you are already using my configuration files for dynamic island sketchybar and would like to update to the newer version, it is recommended to delete the entire configuration folder and follow the installation steps again. As of right now, there is no update system built in.
 
+If you are deleting your entire folder to do an update, please note that this will delete your existing configuration files in `~/.config/sketchybar/plugins/dynamic_island/configs`. If you intend on keep using your personal configuration files, copy them temporarily to somewhere else before you delete the folder.
+
 Optimal Setup
 =============
 I highly suggest you to use SketchyBar and the dynamic island config files with Yabai.
