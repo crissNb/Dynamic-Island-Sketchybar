@@ -1,8 +1,15 @@
 #!/usr/bin/env sh
 
+# check if music app is running
+RUNNING=$(pgrep -x Music)
+if [[ ! $RUNNING ]]; then
+	exit 0
+fi
+
 cache="$HOME/.config/sketchybar/plugins/dynamic_island/islands/music/data/cache"
 
-PLAYER_STATE=$(osascript -e "tell application \"Music\" to set playerState to (get player state) as text")
+# PLAYER_STATE=$(osascript -e "tell application \"Music\" to set playerState to (get player state) as text")
+PLAYER_STATE=$(osascript "$HOME/.config/sketchybar/plugins/dynamic_island/islands/music/get_playerstate.scpt")
 
 if [[ $(cat $cache) == 0 ]]; then
 	# resume
