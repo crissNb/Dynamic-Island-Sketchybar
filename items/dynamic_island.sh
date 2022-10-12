@@ -35,6 +35,13 @@ sketchybar --add item     island center               \
 		   --subscribe musicListener music_change \
 		   --add item	  frontAppSwitchListener \
 		   --set frontAppSwitchListener script="$PLUGIN_DIR/dynamic_island/islands/appswitch/handler.sh" \
-		   --subscribe frontAppSwitchListener front_app_switched
+		   --subscribe frontAppSwitchListener front_app_switched \
+		   --add item volumeChangeListener \
+		   --set volumeChangeListener script="$PLUGIN_DIR/dynamic_island/islands/volume/handler.sh" \
+		   --subscribe volumeChangeListener volume_change
 
 source "$HOME/.config/sketchybar/plugins/dynamic_island/islands/notification/init.sh"
+
+# empty queued list
+queued="$HOME/.config/sketchybar/plugins/dynamic_island/data/queued"
+printf "" > "$queued"

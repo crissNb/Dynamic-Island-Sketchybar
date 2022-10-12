@@ -1,14 +1,19 @@
 #!/usr/bin/env sh
-source "$HOME/.config/sketchybar/dynamic_island_icons.sh"
-source "$HOME/.config/sketchybar/dynamic_island_settings.sh"
-source "$HOME/.config/sketchybar/plugins/dynamic_island/islands/volume/volume_island_settings.sh"
+source "$HOME/.config/sketchybar/plugins/dynamic_island/configs/volume.sh"
+source "$HOME/.config/sketchybar/plugins/dynamic_island/configs/icons.sh"
 
 # $1 volume
-# $2 muted
-# $3 displaying
+# $2 override
+args=$*
+IFS='|'
+read -ra strarr <<< "$args"
+unset IFS
+
+volume="${strarr[0]}"
+override="${strarr[1]}"
 
 # calculate volume logo
-case $1 in
+case $volume in
 	100) ICON=$VOLUME_MAX;;
 	9[0-9]) ICON=$VOLUME_MAX;;
 	8[0-9]) ICON=$VOLUME_MAX;;
@@ -23,17 +28,9 @@ case $1 in
 	*) ICON=$VOLUME_MUTED
 esac
 
-VOLUME_LOGO_COLOR=$NORMAL_ICON_COLOR
-
-# check muted
-if [[ "$2" == 1 ]]; then
-	VOLUME_LOGO_COLOR=$MUTED_ICON_COLOR
-	ICON=$VOLUME_MUTED
-fi
-
-if [[ "$3" == 0 ]]; then
+if [[ $override == " 0" ]]; then
 	#create volume items
-	sketchybar --set island	   popup.drawing=true		\
+	sketchybar --set island	   popup.drawing=true \
 							   popup.horizontal=off \
 							   background.drawing=false \
 			   --add item     island.placeholder1 popup.island	\
@@ -81,20 +78,20 @@ if [[ "$3" == 0 ]]; then
 									  background.border_color=$TRANSPARENT_LABEL \
 									  background.y_offset=0 \
 									  background.shadow.drawing=off \
-									  background.corner_radius=23 \
+									  background.corner_radius=$VOLUME_BAR_CORNER_RAD \
 									  background.padding_left=10 \
 									  background.padding_right=10
-	sketchybar --animate tanh 15 --set island.placeholder1 width=175 width=250
+	sketchybar --animate sin 15 --set island.placeholder1 width=$SQUISH_WIDTH width=$MAX_EXPAND_SQUISH_WIDTH width=$MAX_EXPAND_WIDTH
 fi
 
-sketchybar --animate sin 25 --set island popup.background.corner_radius=12 \
-		   --animate sin 20 --set island popup.height=16
+sketchybar --animate sin 20 --set island popup.background.corner_radius=$CORNER_RAD \
+		   --animate sin 20 --set island popup.height=$EXPAND_HEIGHT
 
-sleep 0.35
-barWidth=$(bc -l <<< "$1/100*240")
+sleep 0.2
+barWidth=$(bc -l <<< "$volume/100*240")
 barWidth=$( printf "%.0f" $barWidth )
 sketchybar --animate tanh 15 --set island.volume_bar width=$barWidth
 
 sketchybar --animate sin 15 --set island.volume_bar background.color=$DEFAULT_LABEL \
 		   --animate sin 15 --set island.volume_bar background.border_color=$DEFAULT_LABEL \
-		   --animate sin 15 --set island.volume_icon icon.color=$VOLUME_LOGO_COLOR
+		   --animate sin 15 --set island.volume_icon icon.color=$NORMAL_ICON_COLOR

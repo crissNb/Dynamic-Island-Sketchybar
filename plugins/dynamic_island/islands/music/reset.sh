@@ -11,9 +11,9 @@ sketchybar --animate tanh 25 --set island popup.height=$DEFAULT_HEIGHT \
 		   --animate tanh 20 --set island.music_placeholder width=$INFO_SQUISH_WIDTH width=$INFO_EXPAND_WIDTH \
 
 sleep 0.7
-sketchybar --set island		popup.drawing=false \
+sketchybar --set island		popup.horizontal=off \
+							popup.drawing=false \
 		   					background.drawing=true \
-							popup.horizontal=off \
 		   --remove island.music_title \
 		   --remove island.music_artist \
 		   --remove island.music_artwork \

@@ -110,23 +110,7 @@ For module specific configurations (e.g. module sizes) can be configured individ
 The default configuration files are meant for 2021 MacBook Pro 14.
 
 ### Disabling features
-Unwanted dynamic island features can be disabled. Dynamic island features that do not use "Event System" (see [features](#features)) can be disabled by commenting out their handler script.
-
-E.g. Disabling volume dynamic island:
-`~/.config/sketchybar/plugins/dynamic_island/dynamic_island.sh`:
-```bash
-#!/usr/bin/env sh
-
-# Notifications
-bash "$HOME/.config/sketchybar/plugins/dynamic_island/islands/notification/handler.sh"
-
-# VOLUME
-# bash "$HOME/.config/sketchybar/plugins/dynamic_island/islands/volume/handler.sh"
-```
-
-##
-
-Features that use Event system can be disabled by removing their event listeners.
+Unwanted dynamic island features can be disabled by removing their event listeners.
 
 E.g. Disabling app switcher:
 `~/.config/sketchybar/items/dynamic_island.sh`:
@@ -156,7 +140,7 @@ The following table describes the capabilities of this dynamic island project (w
 | ------------- |:-------------:| :-----: | :---------: | :------: | :--------: |
 | **Cache File**      | yes | yes | yes* | yes | no |
 | **Event System?**      | no      |   no | yes | yes | yes |
-| **How well does it work?** | 5/5      |    1/5 | 5/5 | 3/5 | 5/5 |
+| **How well does it work?** | 5/5      |    3/5 | 5/5 | 3/5 | 5/5 |
 | **Known Bugs** | None | - Animation bug when volume changes multiple times while the UI is active | None | - Animation bug when play / pause happens multiple times while the UI is active | None |
 | **Screenshot** | ![](images/notification.png) | ![](images/volume.png) | ![](images/music.png) | ![](images/pause.png) | ![](appswitch.png) |
 
