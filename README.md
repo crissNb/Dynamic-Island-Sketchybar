@@ -39,7 +39,7 @@ Installation
 - biplist (`pip3 install biplist`) (only required for notification feature)
 
 ### Getting Started (If you're not using SketchyBar already)
-1. Clone the repository
+1. Clone the repository inside `~/.config/sketchybar/plugins`, take the default `sketchybarrc` and restart `sketchybar`,
 ```bash
 mkdir -p ~/.config/sketchybar/plugins
 cd ~/.config/sketchybar/plugins
