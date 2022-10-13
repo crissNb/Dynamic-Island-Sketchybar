@@ -38,59 +38,39 @@ Installation
 - sf-symbols (`brew install --cask sf-symbols`)
 - biplist (`pip3 install biplist`) (only required for notification feature)
 
-### Getting Started
+### Getting Started (If you're not using SketchyBar already)
 1. Clone the repository
 ```bash
+mkdir -p ~/.config/sketchybar/plugins
+cd ~/.config/sketchybar/plugins
 git clone https://github.com/crissNb/Dynamic-Island-Sketchybar.git
-```
-
-2. Copy all the contents of the repository in `~/.config/sketchybar` folder
-```bash
-cd Dynamic-Island-Sketchybar/
-cp -r . ~/.config/sketchybar/
-```
-
-You may then delete the original folder.
-
-*if you have just installed sketchybar, sketchybar folder in your config may not be present. If this is the case, make a folder on your own:*
-```bash
-mkdir ~/.config/sketchybar
-```
-
-
-### Setting up notifications
-In order for Dynamic Island configuration to deliver the notifications to you, a notification database has to be provided. The database's file location is unique to every computer, however.
-
-1. Open `Activity Monitor`*
-2. Search for `usernoted` process
-3. Double-click on `usernoted` and go to `Open Files and Ports` tab.
-4. Scroll through different locations and find a location that looks similar to `/private/var/folders/xx/xxxxxxxxxxxxxxxx/0/com.apple.notificationcenter/db2/db`, where x's are unique values.
-5. Copy the location
-6. Navigate to: `~/.config/sketchybar/plugins/dynamic_island/islands/notification`
-
-*If you would like to do this process using Finder, you can press `Cmd + Shift + G` in Finder or `Go -> Go to Folder...`*
-
-7. Open `init.sh` with a text editor and modify `NOTIFICATION_DATABASE` variable (replace the path in the quotes with what you've copied before).
-
-*Alternatively, users can also find the location to the notification database by using the following command:
-```bash
-lsof -p $(ps aux | grep -m1 usernoted | awk '{ print $2 }')| awk '{ print $NF }' | grep 'db2/db$' | xargs dirname
+mv Dynamic-Island-Sketchybar/sketchybarrc.example ../sketchybarrc
+brew services restart sketchybar
 ```
 
 ##
 
 ### For existing SketchyBar users
-Add this line of code to your `sketchybarrc` file.
+Add this line of code to the beginning of your `sketchybarrc` file.
 ```bash
-source "$HOME/.config/sketchybar/items/dynamic_island.sh"
+PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
+source "$PLUGIN_DIR/Dynamic-Island-Sketchybar/config.sh"
 ```
-You may have to adjust default settings with `sketchybar --default`. See `sketchybarrc` of this repository for details.
+Add this line of code alongside your other items
+```bash
+source "$PLUGIN_DIR/Dynamic-Island-Sketchybar/item.sh"
+```
+
+You can to adjust default settings with `sketchybar --default`.
+See `sketchybarrc.example` of this repository for example on how to set up Dynamic-Island-Sketchybar.
 
 Updating
 =============
-If you are already using my configuration files for dynamic island sketchybar and would like to update to the newer version, it is recommended to delete the entire configuration folder and follow the installation steps again. As of right now, there is no update system built in.
-
-If you are deleting your entire folder to do an update, please note that this will delete your existing configuration files in `~/.config/sketchybar/plugins/dynamic_island/configs`. If you intend on keep using your personal configuration files, copy them temporarily to somewhere else before you delete the folder.
+Just go into the `Dynamic-Island-Sketchybar` and pull the changes.
+```bash
+cd ~/.config/sketchybar/plugins/Dynamic-Island-Sketchybar
+git pull
+```
 
 Optimal Setup
 =============
@@ -101,7 +81,7 @@ If you have been using the macOS's default menu bar, I suggest you to enable the
 
 Configuration
 =============
-All Dynamic Island configuration files can be found in `~/.config/sketchybar/plugins/dynamic_island/configs/`.
+All Dynamic Island configuration files can be found in `~/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/configs/`.
 
 `general.sh` contains settings to adjust the notch size. As of right now, users need to manually adjust the notch size in pixels. If you have found an optimal notch size for MacBook with a notch, please let me know. Once enough data has been gathered, preset system will be implemented.
 
@@ -113,7 +93,7 @@ The default configuration files are meant for 2021 MacBook Pro 14.
 Unwanted dynamic island features can be disabled by removing their event listeners.
 
 E.g. Disabling app switcher:
-`~/.config/sketchybar/items/dynamic_island.sh`:
+`~/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/item.sh`:
 ```bash
 ...
         popup.background.shadow.drawing=off \
