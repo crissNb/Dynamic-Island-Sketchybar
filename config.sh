@@ -42,5 +42,5 @@ sketchybar --bar     height=32                                         \
                      popup.background.corner_radius=11                 \
                      popup.background.border_color=$POPUP_BORDER_COLOR \
                      popup.background.color=$POPUP_BACKGROUND_COLOR    \
-                     popup.background.shadow.drawing=$SHADOW
-                     # popup.background.border_width=2                   \
+                     popup.background.shadow.drawing=$SHADOW		   \
+                     popup.background.border_width=2                   \

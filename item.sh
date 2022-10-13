@@ -33,7 +33,7 @@ sketchybar --add item     island center               \
 		   --subscribe musicListener music_change \
 		   --add item	  frontAppSwitchListener \
 		   --set frontAppSwitchListener script="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/appswitch/handler.sh" \
-		   --subscribe frontAppSwitchListener front_app_switched
+		   --subscribe frontAppSwitchListener front_app_switched \
 		   --add item volumeChangeListener \
 		   --set volumeChangeListener script="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/volume/handler.sh" \
 		   --subscribe volumeChangeListener volume_change
