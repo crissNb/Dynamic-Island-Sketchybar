@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+USER_CONFIG="$HOME/.config/sketchybar/userconfig.sh"
+test -f $USER_CONFIG && source $USER_CONFIG
+
 source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/configs/general.sh"
 
 DYNAMIC_ISLAND_ENV_VARS=""
