@@ -44,8 +44,8 @@ sketchybar --add item		island.music_artwork	 popup.island \
 		   --add item		island.music_placeholder popup.island \
 		   --set island.music_placeholder width=$INFO_EXPAND_WIDTH \
 		   											 background.height=$DEFAULT_HEIGHT \
-													 background.color=$PITCH_BLACK \
-													 background.border_color=$PITCH_BLACK \
+													 background.color=$TRANSPARENT \
+													 background.border_color=$TRANSPARENT \
 													 background.corner_radius=$DEFAULT_CORNER_RADIUS \
 													 background.padding_left=0 \
 													 background.padding_right=0 \

@@ -26,8 +26,8 @@ if [[ $override == " 0" ]]; then
 			   --add item island.appbackground popup.island \
 			   --set island.appbackground width=$EXPAND_WIDTH \
 									   background.height=$DEFAULT_HEIGHT \
-									   background.color=$PITCH_BLACK \
-									   background.border_color=$PITCH_BLACK \
+									   background.color=$TRANSPARENT \
+									   background.border_color=$TRANSPARENT \
 									   background.corner_radius=$DEFAULT_CORNER_RADIUS \
 									   background.padding_left=0 \
 									   background.padding_right=0 \

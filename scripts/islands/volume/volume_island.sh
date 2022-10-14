@@ -36,8 +36,8 @@ if [[ $override == " 0" ]]; then
 			   --add item     island.placeholder1 popup.island	\
 			   --set island.placeholder1 width=192			\
 									  background.height=2 \
-									  background.color=$PITCH_BLACK \
-									  background.border_color=$PITCH_BLACK \
+									  background.color=$TRANSPARENT \
+									  background.border_color=$TRANSPARENT \
 									  background.corner_radius=$DEFAULT_CORNER_RADIUS \
 									  background.padding_left=5 \
 									  background.padding_right=6 \
@@ -46,8 +46,8 @@ if [[ $override == " 0" ]]; then
 			   --add item     island.placeholder2 popup.island	\
 			   --set island.placeholder2 width=10			\
 									  background.height=2 \
-									  background.color=$PITCH_BLACK \
-									  background.border_color=$PITCH_BLACK \
+									  background.color=$TRANSPARENT \
+									  background.border_color=$TRANSPARENT \
 									  background.corner_radius=$DEFAULT_CORNER_RADIUS \
 									  background.padding_left=5 \
 									  background.padding_right=6 \

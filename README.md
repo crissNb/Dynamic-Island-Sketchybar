@@ -90,27 +90,9 @@ For module specific configurations (e.g. module sizes) can be configured individ
 The default configuration files are meant for 2021 MacBook Pro 14.
 
 ### Disabling features
-Unwanted dynamic island features can be disabled by removing their event listeners.
+Unwanted dynamic island features can be disabled in `~/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/configs/general.sh`.
 
-E.g. Disabling app switcher:
-`~/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/item.sh`:
-```bash
-...
-        popup.background.shadow.drawing=off \
-        popup.drawing=false \
-        horizontal=off \
---add event	  music_change "com.apple.Music.playerInfo" \
---add item	  musicListener\
---set musicListener	script="$PLUGIN_DIR/dynamic_island/islands/music/music_island.sh" \
---subscribe musicListener music_change \
-# REMOVE START
---add item	  frontAppSwitchListener \
---set frontAppSwitchListener script="$PLUGIN_DIR/dynamic_island/islands/appswitch/handler.sh" \
---subscribe frontAppSwitchListener front_app_switched
-# REMOVE END
-...
-```
-Note that there should be a backslash after each line to append the command.
+Setting `[module_name]_ENABLED=0` will disable the module. Setting the value to 1 will enable the module.
 
 Features
 ========

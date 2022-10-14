@@ -50,8 +50,8 @@ sketchybar --add item	  island.title popup.island \
 		   --add item     island.expanding popup.island	\
 		   --set island.expanding width=$EXPAND_WIDTH			\
 		   						  background.height=$DEFAULT_HEIGHT \
-								  background.color=$PITCH_BLACK \
-								  background.border_color=$PITCH_BLACK \
+								  background.color=$TRANSPARENT \
+								  background.border_color=$TRANSPARENT \
 								  background.corner_radius=$DEFAULT_CORNER_RADIUS \
 								  background.padding_left=0 \
 								  background.padding_right=0 \

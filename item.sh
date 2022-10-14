@@ -7,7 +7,8 @@ printf "0" > "$active"
 source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/configs/general.sh"
 
 sketchybar --add item     island center               \
-           --set island   update_freq=1               \
+           --set island   update_freq=2               \
+		   				  updates=on				  \
 		   				  script="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/dynamic_island.sh" \
                           width=$DEFAULT_WIDTH          \
                           align=center                 \
@@ -26,19 +27,29 @@ sketchybar --add item     island center               \
 						  popup.background.color=$PITCH_BLACK \
 						  popup.background.corner_radius=$DEFAULT_CORNER_RADIUS \
 						  popup.background.shadow.drawing=off \
-						  popup.drawing=false \
-		   --add event	  music_change "com.apple.Music.playerInfo" \
-		   --add item	  musicListener\
-		   --set musicListener	script="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/music/handler.sh" \
-		   --subscribe musicListener music_change \
-		   --add item	  frontAppSwitchListener \
-		   --set frontAppSwitchListener script="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/appswitch/handler.sh" \
-		   --subscribe frontAppSwitchListener front_app_switched \
-		   --add item volumeChangeListener \
-		   --set volumeChangeListener script="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/volume/handler.sh" \
-		   --subscribe volumeChangeListener volume_change
+						  popup.drawing=false
 
-source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/notification/init.sh"
+# module initalization
+if [[ $MUSIC_ENABLED == 1 ]]; then
+	sketchybar --add event	  music_change "com.apple.Music.playerInfo" \
+			   --add item	  musicListener\
+			   --set musicListener	script="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/music/handler.sh" \
+			   --subscribe musicListener music_change
+fi
+
+if [[ $APPSWITCH_ENABLED == 1 ]]; then
+	sketchybar --add item	  frontAppSwitchListener \
+			   --set frontAppSwitchListener script="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/appswitch/handler.sh" \
+			   --subscribe frontAppSwitchListener front_app_switched
+fi
+
+if [[ $VOLUME_ENABLED == 1 ]]; then
+	sketchybar --add item volumeChangeListener \
+			   --set volumeChangeListener script="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/volume/handler.sh" \
+			   --subscribe volumeChangeListener volume_change
+fi
+
+source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/notification/init.sh" $NOTIFICATION_ENABLED
 
 # empty queued list
 queued="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/data/queued"

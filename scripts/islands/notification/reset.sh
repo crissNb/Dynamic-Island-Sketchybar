@@ -9,7 +9,7 @@ sketchybar --animate tanh 25 --set island.title label.color=$TRANSPARENT_LABEL \
 sleep 0.4
 
 sketchybar --animate tanh 25 --set island popup.height=$DEFAULT_HEIGHT \
-		   --animate  sin 35 --set island popup.background.corner_radius=$DEFAULT_CORNER_RADIUS \
+		   --animate tanh 35 --set island popup.background.corner_radius=$DEFAULT_CORNER_RADIUS \
 		   --animate tanh 20 --set island.expanding width=$SQUISH_WIDTH width=$EXPAND_WIDTH \
 
 sleep 0.7

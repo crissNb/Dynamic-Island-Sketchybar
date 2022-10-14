@@ -6,7 +6,7 @@ sketchybar --animate tanh 25 --set island.resume_text label.color=$TRANSPARENT_L
 sleep 0.4
 
 sketchybar --animate tanh 25 --set island popup.height=$DEFAULT_HEIGHT \
-		   --animate  sin 30 --set island popup.background.corner_radius=$DEFAULT_CORNER_RADIUS \
+		   --animate tanh 30 --set island popup.background.corner_radius=$DEFAULT_CORNER_RADIUS \
 		   --animate tanh 20 --set island.resume_bar width=$RESUME_SQUISH_WIDTH width=$RESUME_EXPAND_WIDTH
 
 sleep 0.7
