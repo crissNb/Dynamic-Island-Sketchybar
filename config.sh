@@ -4,7 +4,6 @@ source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/confi
 
 DYNAMIC_ISLAND_ENV_VARS=""
 vars=(
-P_DYNAMIC_ISLAND_FONT
 P_DYNAMIC_ISLAND_ICON_HIDDEN
 P_DYNAMIC_ISLAND_DEFAULT_LABEL
 P_DYNAMIC_ISLAND_TRANSPARENT_LABEL
@@ -45,6 +44,7 @@ P_DYNAMIC_ISLAND_NOTIFICATION_MAX_ALLOWED_BODY
 for var in ${vars[*]}; do
      DYNAMIC_ISLAND_ENV_VARS="$DYNAMIC_ISLAND_ENV_VARS $var=${!var}"
 done
+DYNAMIC_ISLAND_ENV_VARS="$DYNAMIC_ISLAND_ENV_VARS P_DYNAMIC_ISLAND_FONT=\"$P_DYNAMIC_ISLAND_FONT\""
 
 FONT=${P_DYNAMIC_ISLAND_FONT:="SF Pro"} # Needs to have Regular, Bold, Semibold, Heavy and Black variants
 SPACE_CLICK_SCRIPT=${P_DYNAMIC_ISLAND_SPACE_CLICK_SCRIPT:="yabai -m space --focus \$SID 2>/dev/null"} # The script that is run for clicking on space components
