@@ -13,8 +13,8 @@ sketchybar --add item	island.resume_text popup.island \
 		   --add item island.resume_bar popup.island \
 		   --set island.resume_bar width=$RESUME_EXPAND_WIDTH \
 								   background.height=$DEFAULT_HEIGHT \
-								   background.color=$PITCH_BLACK \
-								   background.border_color=$PITCH_BLACK \
+								   background.color=$TRANSPARENT_LABEL \
+								   background.border_color=$TRANSPARENT_LABEL \
 								   background.corner_radius=$DEFAULT_CORNER_RADIUS \
 								   background.padding_left=0 \
 								   background.padding_right=0 \
