@@ -81,24 +81,15 @@ If you have been using the macOS's default menu bar, I suggest you to enable the
 
 Configuration
 =============
-All Dynamic Island configuration options can be found in `~/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/config.sh`.
+Copy `~/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/userconfig.sh` to `~/.config/sketchybar/userconfig.sh`
+You can see all the default values included in the file already, you can delete the options you don't want to modify
 
-`general.sh` contains settings to adjust the notch size. As of right now, users need to manually adjust the notch size in pixels. If you have found an optimal notch size for MacBook with a notch, please let me know. Once enough data has been gathered, preset system will be implemented.
-
-Set the options you like to customize in your `sketchybarrc` file (or source it from an external sh file)
-```bash
-P_DYNAMIC_ISLAND_FONT="Hack Nerd Font"
-P_DYNAMIC_ISLAND_MUSIC_ENABLED=0
-P_DYNAMIC_ISLAND_APPSWITCH_ENABLED=0
-P_DYNAMIC_ISLAND_DEFAULT_WIDTH=210
-P_DYNAMIC_ISLAND_DEFAULT_HEIGHT=80
-P_DYNAMIC_ISLAND_NOTIFICATION_EXPAND_WIDTH=100
-```
+As of right now, users need to manually adjust the notch size in pixels. If you have found an optimal notch size for MacBook with a notch, please let me know. Once enough data has been gathered, preset system will be implemented.
 
 The default configuration values are meant for 2021 MacBook Pro 14.
 
 ### Disabling features
-Set options for `ENABLED` options in you sketchybarrc
+Set the option for the island you want to disable to `0` in your `userconfig.sh`
 ```bash
 P_DYNAMIC_ISLAND_MUSIC_ENABLED=0
 P_DYNAMIC_ISLAND_APPSWITCH_ENABLED=0
