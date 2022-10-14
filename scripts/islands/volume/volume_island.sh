@@ -33,6 +33,7 @@ if [[ $override == " 0" ]]; then
 	sketchybar --set island	   popup.drawing=true \
 							   popup.horizontal=off \
 							   background.drawing=false \
+							   popup.height=$DEFAULT_HEIGHT \
 			   --add item     island.placeholder1 popup.island	\
 			   --set island.placeholder1 width=192			\
 									  background.height=2 \
