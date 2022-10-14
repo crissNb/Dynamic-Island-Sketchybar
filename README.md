@@ -81,18 +81,22 @@ If you have been using the macOS's default menu bar, I suggest you to enable the
 
 Configuration
 =============
-All Dynamic Island configuration files can be found in `~/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/configs/`.
+Copy `~/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/userconfig.sh` to `~/.config/sketchybar/userconfig.sh`.
 
-`general.sh` contains settings to adjust the notch size. As of right now, users need to manually adjust the notch size in pixels. If you have found an optimal notch size for MacBook with a notch, please let me know. Once enough data has been gathered, preset system will be implemented.
+You can see all the default values included in the file already, you can delete the options you don't want to modify
 
-For module specific configurations (e.g. module sizes) can be configured individually (also in configs folder).
+As of right now, users need to manually adjust the notch size in pixels. If you have found an optimal notch size for MacBook with a notch, please let me know. Once enough data has been gathered, preset system will be implemented.
 
-The default configuration files are meant for 2021 MacBook Pro 14.
+The default configuration values are meant for 2021 MacBook Pro 14.
 
 ### Disabling features
-Unwanted dynamic island features can be disabled in `~/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/configs/general.sh`.
-
-Setting `[module_name]_ENABLED=0` will disable the module. Setting the value to 1 will enable the module.
+Set the option for the island you want to disable to `0` in your `userconfig.sh`
+```bash
+P_DYNAMIC_ISLAND_MUSIC_ENABLED=0
+P_DYNAMIC_ISLAND_APPSWITCH_ENABLED=0
+P_DYNAMIC_ISLAND_NOTIFICATION_ENABLED=0
+P_DYNAMIC_ISLAND_VOLUME_ENABLED=0
+```
 
 Features
 ========
@@ -111,8 +115,6 @@ The following table describes the capabilities of this dynamic island project (w
 Some features (islands) rely on a script that gets called every second instead of using NSDistributedNotficationCenter. In other words, these islands will have slower response times compared to those using the event system.
 
 Some features (islands) rely on making a "cache" file inside of a SketchyBar config directory.
-
-***Volume feature has been disabled by default until a more optimal solution is found.***
 
 ### Recommended Features
 *For the best experience, I suggest you to use the following features (for now):*

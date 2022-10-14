@@ -33,19 +33,19 @@ sketchybar --add item     island center               \
 if [[ $MUSIC_ENABLED == 1 ]]; then
 	sketchybar --add event	  music_change "com.apple.Music.playerInfo" \
 			   --add item	  musicListener\
-			   --set musicListener	script="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/music/handler.sh" \
+			   --set musicListener	script="$DYNAMIC_ISLAND_ENV_VARS $HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/music/handler.sh" \
 			   --subscribe musicListener music_change
 fi
 
 if [[ $APPSWITCH_ENABLED == 1 ]]; then
 	sketchybar --add item	  frontAppSwitchListener \
-			   --set frontAppSwitchListener script="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/appswitch/handler.sh" \
+			   --set frontAppSwitchListener script="$DYNAMIC_ISLAND_ENV_VARS $HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/appswitch/handler.sh" \
 			   --subscribe frontAppSwitchListener front_app_switched
 fi
 
 if [[ $VOLUME_ENABLED == 1 ]]; then
 	sketchybar --add item volumeChangeListener \
-			   --set volumeChangeListener script="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/volume/handler.sh" \
+			   --set volumeChangeListener script="$DYNAMIC_ISLAND_ENV_VARS $HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/volume/handler.sh" \
 			   --subscribe volumeChangeListener volume_change
 fi
 
