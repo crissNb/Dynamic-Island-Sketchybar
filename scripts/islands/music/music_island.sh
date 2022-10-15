@@ -1,10 +1,20 @@
 #!/usr/bin/env sh
 source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/configs/music.sh"
+ARTWORK_LOCATION="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/music/artwork.jpg"
 
 # fetch music info
-TITLE=$(osascript -e 'tell application "Music" to get name of current track')
-ARTIST=$(osascript -e 'tell application "Music" to get artist of current track')
-osascript "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/music/get_artwork.scpt"
+TITLE=$(osascript -e "tell application \"$MUSIC_SOURCE\" to get name of current track")
+ARTIST=$(osascript -e "tell application \"$MUSIC_SOURCE\" to get artist of current track")
+
+if [[ $MUSIC_SOURCE == "Music" ]]; then
+	osascript "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/music/get_artwork.scpt"
+elif [[ $MUSIC_SOURCE == "Spotify" ]]; then
+	COVER=$(osascript -e 'tell application "Spotify" to get artwork url of current track')
+	curl -s --max-time 25 "$COVER" -o "$ARTWORK_LOCATION"
+else
+	exit 0
+fi
+
 if [[ ${#TITLE} -gt 25 ]]; then
   TITLE=$(printf "$(echo $TITLE | cut -c 1-25)…")
 fi
@@ -16,7 +26,7 @@ sketchybar --add item		island.music_artwork	 popup.island \
 		   --set island.music_artwork	background.color=$ICON_HIDDEN \
    									    background.padding_left=20 \
 									    background.padding_right=3 \
-									    background.image="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/music/artwork.jpg" \
+									    background.image="$ARTWORK_LOCATION" \
 									    background.image.scale=0.1 \
 									    y_offset=-15 \
 		   --add item		island.music_title	popup.island \

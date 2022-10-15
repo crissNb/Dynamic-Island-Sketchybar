@@ -89,7 +89,9 @@ This can be done with the following command:
 cp ~/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/userconfig.sh ~/.config/sketchybar/userconfig.sh
 ```
 
-You can see all the default values included in the file already, you can delete the options you don't want to modify
+You can see all the default values included in the file already, you can delete the options you don't want to modify.
+
+By default, dynamic island will take input from Apple Music. If you would like to use Spotify instead, change `P_DYNAMIC_ISLAND_MUSIC_SOURCE` variable in `userconfig.sh` to "Spotify" instead.
 
 As of right now, users need to manually adjust the notch size in pixels. If you have found an optimal notch size for MacBook with a notch, please let me know. Once enough data has been gathered, preset system will be implemented.
 
@@ -137,6 +139,7 @@ Todo
 - Less hardcoded system...
 
 ### Upcoming Features / Upcoming Islands
+- Optimization (using helper applications)
 - Lock / Unlock
 - Bluetooth status
 - Do not disturb

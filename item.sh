@@ -31,8 +31,15 @@ sketchybar --add item     island center               \
 
 # module initalization
 if [[ $MUSIC_ENABLED == 1 ]]; then
-	sketchybar --add event	  music_change "com.apple.Music.playerInfo" \
-			   --add item	  musicListener\
+	if [[ $MUSIC_SOURCE == "Music" ]]; then
+		MUSIC_EVENT="com.apple.Music.playerInfo"
+	elif [[ $MUSIC_SOURCE == "Spotify" ]]; then
+		MUSIC_EVENT="com.spotify.client.PlaybackStateChanged"
+	else
+		exit 0
+	fi
+	sketchybar --add event	  music_change $MUSIC_EVENT \
+			   --add item	  musicListener \
 			   --set musicListener	script="$DYNAMIC_ISLAND_ENV_VARS $HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/music/handler.sh" \
 			   --subscribe musicListener music_change
 fi
