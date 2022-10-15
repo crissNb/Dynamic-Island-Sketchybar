@@ -7,6 +7,7 @@ source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/confi
 
 DYNAMIC_ISLAND_ENV_VARS=""
 vars=(
+P_DYNAMIC_ISLAND_TOPMOST
 P_DYNAMIC_ISLAND_ICON_HIDDEN
 P_DYNAMIC_ISLAND_DEFAULT_LABEL
 P_DYNAMIC_ISLAND_TRANSPARENT_LABEL
@@ -65,6 +66,7 @@ sketchybar --bar     height=32                                         \
                      position=top                                      \
                      sticky=on                                         \
                      padding_right=$((10 - $PADDINGS))                 \
+					 topmost=${P_DYNAMIC_ISLAND_TOPMOST:=off}		   \
                      padding_left=18                                   \
                      corner_radius=0                                   \
                      y_offset=0                                        \

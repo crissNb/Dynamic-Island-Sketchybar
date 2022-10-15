@@ -79,9 +79,15 @@ I highly suggest you to use SketchyBar and the dynamic island config files with 
 If you have been using the macOS's default menu bar, I suggest you to enable the `"Automatically hide and show the menu bar"` option (located in `System Preferences -> Dock & Menu Bar`) and completely relying on the SketchyBar to handle the macOS menu. This repository only includes the SketchyBar configuration for Dynamic Island plugin. See my [dotfiles](https://github.com/crissNb/dotfiles) or [Sketchybar setups](https://github.com/FelixKratz/SketchyBar/discussions/47) for preconfigured SketchyBar setups to fully replace macOS menu bar.
 *If you are using my dotfiles for sketchybar, dynamic island is already included in the dotfiles. Otherwise, you will need to repeat the process above. Also see ["For existing SketchyBar users"](#for-existing-sketchybar-users).
 
+If you prefer to use the macOS's default menu bar, you need to enable P_DYNAMIC_ISLAND_TOPMOST option to "on" ([see configuration](#configuration)).
+
 Configuration
 =============
 Copy `~/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/userconfig.sh` to `~/.config/sketchybar/userconfig.sh`.
+This can be done with the following command:
+```bash
+cp ~/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/userconfig.sh ~/.config/sketchybar/userconfig.sh
+```
 
 You can see all the default values included in the file already, you can delete the options you don't want to modify
 

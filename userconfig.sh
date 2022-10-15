@@ -3,6 +3,10 @@
 #
 ### Main config
 #
+
+# Set this variable to "off", if you are going to use the dynamic island with macOS's menu bar
+P_DYNAMIC_ISLAND_TOPMOST=off
+
 P_DYNAMIC_ISLAND_FONT="SF Pro" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
 P_DYNAMIC_ISLAND_ICON_HIDDEN=0xffffffff
 P_DYNAMIC_ISLAND_DEFAULT_LABEL=0xff000000
