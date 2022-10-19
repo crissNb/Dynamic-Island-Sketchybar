@@ -61,3 +61,6 @@ printf "0" > "$override"
 
 # unqueue
 sed -i.bak '1d' $queuedList
+
+# process next queue
+bash "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/draw.sh" 0

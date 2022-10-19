@@ -7,16 +7,14 @@ printf "0" > "$active"
 source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/configs/general.sh"
 
 sketchybar --add item     island center               \
-           --set island   update_freq=2               \
-		   				  updates=on				  \
-		   				  script="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/dynamic_island.sh" \
+           --set island   updates=on				  \
                           width=$DEFAULT_WIDTH          \
-                          align=center                 \
                           background.height=50         \
 						  background.y_offset=9         \
 						  background.color=$PITCH_BLACK \
 						  background.corner_radius=$DEFAULT_CORNER_RADIUS \
 						  background.drawing=true	\
+						  background.padding_left=11 \
 						  drawing=on				\
 						  popup.background.height=30 \
 						  popup.height=$DEFAULT_HEIGHT \
@@ -27,7 +25,8 @@ sketchybar --add item     island center               \
 						  popup.background.color=$PITCH_BLACK \
 						  popup.background.corner_radius=$DEFAULT_CORNER_RADIUS \
 						  popup.background.shadow.drawing=off \
-						  popup.drawing=false
+						  popup.drawing=false 			\
+		   --add event	  dynamic_island_queue			\
 
 # module initalization
 if [[ $MUSIC_ENABLED == 1 ]]; then
