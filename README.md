@@ -120,12 +120,11 @@ The following table describes the capabilities of this dynamic island project (w
 
 *saves the artwork temporarily to display it on the dynamic island.
 
-Some features (islands) rely on a script that gets called every second instead of using NSDistributedNotficationCenter. In other words, these islands will have slower response times compared to those using the event system.
-
 Some features (islands) rely on making a "cache" file inside of a SketchyBar config directory.
 
 ### Recommended Features
 For General Notification feature, I suggest you to turn on the "Do Not Disturb" on your macOS settings. This way the notifications will only be shown via the dynamic island.
+**Notifications are currently DISABLED. It was originally written in Python and will be replaced with C helper program.**
 
 If you would like to purely rely on the dynamic island interface for your audio (and brightness coming soon) levels, type the following command in terminal:
 ```bash
@@ -140,7 +139,6 @@ Todo
 - Less hardcoded system...
 
 ### Upcoming Features / Upcoming Islands
-- Optimization (using helper applications)
 - Lock / Unlock
 - Bluetooth status
 - Do not disturb
