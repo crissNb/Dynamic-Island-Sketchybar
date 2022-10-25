@@ -2,6 +2,9 @@
 source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/configs/music.sh"
 ARTWORK_LOCATION="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/music/artwork.jpg"
 
+# $1 - override
+override=$1
+
 # fetch music info
 TITLE=$(osascript -e "tell application \"$MUSIC_SOURCE\" to get name of current track")
 ARTIST=$(osascript -e "tell application \"$MUSIC_SOURCE\" to get artist of current track")
@@ -73,3 +76,6 @@ sleep 0.45
 sketchybar --animate sin 25 --set island.music_title label.color=$DEFAULT_LABEL \
 		   --animate sin 25 --set island.music_artist label.color=$DEFAULT_LABEL \
 		   --animate sin 25 --set island.music_artwork background.color=$TRANSPARENT_LABEL
+
+sleep 1.5
+source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/music/reset.sh"

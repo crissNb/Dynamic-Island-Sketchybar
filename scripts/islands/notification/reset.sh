@@ -20,3 +20,6 @@ sketchybar --remove island.expanding \
 		   --remove island.subtitle \
 		   --remove island.body \
 		   --remove island.logo
+
+# call end event
+sketchybar --trigger dynamic_island_request

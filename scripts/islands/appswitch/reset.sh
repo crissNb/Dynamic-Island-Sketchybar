@@ -18,3 +18,6 @@ sketchybar --set island		popup.drawing=false \
 		   --remove island.applogo \
 		   --remove island.appname \
 		   --remove island.appbackground
+
+# call end event
+sketchybar --trigger dynamic_island_request

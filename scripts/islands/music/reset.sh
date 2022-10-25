@@ -18,3 +18,6 @@ sketchybar --set island		popup.horizontal=off \
 		   --remove island.music_artist \
 		   --remove island.music_artwork \
 		   --remove island.music_placeholder 
+
+# call end event
+sketchybar --trigger dynamic_island_request

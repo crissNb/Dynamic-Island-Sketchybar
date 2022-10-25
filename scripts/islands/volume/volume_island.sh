@@ -2,15 +2,15 @@
 source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/configs/volume.sh"
 source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/configs/icons.sh"
 
-# $1 volume
-# $2 override
 args=$*
 IFS='|'
 read -ra strarr <<< "$args"
 unset IFS
 
-volume="${strarr[0]}"
-override="${strarr[1]}"
+# $1 - override
+# $2 - front app name
+override="${strarr[0]}"
+volume="${strarr[1]}"
 
 # calculate volume logo
 case $volume in
@@ -28,7 +28,7 @@ case $volume in
 	*) ICON=$VOLUME_MUTED
 esac
 
-if [[ $override == " 0" ]]; then
+if [[ $override == "0" ]]; then
 	#create volume items
 	sketchybar --set island	   popup.drawing=true \
 							   popup.horizontal=off \
@@ -82,17 +82,25 @@ if [[ $override == " 0" ]]; then
 									  background.corner_radius=$VOLUME_BAR_CORNER_RAD \
 									  background.padding_left=10 \
 									  background.padding_right=10
-	sketchybar --animate sin 15 --set island.placeholder1 width=$SQUISH_WIDTH width=$MAX_EXPAND_SQUISH_WIDTH width=$MAX_EXPAND_WIDTH
 fi
 
-sketchybar --animate sin 20 --set island popup.background.corner_radius=$CORNER_RAD \
-		   --animate sin 20 --set island popup.height=$EXPAND_HEIGHT
+if [[ $override == "0" ]]; then
+	sketchybar --animate sin 15 --set island.placeholder1 width=$SQUISH_WIDTH width=$MAX_EXPAND_SQUISH_WIDTH width=$MAX_EXPAND_WIDTH \
+			   --animate sin 20 --set island popup.background.corner_radius=$CORNER_RAD \
+			   --animate sin 20 --set island popup.height=$MAX_EXPAND_HEIGHT popup.height=$EXPAND_HEIGHT
+else
+	sketchybar --animate sin 15 --set island.placeholder1 width=$MAX_EXPAND_SQUISH_WIDTH width=$MAX_EXPAND_WIDTH \
+			   --animate sin 20 --set island popup.background.corner_radius=$CORNER_RAD \
+			   --animate sin 20 --set island popup.height=$MAX_EXPAND_HEIGHT popup.height=$EXPAND_HEIGHT
+fi
 
-sleep 0.2
 barWidth=$(bc -l <<< "$volume/100*240")
 barWidth=$( printf "%.0f" $barWidth )
 sketchybar --animate tanh 15 --set island.volume_bar width=$barWidth
 
-sketchybar --animate sin 15 --set island.volume_bar background.color=$DEFAULT_LABEL \
-		   --animate sin 15 --set island.volume_bar background.border_color=$DEFAULT_LABEL \
-		   --animate sin 15 --set island.volume_icon icon.color=$NORMAL_ICON_COLOR
+sketchybar --animate sin 10 --set island.volume_bar background.color=$DEFAULT_LABEL \
+		   --animate sin 10 --set island.volume_bar background.border_color=$DEFAULT_LABEL \
+		   --animate sin 10 --set island.volume_icon icon.color=$NORMAL_ICON_COLOR
+
+sleep 0.8
+source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/volume/reset.sh"

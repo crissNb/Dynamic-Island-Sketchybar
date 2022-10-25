@@ -112,9 +112,9 @@ The following table describes the capabilities of this dynamic island project (w
 
 |               | General Notifications | Volume  | Music | Pause/Resume | App Switch |
 | ------------- |:-------------:| :-----: | :---------: | :------: | :--------: |
-| **Cache File**      | yes | yes | yes* | yes | no |
+| **Cache File**      | no | no | yes* | yes | no |
 | **Event System?**      | no      |   no | yes | yes | yes |
-| **How well does it work?** | 5/5      |    3/5 | 5/5 | 3/5 | 5/5 |
+| **How well does it work?** | 5/5      |    4/5 | 5/5 | 4/5 | 5/5 |
 | **Known Bugs** | None | - Animation bug when volume changes multiple times while the UI is active | None | - Animation bug when play / pause happens multiple times while the UI is active | None |
 | **Screenshot** | ![](images/notification.png) | ![](images/volume.png) | ![](images/music.png) | ![](images/pause.png) | ![](appswitch.png) |
 
@@ -125,12 +125,13 @@ Some features (islands) rely on a script that gets called every second instead o
 Some features (islands) rely on making a "cache" file inside of a SketchyBar config directory.
 
 ### Recommended Features
-*For the best experience, I suggest you to use the following features (for now):*
-- General Notifications
-- Music
-- App Switch
-
 For General Notification feature, I suggest you to turn on the "Do Not Disturb" on your macOS settings. This way the notifications will only be shown via the dynamic island.
+
+If you would like to purely rely on the dynamic island interface for your audio (and brightness coming soon) levels, type the following command in terminal:
+```bash
+launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist
+```
+This requires you to disable system integrity protection (SIP).
 
 Todo
 ====

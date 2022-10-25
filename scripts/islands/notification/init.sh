@@ -13,4 +13,4 @@ fi
 
 NOTIFICATION_DATABASE="$(lsof -p $(ps aux | grep -m1 usernoted | awk '{ print $2 }')| awk '{ print $NF }' | grep 'db2/db$' | xargs dirname)/db"
 
-python3 $NotificationCheckScript $NOTIFICATION_DATABASE &
+ python3 $NotificationCheckScript $NOTIFICATION_DATABASE &

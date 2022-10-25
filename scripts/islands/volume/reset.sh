@@ -21,3 +21,7 @@ sketchybar --remove island.placeholder1 \
 		   --remove island.volume_bar \
 		   --set island		popup.drawing=false \
 		   					background.drawing=true
+
+
+# call end event
+sketchybar --trigger dynamic_island_request

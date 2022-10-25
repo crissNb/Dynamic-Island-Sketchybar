@@ -1,6 +1,14 @@
 #!/usr/bin/env sh
 source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/configs/music.sh"
 
+args=$*
+IFS='|'
+read -ra strarr <<< "$args"
+unset IFS
+
+override="${strarr[0]}"
+pauseStatus="${strarr[1]}"
+
 # add
 sketchybar --add item	island.resume_text popup.island \
 		   --set island.resume_text	label.color=$TRANSPARENT_LABEL \
@@ -23,7 +31,7 @@ sketchybar --add item	island.resume_text popup.island \
 		   --set island		popup.drawing=true \
 							background.drawing=false \
 							popup.horizontal=on
-if [[ $1 == 0 ]]; then
+if [[ $pauseStatus == "0" ]]; then
 	# paused
 	sketchybar --set island.resume_text label="Paused" \
 					 					label.padding_left=0
@@ -40,3 +48,6 @@ sketchybar --animate sin 20 --set island.resume_bar width=$RESUME_SQUISH_WIDTH w
 
 sleep 0.45
 sketchybar --animate sin 25 --set island.resume_text label.color=$DEFAULT_LABEL
+
+sleep 0.8
+source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/music/reset-resume.sh"

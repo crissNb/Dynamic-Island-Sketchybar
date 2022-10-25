@@ -6,13 +6,13 @@ IFS='|'
 read -ra strarr <<< "$args"
 unset IFS
 
-# $1 - front app name
-# $2 - override
-appName="${strarr[0]}"
-override="${strarr[1]}"
+# $1 - override
+# $2 - front app name
+override="${strarr[0]}"
+appName="${strarr[1]}"
 BUNDLENAME=$(osascript -e "id of app \"$appName\"")
 
-if [[ $override == " 0" ]]; then
+if [[ $override == "0" ]]; then
 	sketchybar --add item island.appname popup.island \
 			   --set island.appname		width=0 \
 										label.color=$TRANSPARENT_LABEL \
@@ -47,7 +47,7 @@ fi
 sketchybar --set island.appname		label="$appName" \
 		   --set island.applogo 	background.image="app.$BUNDLENAME"
 
-if [[ $override == " 0" ]]; then
+if [[ $override == "0" ]]; then
 	sketchybar --animate sin 15 --set island.appbackground width=$SQUISH_WIDTH width=$MAX_EXPAND_SQUISH_WIDTH width=$MAX_EXPAND_WIDTH\
 			   --animate sin 20 --set island popup.height=$MAX_EXPAND_HEIGHT popup.height=$EXPAND_HEIGHT \
 			   --animate sin 20 --set island popup.background.corner_radius=$CORNER_RAD
@@ -61,3 +61,6 @@ sleep 0.2
 
 sketchybar --animate sin 15 --set island.appname label.color=$DEFAULT_LABEL \
 		   --animate sin 15 --set island.applogo background.color=$TRANSPARENT_LABEL
+
+sleep 0.8
+source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/appswitch/reset.sh"

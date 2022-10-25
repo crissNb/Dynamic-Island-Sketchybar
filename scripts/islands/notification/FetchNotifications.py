@@ -5,6 +5,7 @@ import uuid
 import time
 import subprocess
 import biplist
+import os
 
 from os.path import expanduser
 from biplist import *
@@ -49,15 +50,7 @@ def ReadNotifications(conn):
                 subtitle = RemoveTabsNewLines(req.get('subt', ''))
                 message = RemoveTabsNewLines(req.get('body', ''))
 
-                home = expanduser("~")
-                queueIslandScript = "~/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/queue_island.sh"
-                subprocess.check_call([expanduser(queueIslandScript), \
-                                          "notifications;", \
-                                          "3;", \
-                                          "{}/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/notification/notification_island.sh {}|{}|{}|{};".format(home, title, subtitle, message, appId), \
-                                          "{}/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/notification/reset.sh;".format(home), \
-                                          "1.2" \
-                                      ])
+                # "sketchybar --trigger dynamic_island_queue INFO=\"notification\" ISLAND_ARGS={}|{}|{}|{}"
                 lastNotifCount = curNotifCount;
     except Exception as ex:
         print ("Sqlite error - \nError details: \n" + str(ex))

@@ -6,14 +6,16 @@ IFS='|'
 read -ra strarr <<< "$args"
 unset IFS
 
-# 0 - title
-# 1 - subtitle
-# 2 - message - message1
-# 3 - app bundle identifier
-title=${strarr[0]}
-subtitle=${strarr[1]}
-message=${strarr[2]}
-appId=${strarr[3]%% *}
+# 1 - override
+# 2 - title
+# 3 - subtitle
+# 4 - message - message1
+# 5 - app bundle identifier
+override=${strarr[0]}
+title=${strarr[1]}
+subtitle=${strarr[2]}
+message=${strarr[3]}
+appId=${strarr[4]%% *}
 
 # create notification items
 sketchybar --add item	  island.title popup.island \
