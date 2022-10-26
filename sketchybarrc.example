@@ -3,7 +3,7 @@
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 
 # run helper program
-HELPER=git.crissnb.dynamicisland
+ISLANDHELPER=git.crissnb.islandhelper
 killall islandhelper
 $HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/helper/islandhelper $HELPER &
 
