@@ -66,9 +66,9 @@ sketchybar --bar     height=32                                         \
                      padding_right=$((10 - $PADDINGS))                 \
 					 topmost=${P_DYNAMIC_ISLAND_TOPMOST:=off}		   \
                      padding_left=18                                   \
-                     corner_radius=0                                   \
+                     corner_radius=9                                   \
                      y_offset=0                                        \
-                     margin=0                                          \
+                     margin=10                                         \
                      blur_radius=30                                    \
                      notch_width=0                                     \
            --default updates=when_shown                                \
