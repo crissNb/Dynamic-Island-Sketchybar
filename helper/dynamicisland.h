@@ -62,20 +62,40 @@ static inline int display(struct dynamicIsland *dynamic_island) {
 
   if (queueCount > 1) {
     if (strcmp(currentDisplaying, head->nextNode->data->identifier) == 0) {
-	  pop_head();
+      pop_head();
       sendCommand(dynamic_island, 1);
       return 1;
     }
     if (isDisplaying == 0) {
       sendCommand(dynamic_island, 0);
       return 1;
-	}
+    }
   } else if (queueCount == 1) {
     sendCommand(dynamic_island, 0);
     return 1;
   }
 
   return 0;
+}
+
+void removeOverride(char* checkIdentifier) {
+  struct islandItemNode *temp = head->nextNode;
+  if (temp == NULL) {
+    return;
+  }
+
+  // Go through linked list
+  while (temp != NULL) {
+    struct islandItemNode *nextItem = temp->nextNode;
+
+    if (strcmp(checkIdentifier, temp->data->identifier) == 0) {
+      // Found override
+      free(temp);
+    }
+
+    // Skip to next node
+    temp = nextItem;
+  }
 }
 
 static inline int queue_island(struct dynamicIsland *dynamic_island,
@@ -85,8 +105,21 @@ static inline int queue_island(struct dynamicIsland *dynamic_island,
       (struct islandItemNode *)malloc(sizeof(struct islandItemNode));
   newNode->data = itemToQueue;
 
-  if (current != NULL) {
-    current->nextNode = newNode;
+  // TODO: Remove override
+  // removeOverride(newNode->data->identifier);
+
+  if (currentDisplaying != NULL) {
+    if (strcmp(currentDisplaying, newNode->data->identifier) == 0) {
+      // Redirect the node
+      newNode->nextNode = head->nextNode;
+
+      // Insert right after head
+      head->nextNode = newNode;
+    } else {
+      if (current != NULL) {
+        current->nextNode = newNode;
+      }
+    }
   }
   current = newNode;
 
@@ -96,27 +129,5 @@ static inline int queue_island(struct dynamicIsland *dynamic_island,
 
   queueCount++;
 
-  // TODO: handle override
   return display(dynamic_island);
-}
-
-void removeOverride(char *id) {
-  struct islandItemNode *temp;
-  if (!head) {
-    return;
-  }
-
-  temp = head;
-  while (temp != NULL) {
-    if (strcmp(id, temp->data->identifier) == 0) {
-      // Found override
-      struct islandItemNode *nextItem = temp->nextNode;
-      free(temp);
-      temp = nextItem;
-      continue;
-    }
-
-    // Skip to next node
-    temp = temp->nextNode;
-  }
 }
