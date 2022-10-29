@@ -56,6 +56,12 @@ if [[ $VOLUME_ENABLED == 1 ]]; then
 			   --subscribe volumeChangeListener volume_change
 fi
 
+if [[ $BRIGHTNESS_ENABLED == 1 ]]; then
+	sketchybar --add item brightnessChangeListener \
+			   --set brightnessChangeListener script="$DYNAMIC_ISLAND_ENV_VARS $HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/brightness/handler.sh" \
+			   --subscribe brightnessChangeListener brightness_change
+fi
+
 
 # start listener
 source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/listener.sh"

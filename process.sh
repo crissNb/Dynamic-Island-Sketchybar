@@ -21,6 +21,13 @@ case "$IDENTIFIER" in
 	# arg: volume amt
 	bash "$ISLAND_DIR/volume/volume_island.sh" "$OVERRIDE|$ARGS"
 	;;
+	"brightness")
+	if [[ $OVERRIDE == 1 ]]; then
+		pkill -f "$ISLAND_DIR/brightness/brightness_island.sh"
+	fi
+	# arg: volume amt
+	bash "$ISLAND_DIR/brightness/brightness_island.sh" "$OVERRIDE|$ARGS"
+	;;
 	"pause")
 	if [[ $OVERRIDE == 1 ]]; then
 		pkill -f "$ISLAND_DIR/music/pause_island.sh"

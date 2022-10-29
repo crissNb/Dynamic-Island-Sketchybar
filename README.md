@@ -110,7 +110,7 @@ Features
 ========
 The following table describes the capabilities of this dynamic island project (working islands). Some islands do not work properly just yet. Thus, you may experience some glitches when using them.
 
-|               | General Notifications | Volume  | Music | Pause/Resume | App Switch |
+|               | General Notifications | Volume/Brightness  | Music | Pause/Resume | App Switch |
 | ------------- |:-------------:| :-----: | :---------: | :------: | :--------: |
 | **Cache File**      | no | no | yes* | yes | no |
 | **Event System?**      | no      |   no | yes | yes | yes |
