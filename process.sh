@@ -37,10 +37,10 @@ case "$IDENTIFIER" in
 	;;
 	"music")
 	if [[ $OVERRIDE == 1 ]]; then
-		pkill -f "$ISLAND_DIR/music/music_island.sh" "$OVERRIDE"
+		pkill -f "$ISLAND_DIR/music/music_island.sh"
 	fi
 	# arg: none
-	bash "$ISLAND_DIR/music/music_island.sh"
+	bash "$ISLAND_DIR/music/music_island.sh" "$OVERRIDE"
 	;;
 	"notifications")
 	if [[ $OVERRIDE == 1 ]]; then
