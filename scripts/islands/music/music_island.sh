@@ -68,14 +68,14 @@ sketchybar --add item		island.music_artwork	 popup.island \
 						    background.drawing=false \
    						    popup.horizontal=on
 
-sketchybar --animate sin 20 --set island.music_placeholder width=$INFO_SQUISH_WIDTH width=$INFO_MAX_EXPAND_SQUISH_WIDTH width=$INFO_MAX_EXPAND_WIDTH\
-		   --animate sin 35 --set island popup.height=$INFO_MAX_EXPAND_HEIGHT popup.height=$INFO_EXPAND_HEIGHT \
-		   --animate sin 35 --set island popup.background.corner_radius=$INFO_CORNER_RAD
+sketchybar --animate sin 15 --set island.music_placeholder width=$INFO_SQUISH_WIDTH width=$INFO_MAX_EXPAND_SQUISH_WIDTH width=$INFO_MAX_EXPAND_WIDTH\
+		   --animate sin 25 --set island popup.height=$INFO_MAX_EXPAND_HEIGHT popup.height=$INFO_EXPAND_HEIGHT \
+		   --animate sin 20 --set island popup.background.corner_radius=$INFO_CORNER_RAD
 
-sleep 0.45
+sleep 0.2
 sketchybar --animate sin 25 --set island.music_title label.color=$DEFAULT_LABEL \
 		   --animate sin 25 --set island.music_artist label.color=$DEFAULT_LABEL \
 		   --animate sin 25 --set island.music_artwork background.color=$TRANSPARENT_LABEL
 
-sleep 1.5
+sleep 1.3
 source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/music/reset.sh"

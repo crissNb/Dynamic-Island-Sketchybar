@@ -47,14 +47,19 @@ fi
 sketchybar --set island.appname		label="$appName" \
 		   --set island.applogo 	background.image="app.$BUNDLENAME"
 
+# determine expand width based on the character length
+charLength=${#appName}
+expandSize=$(bc -l <<< "$MAX_EXPAND_WIDTH+$charLength*15")
+expand_squish=$(($expandSize+$SQUISH_AMOUNT))
+
 if [[ $override == "0" ]]; then
-	sketchybar --animate sin 15 --set island.appbackground width=$SQUISH_WIDTH width=$MAX_EXPAND_SQUISH_WIDTH width=$MAX_EXPAND_WIDTH\
-			   --animate sin 20 --set island popup.height=$MAX_EXPAND_HEIGHT popup.height=$EXPAND_HEIGHT \
-			   --animate sin 20 --set island popup.background.corner_radius=$CORNER_RAD
+	sketchybar --animate tanh 15 --set island.appbackground width=$SQUISH_WIDTH width=$expand_squish width=$expandSize \
+			   --animate tanh 20 --set island popup.height=$MAX_EXPAND_HEIGHT popup.height=$EXPAND_HEIGHT \
+			   --animate tanh 20 --set island popup.background.corner_radius=$CORNER_RAD
 else
-	sketchybar --animate sin 15 --set island.appbackground width=$MAX_EXPAND_SQUISH_WIDTH width=$MAX_EXPAND_WIDTH\
-			   --animate sin 20 --set island popup.height=$MAX_EXPAND_HEIGHT popup.height=$EXPAND_HEIGHT \
-			   --animate sin 20 --set island popup.background.corner_radius=$CORNER_RAD
+	sketchybar --animate tanh 15 --set island.appbackground width=$expand_squish width=$expandSize \
+			   --animate tanh 20 --set island popup.height=$MAX_EXPAND_HEIGHT popup.height=$EXPAND_HEIGHT \
+			   --animate tanh 20 --set island popup.background.corner_radius=$CORNER_RAD
 fi
 
 sleep 0.2

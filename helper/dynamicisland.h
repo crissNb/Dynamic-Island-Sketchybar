@@ -33,6 +33,7 @@ static inline void pop_head() {
   struct islandItemNode *nextNode = NULL;
   nextNode = head->nextNode;
 
+  free(head->data);
   free(head);
 
   head = nextNode;
