@@ -118,7 +118,7 @@ The following table describes the capabilities of this dynamic island project (w
 | **Known Bugs** | None | - Animation bug when volume changes multiple times while the UI is active | None | - Animation bug when play / pause happens multiple times while the UI is active | None |
 | **Screenshot** | ![](images/notification.png) | ![](images/volume.png) | ![](images/music.png) | ![](images/pause.png) | ![](appswitch.png) |
 
-*saves the artwork temporarily to display it on the dynamic island.
+*saves the artwork 'temporarily' (this artwork file is then replaced with a newer artwork file, if requested) to display it on the dynamic island.
 
 Some features (islands) rely on making a "cache" file inside of a SketchyBar config directory.
 
@@ -146,7 +146,24 @@ Todo
 
 Bugs
 ====
-If you encounter any bugs, feel free to open up an issue! Pull requests are also welcome
+If you encounter any bugs, feel free to open up an issue! 
+
+Contributing
+============
+Pull requests are also welcome.
+##
+The following terms/system may be relevant when looking at the code:
+
+There are mainly three parts of this implementation of dynamic island: `dynamic island item`, `dynamic island helper` (written in C, communicates with sketchybar) and `island scripts` (written in shell script)
+
+The dynamic island has its own event items. These event items are subscribed to sketchybar's specific events, e.g. "volume event", "brightness event", etc. These event items will cast a trigger called `dynamic_island_queue` with environment variables provided (details).
+
+The `dynamic island helper` receives a trigger `dynamic_island_queue` and processes the islands in a queue (first come, first serve). An item from the queue gets removed when the dynamic island item is not handling any islands. 
+To remove an item from the dynamic island queue, the dynamic island helper program calls another trigger, `di_helper_listener_event` with environment variables that describe the island (i.e. identifier of the island, args). This event will then call `process.sh`, which will then call the correct island from `island scripts` depending on the environment variables provided.
+
+The `island scripts` also contain delays and get automatically reset (`reset.sh`) after a set amount of duration. After `reset.sh` script runs, the island item's process is finished.
+
+When an island item finishes its process, it tells the helper program to process the next item in the queue.
 
 Tested devices
 ==============
