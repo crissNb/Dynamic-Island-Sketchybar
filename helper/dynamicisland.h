@@ -33,7 +33,6 @@ static inline void pop_head() {
   struct islandItemNode *nextNode = NULL;
   nextNode = head->nextNode;
 
-  free(head->data);
   free(head);
 
   head = nextNode;
@@ -79,35 +78,12 @@ static inline int display(struct dynamicIsland *dynamic_island) {
   return 0;
 }
 
-void removeOverride(char* checkIdentifier) {
-  struct islandItemNode *temp = head->nextNode;
-  if (temp == NULL) {
-    return;
-  }
-
-  // Go through linked list
-  while (temp != NULL) {
-    struct islandItemNode *nextItem = temp->nextNode;
-
-    if (strcmp(checkIdentifier, temp->data->identifier) == 0) {
-      // Found override
-      free(temp);
-    }
-
-    // Skip to next node
-    temp = nextItem;
-  }
-}
-
 static inline int queue_island(struct dynamicIsland *dynamic_island,
                                struct islandItem *itemToQueue) {
   // Create a new node and attach to the latest node
   struct islandItemNode *newNode =
       (struct islandItemNode *)malloc(sizeof(struct islandItemNode));
   newNode->data = itemToQueue;
-
-  // TODO: Remove override
-  // removeOverride(newNode->data->identifier);
 
   if (currentDisplaying != NULL) {
     if (strcmp(currentDisplaying, newNode->data->identifier) == 0) {
@@ -118,6 +94,16 @@ static inline int queue_island(struct dynamicIsland *dynamic_island,
       head->nextNode = newNode;
     } else {
       if (current != NULL) {
+        struct islandItemNode *temp = head->nextNode;
+
+        while (temp != NULL) {
+          if (strcmp(temp->data->identifier, newNode->data->identifier) == 0) {
+            temp->data = newNode->data;
+            free(newNode);
+            return 0;
+          }
+          temp = temp->nextNode;
+        }
         current->nextNode = newNode;
       }
     }
