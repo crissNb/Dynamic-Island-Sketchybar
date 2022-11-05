@@ -26,6 +26,11 @@ void handler(env env) {
     // Request to deliver new island
     isDisplaying = 0;
     pop_head();
+
+    // clear current displaying
+    memset(currentDisplaying, 0, 32);
+    snprintf(g_dynamic_island.command, 256, "");
+
     if (display(&g_dynamic_island) == 1) {
       sketchybar(g_dynamic_island.command);
     }

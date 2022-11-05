@@ -21,7 +21,6 @@ struct islandItemNode {
 struct islandItemNode *head = NULL;
 struct islandItemNode *current = NULL;
 char *currentDisplaying;
-int queueCount = 0;
 int isDisplaying = 0;
 
 static inline void dynamic_island_init(struct dynamicIsland *dynamic_island) {
@@ -39,7 +38,6 @@ static inline void pop_head() {
   if (head == NULL) {
     current = NULL;
   }
-  queueCount--;
 }
 
 static inline void sendCommand(struct dynamicIsland *dynamic_island,
@@ -53,24 +51,20 @@ static inline void sendCommand(struct dynamicIsland *dynamic_island,
 }
 
 static inline int display(struct dynamicIsland *dynamic_island) {
-  // Apply command
   if (head == NULL) {
-    snprintf(dynamic_island->command, 256, "");
-    memset(currentDisplaying, 0, 32);
-    return 1;
+    // Do not apply any command
+    return 0;
   }
 
-  if (queueCount > 1) {
+  if (head->nextNode != NULL) {
     if (strcmp(currentDisplaying, head->nextNode->data->identifier) == 0) {
       pop_head();
+	  perror("casting command");
       sendCommand(dynamic_island, 1);
       return 1;
     }
-    if (isDisplaying == 0) {
-      sendCommand(dynamic_island, 0);
-      return 1;
-    }
-  } else if (queueCount == 1) {
+  }
+  if (isDisplaying == 0) {
     sendCommand(dynamic_island, 0);
     return 1;
   }
@@ -113,8 +107,6 @@ static inline int queue_island(struct dynamicIsland *dynamic_island,
   if (head == NULL) {
     head = current;
   }
-
-  queueCount++;
 
   return display(dynamic_island);
 }
