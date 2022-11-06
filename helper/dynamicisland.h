@@ -42,6 +42,9 @@ static inline void pop_head() {
 
 static inline void sendCommand(struct dynamicIsland *dynamic_island,
                                int overrideSetting) {
+  if (head == NULL) {
+    return;
+  }
   snprintf(dynamic_island->command, 256,
            "--trigger di_helper_listener_event IDENTIFIER=\"%s\" OVERRIDE=%d "
            "ARGS=\"%s\"",
@@ -56,17 +59,17 @@ static inline int display(struct dynamicIsland *dynamic_island) {
     return 0;
   }
 
-  if (head->nextNode != NULL) {
-    if (strcmp(currentDisplaying, head->nextNode->data->identifier) == 0) {
-      pop_head();
-	  perror("casting command");
-      sendCommand(dynamic_island, 1);
-      return 1;
-    }
-  }
   if (isDisplaying == 0) {
     sendCommand(dynamic_island, 0);
     return 1;
+  } else {
+    if (head->nextNode != NULL) {
+      if (strcmp(currentDisplaying, head->nextNode->data->identifier) == 0) {
+        pop_head();
+        sendCommand(dynamic_island, 1);
+        return 1;
+      }
+    }
   }
 
   return 0;

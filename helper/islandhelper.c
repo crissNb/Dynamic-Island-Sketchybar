@@ -11,7 +11,20 @@ void handler(env env) {
   char *id = env_get_value_for_key(env, "INFO");
   char *args = env_get_value_for_key(env, "ISLAND_ARGS");
 
-  if (strcmp(sender, "dynamic_island_queue") == 0) {
+  if (strcmp(sender, "dynamic_island_request") == 0) {
+    // Request to deliver new island
+    isDisplaying = 0;
+
+    // clear current displaying
+    memset(currentDisplaying, 0, 32);
+    snprintf(g_dynamic_island.command, 256, "");
+
+    pop_head();
+
+    if (display(&g_dynamic_island) == 1) {
+      sketchybar(g_dynamic_island.command);
+    }
+  } else if (strcmp(sender, "dynamic_island_queue") == 0) {
     // Create new queuable item
     struct islandItem *newItem =
         (struct islandItem *)malloc(sizeof(struct islandItem));
@@ -20,18 +33,6 @@ void handler(env env) {
 
     // Get item from queue and apply to dynamic island
     if (queue_island(&g_dynamic_island, newItem) == 1) {
-      sketchybar(g_dynamic_island.command);
-    }
-  } else if (strcmp(sender, "dynamic_island_request") == 0) {
-    // Request to deliver new island
-    isDisplaying = 0;
-    pop_head();
-
-    // clear current displaying
-    memset(currentDisplaying, 0, 32);
-    snprintf(g_dynamic_island.command, 256, "");
-
-    if (display(&g_dynamic_island) == 1) {
       sketchybar(g_dynamic_island.command);
     }
   }

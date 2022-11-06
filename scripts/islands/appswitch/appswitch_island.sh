@@ -68,4 +68,16 @@ sketchybar --animate sin 15 --set island.appname label.color=$DEFAULT_LABEL \
 		   --animate sin 15 --set island.applogo background.color=$TRANSPARENT_LABEL
 
 sleep 0.8
+
+sketchybar --animate tanh 15 --set island.appname label.color=$TRANSPARENT_LABEL \
+		   --animate tanh 15 --set island.applogo background.color=$ICON_HIDDEN
+
+sleep 0.1
+
+sketchybar --animate tanh 20 --set island popup.height=$DEFAULT_HEIGHT \
+		   --animate  sin 25 --set island popup.background.corner_radius=$DEFAULT_CORNER_RADIUS \
+		   --animate tanh 15 --set island.appbackground width=$SQUISH_WIDTH width=$EXPAND_WIDTH
+
+sleep 0.4
+
 source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/appswitch/reset.sh"

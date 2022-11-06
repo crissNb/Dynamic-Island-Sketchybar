@@ -4,7 +4,6 @@ ARTWORK_LOCATION="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scr
 
 # $1 - override
 override=$1
-echo $override
 
 # fetch music info
 TITLE=$(osascript -e "tell application \"$MUSIC_SOURCE\" to get name of current track")
@@ -74,19 +73,31 @@ sketchybar --set island.music_artist label="$ARTIST" \
 		   --set island.music_artwork background.image="$ARTWORK_LOCATION"
 
 if [[ $override == "0" ]]; then
-	sketchybar --animate tanh 15 --set island.music_placeholder width=$INFO_SQUISH_WIDTH width=$INFO_MAX_EXPAND_SQUISH_WIDTH width=$INFO_MAX_EXPAND_WIDTH\
-			   --animate tanh 25 --set island popup.height=$INFO_MAX_EXPAND_HEIGHT popup.height=$INFO_EXPAND_HEIGHT \
-			   --animate tanh 20 --set island popup.background.corner_radius=$INFO_CORNER_RAD
+	sketchybar --animate sin 15 --set island.music_placeholder width=$INFO_SQUISH_WIDTH width=$INFO_MAX_EXPAND_SQUISH_WIDTH width=$INFO_MAX_EXPAND_WIDTH\
+			   --animate sin 25 --set island popup.height=$INFO_MAX_EXPAND_HEIGHT popup.height=$INFO_EXPAND_HEIGHT \
+			   --animate sin 20 --set island popup.background.corner_radius=$INFO_CORNER_RAD
 else
-	sketchybar --animate tanh 15 --set island.music_placeholder width=$INFO_MAX_EXPAND_SQUISH_WIDTH width=$INFO_MAX_EXPAND_WIDTH\
-			   --animate tanh 25 --set island popup.height=$INFO_MAX_EXPAND_HEIGHT popup.height=$INFO_EXPAND_HEIGHT \
-			   --animate tanh 20 --set island popup.background.corner_radius=$INFO_CORNER_RAD
+	sketchybar --animate sin 15 --set island.music_placeholder width=$INFO_MAX_EXPAND_SQUISH_WIDTH width=$INFO_MAX_EXPAND_WIDTH\
+			   --animate sin 25 --set island popup.height=$INFO_MAX_EXPAND_HEIGHT popup.height=$INFO_EXPAND_HEIGHT \
+			   --animate sin 20 --set island popup.background.corner_radius=$INFO_CORNER_RAD
 fi
 
 sleep 0.15
-sketchybar --animate sin 25 --set island.music_title label.color=$DEFAULT_LABEL \
-		   --animate sin 25 --set island.music_artist label.color=$DEFAULT_LABEL \
-		   --animate sin 25 --set island.music_artwork background.color=$TRANSPARENT_LABEL
+sketchybar --animate tanh 25 --set island.music_title label.color=$DEFAULT_LABEL \
+		   --animate tanh 25 --set island.music_artist label.color=$DEFAULT_LABEL \
+		   --animate tanh 25 --set island.music_artwork background.color=$TRANSPARENT_LABEL
 
-sleep 1.2
+sleep 1.5
+
+sketchybar --animate tanh 25 --set island.music_title label.color=$TRANSPARENT_LABEL \
+		   --animate tanh 25 --set island.music_artist label.color=$TRANSPARENT_LABEL \
+		   --animate tanh 25 --set island.music_artwork background.color=$ICON_HIDDEN
+
+sleep 0.4
+sketchybar --animate tanh 25 --set island popup.height=$DEFAULT_HEIGHT \
+		   --animate  sin 30 --set island popup.background.corner_radius=$DEFAULT_CORNER_RADIUS \
+		   --animate tanh 20 --set island.music_placeholder width=$INFO_SQUISH_WIDTH width=$INFO_EXPAND_WIDTH \
+
+sleep 0.7
+
 source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/music/reset.sh"
