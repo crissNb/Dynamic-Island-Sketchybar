@@ -20,7 +20,7 @@ struct islandItemNode {
 
 struct islandItemNode *head = NULL;
 struct islandItemNode *current = NULL;
-char *currentDisplaying;
+char currentDisplaying[32];
 int isDisplaying = 0;
 
 static inline void dynamic_island_init(struct dynamicIsland *dynamic_island) {
@@ -28,6 +28,10 @@ static inline void dynamic_island_init(struct dynamicIsland *dynamic_island) {
 }
 
 static inline void pop_head() {
+  if (head == NULL) {
+    return;
+  }
+
   // Redirect head to the second item
   struct islandItemNode *nextNode = NULL;
   nextNode = head->nextNode;
@@ -49,7 +53,7 @@ static inline void sendCommand(struct dynamicIsland *dynamic_island,
            "--trigger di_helper_listener_event IDENTIFIER=\"%s\" OVERRIDE=%d "
            "ARGS=\"%s\"",
            head->data->identifier, overrideSetting, head->data->args);
-  currentDisplaying = head->data->identifier;
+  strcpy(currentDisplaying, head->data->identifier);
   isDisplaying = 1;
 }
 
@@ -82,7 +86,7 @@ static inline int queue_island(struct dynamicIsland *dynamic_island,
       (struct islandItemNode *)malloc(sizeof(struct islandItemNode));
   newNode->data = itemToQueue;
 
-  if (currentDisplaying != NULL) {
+  if (currentDisplaying[0] != 0) {
     if (strcmp(currentDisplaying, newNode->data->identifier) == 0) {
       // Redirect the node
       newNode->nextNode = head->nextNode;

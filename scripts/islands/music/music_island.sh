@@ -31,7 +31,7 @@ if [[ $override == "0" ]]; then
 			   --set island.music_artwork	background.color=$ICON_HIDDEN \
 											background.padding_left=20 \
 											background.padding_right=3 \
-											background.image.scale=0.1 \
+											background.image.scale=0.08 \
 											y_offset=-15 \
 			   --add item		island.music_title	popup.island \
 			   --set island.music_title		width=0		\

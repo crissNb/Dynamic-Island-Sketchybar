@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/configs/volume.sh"
+source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/configs/brightness.sh"
 source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/configs/icons.sh"
 
 args=$*
@@ -12,7 +12,7 @@ unset IFS
 override="${strarr[0]}"
 brightness="${strarr[1]}"
 
-# calculate volume logo
+# calculate brightness logo
 case $brightness in
 	100) ICON=$BRIGHTNESS_HIGH;;
 	9[0-9]) ICON=$BRIGHTNESS_HIGH;;
@@ -29,7 +29,7 @@ case $brightness in
 esac
 
 if [[ $override == "0" ]]; then
-	#create volume items
+	#create brightness items
 	sketchybar --set island	   popup.drawing=true \
 							   popup.horizontal=off \
 							   background.drawing=false \
@@ -108,7 +108,7 @@ sketchybar --animate tanh 20 --set island.brightness_icon icon.color=$TRANSPAREN
 
 sleep 0.2
 
-sketchybar --set island.volume_bar width=10
+sketchybar --set island.brightness_bar width=10
 
 sketchybar --animate tanh 20 --set island popup.height=$DEFAULT_HEIGHT \
 		   --animate tanh 20 --set island.placeholder1 width=$SQUISH_WIDTH width=$EXPAND_WIDTH \

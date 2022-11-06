@@ -38,7 +38,7 @@ if [[ $pauseStatus == "0" ]]; then
 else
 	# resume
 	sketchybar --set island.resume_text label="Resumed" \
-					 					label.padding_left=235
+					 					label.padding_left=258
 fi
 
 # animate

@@ -37,6 +37,7 @@ P_DYNAMIC_ISLAND_BRIGHTNESS_NORMAL_ICON_COLOR
 P_DYNAMIC_ISLAND_MUSIC_INFO_EXPAND_WIDTH
 P_DYNAMIC_ISLAND_MUSIC_INFO_MAX_EXPAND_WIDTH
 P_DYNAMIC_ISLAND_MUSIC_INFO_EXPAND_HEIGHT
+P_DYNAMIC_ISLAND_MUSIC_INFO_DEFAULT_HEIGHT
 P_DYNAMIC_ISLAND_MUSIC_INFO_CORNER_RAD
 P_DYNAMIC_ISLAND_MUSIC_RESUME_EXPAND_WIDTH
 P_DYNAMIC_ISLAND_MUSIC_RESUME_MAX_EXPAND_WIDTH
@@ -91,3 +92,4 @@ sketchybar --bar     height=32                                         \
                      popup.background.corner_radius=11                 \
                      popup.background.shadow.drawing=$SHADOW		   \
                      popup.background.border_width=2                   \
+					 popup.horizontal=on

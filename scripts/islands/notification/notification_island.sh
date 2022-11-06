@@ -79,3 +79,18 @@ sketchybar --animate sin 25 --set island.title label.color=$DEFAULT_LABEL \
 		   --animate sin 25 --set island.subtitle label.color=$DEFAULT_LABEL \
 		   --animate sin 25 --set island.body label.color=$DEFAULT_LABEL \
 		   --animate sin 25 --set island.logo background.color=$TRANSPARENT_LABEL
+
+sketchybar --animate tanh 25 --set island.title label.color=$TRANSPARENT_LABEL \
+		   --animate tanh 25 --set island.subtitle label.color=$TRANSPARENT_LABEL \
+		   --animate tanh 25 --set island.body label.color=$TRANSPARENT_LABEL \
+		   --animate tanh 25 --set island.logo background.color=$ICON_HIDDEN \
+
+sleep 0.4
+
+sketchybar --animate tanh 25 --set island popup.height=$DEFAULT_HEIGHT \
+		   --animate tanh 35 --set island popup.background.corner_radius=$DEFAULT_CORNER_RADIUS \
+		   --animate tanh 20 --set island.expanding width=$SQUISH_WIDTH width=$EXPAND_WIDTH \
+
+sleep 0.7
+
+source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/notification/reset.sh"

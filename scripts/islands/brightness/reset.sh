@@ -9,5 +9,9 @@ sketchybar --remove island.placeholder1 \
 		   --remove island.placeholder3 \
 		   --remove island.brightness_icon \
 		   --remove island.brightness_bar \
-		   --set island		popup.drawing=false \
-		   					background.drawing=true
+		   --set island		background.drawing=true \
+		   					popup.horizontal=on
+
+sleep 0.1
+
+sketchybar --set island popup.drawing=false
