@@ -5,6 +5,7 @@ PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 # run helper program
 ISLANDHELPER=git.crissnb.islandhelper
 killall islandhelper
+cd $HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/helper && make
 $HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/helper/islandhelper $ISLANDHELPER &
 
 # Define Dynamic island custom configs here
