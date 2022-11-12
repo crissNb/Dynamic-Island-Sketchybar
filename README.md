@@ -39,7 +39,7 @@ Installation
 - biplist (`pip3 install biplist`) (only required for notification feature)
 
 ### Getting Started (If you're not using SketchyBar already)
-1. Clone the repository inside `~/.config/sketchybar/plugins`, take the default `sketchybarrc` and restart `sketchybar`,
+Clone the repository inside `~/.config/sketchybar/plugins`, take the default `sketchybarrc` and restart `sketchybar`,
 ```bash
 mkdir -p ~/.config/sketchybar/plugins
 cd ~/.config/sketchybar/plugins
@@ -47,6 +47,7 @@ git clone https://github.com/crissNb/Dynamic-Island-Sketchybar.git
 mv Dynamic-Island-Sketchybar/sketchybarrc.example ../sketchybarrc
 brew services restart sketchybar
 ```
+NOTE: There appears to be a bug that dynamic island helper program does not run the first time it is installed (after restarting sketchybar). If this is the case, simply restart sketchybar once again by typing in `brew services restart sketchybar` once again.
 
 ##
 
