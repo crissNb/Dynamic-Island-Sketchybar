@@ -14,6 +14,7 @@ sketchybar --add event    dynamic_island_queue \
 						  background.padding_left=11 \
 						  mach_helper=git.crissnb.islandhelper \
 						  drawing=on				\
+						  associated_display=1 \
 						  popup.background.height=30 \
 						  popup.height=$DEFAULT_HEIGHT \
 						  popup.align=center \
