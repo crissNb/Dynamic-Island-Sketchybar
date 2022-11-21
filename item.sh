@@ -14,7 +14,6 @@ sketchybar --add event    dynamic_island_queue \
 						  background.padding_left=11 \
 						  mach_helper=git.crissnb.islandhelper \
 						  drawing=on				\
-						  associated_display=1 \
 						  popup.background.height=30 \
 						  popup.height=$DEFAULT_HEIGHT \
 						  popup.align=center \
@@ -25,6 +24,12 @@ sketchybar --add event    dynamic_island_queue \
 						  popup.background.corner_radius=$DEFAULT_CORNER_RADIUS \
 						  popup.background.shadow.drawing=off \
 						  popup.drawing=false
+
+if [[ $DISPLAY_PRIMARY == "Primary" ]]; then
+	sketchybar --set island associated_display=1
+elif [[ $DISPLAY_PRIMARY == "Active" ]]; then
+	sketchybar --set island associated_display=active
+fi
 
 # subscribe to events to communicate with helper
 sketchybar --subscribe island dynamic_island_queue \

@@ -7,6 +7,10 @@
 # Set this variable to "on", if you are going to use the dynamic island with macOS's menu bar
 P_DYNAMIC_ISLAND_TOPMOST=off
 
+# Which display should the dynamic island be available?
+# Available options: All, Primary, Active
+P_DYNAMIC_ISLAND_DISPLAY=Primary
+
 P_DYNAMIC_ISLAND_FONT="SF Pro" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
 # Enable/Disable Islands
 P_DYNAMIC_ISLAND_MUSIC_ENABLED=1
