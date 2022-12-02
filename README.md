@@ -114,8 +114,8 @@ The following table describes the capabilities of this dynamic island project (w
 |               | General Notifications | Volume/Brightness  | Music | Pause/Resume | App Switch |
 | ------------- |:-------------:| :-----: | :---------: | :------: | :--------: |
 | **Cache File**      | no | no | yes* | yes | no |
-| **Event System?**      | no      |   no | yes | yes | yes |
-| **How well does it work?** | 5/5      |    4/5 | 5/5 | 4/5 | 5/5 |
+| **Event System?**      | no      |   yes | yes | yes | yes |
+| **How well does it work?** | 4/5      |    5/5 | 5/5 | 4/5 | 5/5 |
 | **Known Bugs** | None | - Animation bug when volume changes multiple times while the UI is active | None | - Animation bug when play / pause happens multiple times while the UI is active | None |
 | **Screenshot** | ![](images/notification.png) | ![](images/volume.png) | ![](images/music.png) | ![](images/pause.png) | ![](appswitch.png) |
 
@@ -125,6 +125,7 @@ Some features (islands) rely on making a "cache" file inside of a SketchyBar con
 
 ### Recommended Features
 For General Notification feature, I suggest you to turn on the "Do Not Disturb" on your macOS settings. This way the notifications will only be shown via the dynamic island.
+
 **Notifications are currently DISABLED. It was originally written in Python and will be replaced with C helper program.**
 
 If you would like to purely rely on the dynamic island interface for your audio (and brightness coming soon) levels, type the following command in terminal:
@@ -137,7 +138,7 @@ Todo
 ====
 - Make GitHub Wiki
 - Hide the notch on non-notched laptops
-- Less hardcoded system...
+- Notifications system written in C
 
 ### Upcoming Features / Upcoming Islands
 - Lock / Unlock
