@@ -11,7 +11,9 @@ sketchybar --add event    dynamic_island_queue \
 						  background.color=$PITCH_BLACK \
 						  background.corner_radius=$DEFAULT_CORNER_RADIUS \
 						  background.drawing=true	\
-						  background.padding_left=11 \
+						  background.padding_left=0 \
+						  background.padding_right=0 \
+						  update_freq=2					\
 						  mach_helper=git.crissnb.islandhelper \
 						  drawing=on				\
 						  popup.background.height=30 \
@@ -22,6 +24,8 @@ sketchybar --add event    dynamic_island_queue \
 						  popup.background.border_color=$PITCH_BLACK \
 						  popup.background.color=$PITCH_BLACK \
 						  popup.background.corner_radius=$DEFAULT_CORNER_RADIUS \
+						  popup.background.padding_left=0 \
+						  popup.background.padding_right=0 \
 						  popup.background.shadow.drawing=off \
 						  popup.drawing=false
 
