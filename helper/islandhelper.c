@@ -1,8 +1,9 @@
-#include "dynamicisland.h"
+#include "notificationhelper.h"
 #include "sketchybar.h"
 #include <stdio.h>
 
 struct dynamicIsland g_dynamic_island;
+struct notificationHelper g_notification_helper;
 
 void handler(env env) {
   // Environment variables passed from sketchybar can be accessed as seen below
@@ -17,7 +18,7 @@ void handler(env env) {
 
     // clear current displaying
     memset(currentDisplaying, 0, 32);
-    snprintf(g_dynamic_island.command, 256, "");
+    snprintf(g_dynamic_island.command, 512, "");
 
     pop_head();
 
@@ -35,11 +36,24 @@ void handler(env env) {
     if (queue_island(&g_dynamic_island, newItem) == 1) {
       sketchybar(g_dynamic_island.command);
     }
+  } else if ((strcmp(sender, "routine") == 0) ||
+             (strcmp(sender, "forced") == 0)) {
+    // Check notifications
+    // struct islandItem *notificationItem =
+    //     check_notifications(&g_notification_helper);
+    //
+    // if (notificationItem != NULL) {
+    //   // Queue notification item to display
+    //   if (queue_island(&g_dynamic_island, notificationItem) == 1) {
+    //     sketchybar(g_dynamic_island.command);
+    //   }
+    // }
   }
 }
 
 int main(int argc, char **argv) {
   dynamic_island_init(&g_dynamic_island);
+  // database_init(&g_notification_helper);
 
   if (argc < 2) {
     printf("Usage: provider \"<bootstrap name>\"\n");

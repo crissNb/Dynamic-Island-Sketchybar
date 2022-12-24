@@ -5,12 +5,12 @@
 #define MAX_QUEUE_SIZE 16
 
 struct dynamicIsland {
-  char command[256];
+  char command[512];
 };
 
 struct islandItem {
   char identifier[32];
-  char args[256];
+  char args[512];
 };
 
 struct islandItemNode {
@@ -24,7 +24,7 @@ char currentDisplaying[32];
 int isDisplaying = 0;
 
 static inline void dynamic_island_init(struct dynamicIsland *dynamic_island) {
-  snprintf(dynamic_island->command, 256, "");
+  snprintf(dynamic_island->command, 512, "");
 }
 
 static inline void pop_head() {
@@ -49,7 +49,7 @@ static inline void sendCommand(struct dynamicIsland *dynamic_island,
   if (head == NULL) {
     return;
   }
-  snprintf(dynamic_island->command, 256,
+  snprintf(dynamic_island->command, 512,
            "--trigger di_helper_listener_event IDENTIFIER=\"%s\" OVERRIDE=%d "
            "ARGS=\"%s\"",
            head->data->identifier, overrideSetting, head->data->args);

@@ -36,7 +36,6 @@ Installation
 - [Homebrew](https://brew.sh/)
 - [SketchyBar](https://github.com/FelixKratz/SketchyBar)
 - sf-symbols (`brew install --cask sf-symbols`)
-- biplist (`pip3 install biplist`) (only required for notification feature)
 
 ### Getting Started (If you're not using SketchyBar already)
 Clone the repository inside `~/.config/sketchybar/plugins`, take the default `sketchybarrc` and restart `sketchybar`,
@@ -126,7 +125,7 @@ Some features (islands) rely on making a "cache" file inside of a SketchyBar con
 ### Recommended Features
 For General Notification feature, I suggest you to turn on the "Do Not Disturb" on your macOS settings. This way the notifications will only be shown via the dynamic island.
 
-**Notifications are currently DISABLED. It was originally written in Python and will be replaced with C helper program.**
+**Notifications are currently DISABLED. It has been rewritten in C (and it's functional), but it seems like I need to remake the config file. You could theoretically uncomment the lines in helper program to force enable notifications.**
 
 If you would like to purely rely on the dynamic island interface for your audio (and brightness coming soon) levels, type the following command in terminal:
 ```bash
@@ -186,5 +185,3 @@ FAQ
 Credits
 =======
 Base sketchybarrc was taken from FelixKratz's [dotfiles](https://github.com/FelixKratz/dotfiles).
-
-[Python script](https://github.com/ydkhatri/MacForensics) to get all notifications from the macOS's database.
