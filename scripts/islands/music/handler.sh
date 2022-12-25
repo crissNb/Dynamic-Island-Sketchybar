@@ -6,6 +6,10 @@ if [[ ! $RUNNING ]]; then
 	exit 0
 fi
 
+if [ "$(echo "$INFO" | jq -r '.["Player State"]')" = "Stopped" ]; then
+	exit 0
+fi
+
 cache="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/music/data/cache"
 PLAYER_STATE=$(osascript -e "tell application \"$P_DYNAMIC_ISLAND_MUSIC_SOURCE\" to return (get player state)")
 
