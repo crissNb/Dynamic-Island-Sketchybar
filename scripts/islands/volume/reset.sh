@@ -1,11 +1,9 @@
 #!/usr/bin/env sh
-source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/configs/volume.sh"
-
-sketchybar --remove island.placeholder1 \
-		   --remove island.placeholder2 \
-		   --remove island.placeholder3 \
-		   --remove island.volume_icon \
-		   --remove island.volume_bar \
+sketchybar --set island.volume_placeholder1 drawing=off \
+		   --set island.volume_placeholder2 drawing=off \
+		   --set island.volume_placeholder3 drawing=off \
+		   --set island.volume_icon drawing=off \
+		   --set island.volume_bar drawing=off \
 		   --set island background.drawing=true \
 		   				popup.horizontal=on
 

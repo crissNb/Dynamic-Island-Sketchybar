@@ -44,8 +44,21 @@ mkdir -p ~/.config/sketchybar/plugins
 cd ~/.config/sketchybar/plugins
 git clone https://github.com/crissNb/Dynamic-Island-Sketchybar.git
 mv Dynamic-Island-Sketchybar/sketchybarrc.example ../sketchybarrc
+```
+
+Now a `userconfig.sh` file must be copied to `~/.config/sketchybar/` directory. This can be done by copying an appropriate config file for your machine.
+
+E.g. for 2021 MacBook Pro 14 Inch:
+```bash
+cp ~/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/userconfigs/mbp2021_14.sh ~/.config/sketchybar/userconfig.sh
+```
+The file must be called `userconfig.sh` and located right under sketchybar config directory for dynamic island to function.
+
+Finally, restart SketchyBar.
+```bash
 brew services restart sketchybar
 ```
+
 NOTE: There appears to be a bug that dynamic island helper program does not run the first time it is installed (after restarting sketchybar). If this is the case, simply restart sketchybar once again by typing in `brew services restart sketchybar` once again.
 
 ##
@@ -83,19 +96,11 @@ If you prefer to use the macOS's default menu bar, you need to enable P_DYNAMIC_
 
 Configuration
 =============
-Copy `~/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/userconfig.sh` to `~/.config/sketchybar/userconfig.sh`.
-This can be done with the following command:
-```bash
-cp ~/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/userconfig.sh ~/.config/sketchybar/userconfig.sh
-```
-
-You can see all the default values included in the file already, you can delete the options you don't want to modify.
+All Dynamic Island configuration can be done in `~/.config/sketchybar/userconfig.sh`. There are `userconfig.sh` presets reated in `~/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/userconfigs/`, so copy the appropriate config for your machine during installation.
 
 By default, dynamic island will take input from Apple Music. If you would like to use Spotify instead, change `P_DYNAMIC_ISLAND_MUSIC_SOURCE` variable in `userconfig.sh` to "Spotify" instead.
 
 As of right now, users need to manually adjust the notch size in pixels. If you have found an optimal notch size for MacBook with a notch, please let me know. Once enough data has been gathered, preset system will be implemented.
-
-The default configuration values are meant for 2021 MacBook Pro 14.
 
 ### Disabling features
 Set the option for the island you want to disable to `0` in your `userconfig.sh`
@@ -169,6 +174,7 @@ When an island item finishes its process, it tells the helper program to process
 Tested devices
 ==============
 - 2021 MacBook Pro 14
+- 2021 MacBook Pro 16
 
 FAQ
 ===

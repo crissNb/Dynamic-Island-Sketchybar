@@ -1,20 +1,20 @@
 #!/usr/bin/env sh
 
-PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
+DYNAMIC_ISLAND_DIR="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar"
 
 # run helper program
 ISLANDHELPER=git.crissnb.islandhelper
 killall islandhelper
-cd $HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/helper && make
-$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/helper/islandhelper $ISLANDHELPER &
+cd $DYNAMIC_ISLAND_DIR/helper && make
+$DYNAMIC_ISLAND_DIR/helper/islandhelper $ISLANDHELPER &
 
 # Define Dynamic island custom configs here
-source "$PLUGIN_DIR/Dynamic-Island-Sketchybar/config.sh" # Loads Dynamic-Island config
+source "$DYNAMIC_ISLAND_DIR/config.sh" # Loads Dynamic-Island config
 
 # Set up your own custom sketchybar config here
 
 ###############################################
 
-source "$PLUGIN_DIR/Dynamic-Island-Sketchybar/item.sh" # Loads Dynamic-Island item
+source "$DYNAMIC_ISLAND_DIR/item.sh" # Loads Dynamic-Island item
 
 sketchybar --update

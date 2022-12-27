@@ -1,12 +1,10 @@
 #!/usr/bin/env sh 
-source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/configs/notifications.sh"
-
-sketchybar --remove island.expanding \
-		   --set island	background.drawing=true \
-		   --remove island.title \
-		   --remove island.subtitle \
-		   --remove island.body \
-		   --remove island.logo
+sketchybar --set island.notification_title drawing=off \
+	       --set island.notification_subtitle drawing=off \
+		   --set island.notification_body drawing=off \
+		   --set island.notification_logo drawing=off \
+		   --set island.notification_expanding drawing=off \
+		   --set island	background.drawing=true
 
 sleep 0.1
 

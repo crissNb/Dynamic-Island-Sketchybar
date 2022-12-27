@@ -1,14 +1,12 @@
 #!/usr/bin/env sh
-source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/configs/brightness.sh"
-
 # call end event
 sketchybar --trigger dynamic_island_request
 
-sketchybar --remove island.placeholder1 \
-		   --remove island.placeholder2 \
-		   --remove island.placeholder3 \
-		   --remove island.brightness_icon \
-		   --remove island.brightness_bar \
+sketchybar --set island.brightness_placeholder1 drawing=off \
+		   --set island.brightness_placeholder2 drawing=off \
+		   --set island.brightness_placeholder3 drawing=off \
+		   --set island.brightness_icon drawing=off \
+		   --set island.brightness_bar drawing=off \
 		   --set island		background.drawing=true \
 		   					popup.horizontal=on
 

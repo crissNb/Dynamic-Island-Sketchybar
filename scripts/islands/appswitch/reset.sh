@@ -1,11 +1,8 @@
 #!/usr/bin/env sh
-source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/configs/appswitch.sh"
-
-sketchybar --remove island.applogo \
-		   --remove island.appname \
-		   --remove island.appbackground \
-		   --set island		background.drawing=true \
-							popup.horizontal=off
+sketchybar --set island.applogo drawing=off \
+		   --set island.appname drawing=off \
+		   --set island.appbackground drawing=off \
+		   --set island background.drawing=true
 
 sleep 0.1
 

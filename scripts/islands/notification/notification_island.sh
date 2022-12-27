@@ -1,5 +1,9 @@
 #!/usr/bin/env sh
-source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/configs/notifications.sh"
+source "$HOME/.config/sketchybar/userconfig.sh"
+
+SQUISH_WIDTH=$(($P_DYNAMIC_ISLAND_NOTIFICATION_EXPAND_WIDTH-$P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
+MAX_EXPAND_SQUISH_WIDTH=$(($P_DYNAMIC_ISLAND_NOTIFICATION_MAX_EXPAND_WIDTH+$P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
+MAX_EXPAND_HEIGHT=$(($P_DYNAMIC_ISLAND_NOTIFICATION_EXPAND_HEIGHT+$P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
 
 args=$*
 IFS='|'
@@ -17,85 +21,39 @@ subtitle="${strarr[2]}"
 message="${strarr[3]}"
 appId="${strarr[4]%% *}"
 
-# create notification items
-sketchybar --add item	  island.title popup.island \
-		   --set island.title	  width=0 			\
-		   						  label.color=$TRANSPARENT_LABEL \
-								  label.padding_left=0 \
-								  label.padding_right=0 \
-								  label="$title" \
-								  label.font="$FONT:Bold:16.0" \
-								  label.y_offset=12 \
-								  background.height=0 \
-								  background.padding_left=12 \
-								  background.padding_right=0 \
-		   --add item	  island.subtitle popup.island \
-		   --set island.subtitle  label.color=$TRANSPARENT_LABEL \
-								  label.padding_left=0 \
-								  label.padding_right=0 \
-								  background.padding_left=0 \
-								  background.padding_right=0 \
-								  width=0 \
-								  label="$subtitle" \
-								  label.font="$FONT:Italic:14.0" \
-								  label.y_offset=-7 \
-		   --add item	  island.body popup.island \
-		   --set island.body	  label.color=$TRANSPARENT_LABEL \
-								  label.padding_left=0 \
-								  label.padding_right=0 \
-								  background.padding_left=0 \
-								  background.height=0 \
-								  background.padding_right=0 \
-								  label.font="$FONT:Semibold:14.0" \
-								  label="$message" \
-								  label.y_offset=-40 \
-								  label.width=$MAX_ALLOWED_BODY \
-								  width=0 \
-		   --add item     island.expanding popup.island	\
-		   --set island.expanding width=$EXPAND_WIDTH			\
-		   						  background.height=0 \
-								  background.color=$TRANSPARENT \
-								  background.border_color=$TRANSPARENT \
-								  background.corner_radius=$DEFAULT_CORNER_RADIUS \
-								  background.padding_left=0 \
-								  background.padding_right=0 \
-								  background.y_offset=0 \
-								  background.shadow.drawing=off \
-		   --add item	  island.logo popup.island \
-		   --set island.logo background.color=$ICON_HIDDEN \
-							 background.padding_left=20 \
-							 background.padding_right=62 \
-							 background.image.scale=0.9 \
-							 background.image="app.$appId" \
-							 background.height=0 \
-							 y_offset=-10 \
-							 width=0 \
+# Enable
+sketchybar --set island.notification_title drawing=on \
+		   --set island.notification_subtitle drawing=on \
+		   --set island.notification_body drawing=on \
+		   --set island.notification_logo drawing=on \
+		   --set island.notification_expanding drawing=on \
 		   --set island      popup.drawing=true \
 							 background.drawing=false \
-							 popup.horizontal=on
+							 popup.horizontal=on \
+							 popup.height=$P_DYNAMIC_ISLAND_DEFAULT_HEIGHT
 
-sketchybar --animate sin 20 --set island.expanding width=$SQUISH_WIDTH width=$MAX_EXPAND_SQUISH_WIDTH width=$MAX_EXPAND_WIDTH \
-		   --animate sin 35 --set island popup.height=$MAX_EXPAND_HEIGHT popup.height=$EXPAND_HEIGHT \
-		   --animate sin 35 --set island popup.background.corner_radius=$CORNER_RAD
+sketchybar --animate sin 20 --set island.notification_expanding width=$SQUISH_WIDTH width=$MAX_EXPAND_SQUISH_WIDTH width=$P_DYNAMIC_ISLAND_NOTIFICATION_MAX_EXPAND_WIDTH \
+		   --animate sin 35 --set island popup.height=$MAX_EXPAND_HEIGHT popup.height=$P_DYNAMIC_ISLAND_NOTIFICATION_EXPAND_HEIGHT \
+		   --animate sin 35 --set island popup.background.corner_radius=$P_DYNAMIC_ISLAND_NOTIFICATION_CORNER_RAD
 
 sleep 0.45
-sketchybar --animate sin 25 --set island.title label.color=$DEFAULT_LABEL \
-		   --animate sin 25 --set island.subtitle label.color=$DEFAULT_LABEL \
-		   --animate sin 25 --set island.body label.color=$DEFAULT_LABEL \
-		   --animate sin 25 --set island.logo background.color=$TRANSPARENT_LABEL
+sketchybar --animate sin 25 --set island.notification_title label.color=$P_DYNAMIC_ISLAND_COLOR_WHITE \
+		   --animate sin 25 --set island.notification_subtitle label.color=$P_DYNAMIC_ISLAND_COLOR_WHITE \
+		   --animate sin 25 --set island.notification_body label.color=$P_DYNAMIC_ISLAND_COLOR_WHITE \
+		   --animate sin 25 --set island.notification_logo background.color=$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT
 
 sleep 2
 
-sketchybar --animate tanh 25 --set island.title label.color=$TRANSPARENT_LABEL \
-		   --animate tanh 25 --set island.subtitle label.color=$TRANSPARENT_LABEL \
-		   --animate tanh 25 --set island.body label.color=$TRANSPARENT_LABEL \
-		   --animate tanh 25 --set island.logo background.color=$ICON_HIDDEN
+sketchybar --animate tanh 25 --set island.notification_title label.color=$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT \
+		   --animate tanh 25 --set island.notification_subtitle label.color=$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT \
+		   --animate tanh 25 --set island.notification_body label.color=$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT \
+		   --animate tanh 25 --set island.notification_logo background.color=$P_DYNAMIC_ISLAND_COLOR_ICON_HIDDEN
 
 sleep 0.15
 
-sketchybar --animate tanh 20 --set island popup.height=$DEFAULT_HEIGHT \
-		   --animate tanh 25 --set island popup.background.corner_radius=$DEFAULT_CORNER_RADIUS \
-		   --animate tanh 15 --set island.expanding width=$SQUISH_WIDTH width=$EXPAND_WIDTH
+sketchybar --animate tanh 20 --set island popup.height=$P_DYNAMIC_ISLAND_DEFAULT_HEIGHT \
+		   --animate tanh 25 --set island popup.background.corner_radius=$P_DYNAMIC_ISLAND_DEFAULT_CORNER_RADIUS \
+		   --animate tanh 15 --set island.notification_expanding width=$SQUISH_WIDTH width=$P_DYNAMIC_ISLAND_NOTIFICATION_EXPAND_WIDTH
 
 sleep 0.7
 
