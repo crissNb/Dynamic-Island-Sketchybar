@@ -2,14 +2,14 @@
 
 DYNAMIC_ISLAND_DIR="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar"
 
+# Define Dynamic island custom configs here
+source "$DYNAMIC_ISLAND_DIR/config.sh" # Loads Dynamic-Island config
+
 # run helper program
 ISLANDHELPER=git.crissnb.islandhelper
 killall islandhelper
 cd $DYNAMIC_ISLAND_DIR/helper && make
 $DYNAMIC_ISLAND_DIR/helper/islandhelper $ISLANDHELPER &
-
-# Define Dynamic island custom configs here
-source "$DYNAMIC_ISLAND_DIR/config.sh" # Loads Dynamic-Island config
 
 # Set up your own custom sketchybar config here
 
