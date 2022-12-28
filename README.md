@@ -74,6 +74,15 @@ Add this line of code alongside your other items
 source "$PLUGIN_DIR/Dynamic-Island-Sketchybar/item.sh"
 ```
 
+For Dynamic Island to work, you also need to build and start a helper program. This can be done by adding following lines in your `sketchybarrc` file.
+```bash
+ISLANDHELPER=git.crissnb.islandhelper
+killall islandhelper
+cd $DYNAMIC_ISLAND_DIR/helper && make
+$DYNAMIC_ISLAND_DIR/helper/islandhelper $ISLANDHELPER &
+```
+`$DYNAMIC_ISLAND_DIR` is a directory where you cloned Dynamic-Island-Sketchybar repository.
+
 You can to adjust default settings with `sketchybar --default`.
 See `sketchybarrc.example` of this repository for example on how to set up Dynamic-Island-Sketchybar.
 
