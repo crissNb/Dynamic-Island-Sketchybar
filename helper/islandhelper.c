@@ -39,21 +39,27 @@ void handler(env env) {
   } else if ((strcmp(sender, "routine") == 0) ||
              (strcmp(sender, "forced") == 0)) {
     // Check notifications
-    // struct islandItem *notificationItem =
-    //     check_notifications(&g_notification_helper);
-    //
-    // if (notificationItem != NULL) {
-    //   // Queue notification item to display
-    //   if (queue_island(&g_dynamic_island, notificationItem) == 1) {
-    //     sketchybar(g_dynamic_island.command);
-    //   }
-    // }
+
+    if (*getenv("P_DYNAMIC_ISLAND_NOTIFICATION_ENABLED") == (char)'1') {
+      struct islandItem *notificationItem =
+          check_notifications(&g_notification_helper);
+
+      if (notificationItem != NULL) {
+        // Queue notification item to display
+        if (queue_island(&g_dynamic_island, notificationItem) == 1) {
+          sketchybar(g_dynamic_island.command);
+        }
+      }
+    }
   }
 }
 
 int main(int argc, char **argv) {
   dynamic_island_init(&g_dynamic_island);
-  // database_init(&g_notification_helper);
+
+  if (*getenv("P_DYNAMIC_ISLAND_NOTIFICATION_ENABLED") == (char)'1') {
+    database_init(&g_notification_helper);
+  }
 
   if (argc < 2) {
     printf("Usage: provider \"<bootstrap name>\"\n");

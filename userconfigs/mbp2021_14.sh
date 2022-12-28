@@ -90,8 +90,8 @@ P_DYNAMIC_ISLAND_MUSIC_RESUME_CORNER_RAD=15 # Corner Radius
 #
 ## Notification Island Config
 #
-P_DYNAMIC_ISLAND_NOTIFICATION_EXPAND_WIDTH=93 # This value should match the notch size, appearence wise
-P_DYNAMIC_ISLAND_NOTIFICATION_MAX_EXPAND_WIDTH=260 # Max size when expanded
+P_DYNAMIC_ISLAND_NOTIFICATION_EXPAND_WIDTH=107 # This value should match the notch size, appearence wise
+P_DYNAMIC_ISLAND_NOTIFICATION_MAX_EXPAND_WIDTH=280 # Max size when expanded
 P_DYNAMIC_ISLAND_NOTIFICATION_EXPAND_HEIGHT=140
 P_DYNAMIC_ISLAND_NOTIFICATION_CORNER_RAD=42 # Corner Radius
 P_DYNAMIC_ISLAND_NOTIFICATION_MAX_ALLOWED_BODY=250 # Max allowed body for notification message

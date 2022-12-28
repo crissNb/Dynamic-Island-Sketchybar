@@ -111,6 +111,8 @@ P_DYNAMIC_ISLAND_NOTIFICATION_ENABLED=0
 P_DYNAMIC_ISLAND_VOLUME_ENABLED=0
 ```
 
+Notifications are disabled by default.
+
 Features
 ========
 The following table describes the capabilities of this dynamic island project (working islands). Some islands do not work properly just yet. Thus, you may experience some glitches when using them.
@@ -130,8 +132,6 @@ Some features (islands) rely on making a "cache" file inside of a SketchyBar con
 ### Recommended Features
 For General Notification feature, I suggest you to turn on the "Do Not Disturb" on your macOS settings. This way the notifications will only be shown via the dynamic island.
 
-**Notifications are currently DISABLED. It has been rewritten in C (and it's functional), but it seems like I need to remake the config file. You could theoretically uncomment the lines in helper program to force enable notifications.**
-
 If you would like to purely rely on the dynamic island interface for your audio (and brightness coming soon) levels, type the following command in terminal:
 ```bash
 launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist
@@ -142,7 +142,6 @@ Todo
 ====
 - Make GitHub Wiki
 - Hide the notch on non-notched laptops
-- Notifications system written in C
 
 ### Upcoming Features / Upcoming Islands
 - Lock / Unlock
