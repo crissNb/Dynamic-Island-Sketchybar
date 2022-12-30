@@ -86,6 +86,9 @@ $DYNAMIC_ISLAND_DIR/helper/islandhelper $ISLANDHELPER &
 You can to adjust default settings with `sketchybar --default`.
 See `sketchybarrc.example` of this repository for example on how to set up Dynamic-Island-Sketchybar.
 
+By default, this plugin is meant to be used with macOS's default menu bar. 
+When using this plugin without macOS's default menu bar (with `Automatically hide and show the menu bar` option turned on), you need to set P_DYNAMIC_ISLAND_TOPMOST option to "off" ([see configuration](#configuration)).
+
 Updating
 =============
 Just go into the `Dynamic-Island-Sketchybar` and pull the changes.
@@ -101,7 +104,7 @@ I highly suggest you to use SketchyBar and the dynamic island config files with 
 If you have been using the macOS's default menu bar, I suggest you to enable the `"Automatically hide and show the menu bar"` option (located in `System Preferences -> Dock & Menu Bar`) and completely relying on the SketchyBar to handle the macOS menu. This repository only includes the SketchyBar configuration for Dynamic Island plugin. See my [dotfiles](https://github.com/crissNb/dotfiles) or [Sketchybar setups](https://github.com/FelixKratz/SketchyBar/discussions/47) for preconfigured SketchyBar setups to fully replace macOS menu bar.
 *If you are using my dotfiles for sketchybar, dynamic island is already included in the dotfiles. Otherwise, you will need to repeat the process above. Also see ["For existing SketchyBar users"](#for-existing-sketchybar-users).
 
-If you prefer to use the macOS's default menu bar, you need to enable P_DYNAMIC_ISLAND_TOPMOST option to "on" ([see configuration](#configuration)).
+If you prefer to use the macOS's default menu bar, you need to enable P_DYNAMIC_ISLAND_TOPMOST option to "on" ([see configuration](#configuration)), which is enabled by default.
 
 Configuration
 =============
