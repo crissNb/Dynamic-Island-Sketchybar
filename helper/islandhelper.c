@@ -26,6 +26,11 @@ void handler(env env) {
       sketchybar(g_dynamic_island.command);
     }
   } else if (strcmp(sender, "dynamic_island_queue") == 0) {
+    // Check data is not null
+    if (args[0] == '\0' || id[0] == '\0') {
+      return;
+    }
+
     // Create new queuable item
     struct islandItem *newItem =
         (struct islandItem *)malloc(sizeof(struct islandItem));
