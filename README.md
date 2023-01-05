@@ -125,6 +125,8 @@ P_DYNAMIC_ISLAND_VOLUME_ENABLED=0
 
 Notifications are disabled by default.
 
+It is recommended to restart sketchybar service by `brew services restart sketchybar`, once you have made your changes to `userconfig.sh` (especially disabling or enabling features will only take effect when sketchybar is restarted).
+
 Features
 ========
 The following table describes the capabilities of this dynamic island project (working islands). Some islands do not work properly just yet. Thus, you may experience some glitches when using them.
