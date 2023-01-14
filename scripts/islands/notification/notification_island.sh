@@ -29,7 +29,9 @@ sketchybar --set island.notification_title drawing=on \
 		   --set island.notification_body drawing=on \
 								  		   label="$message" \
 		   --set island.notification_logo drawing=on \
+										  background.color=$P_DYNAMIC_ISLAND_COLOR_ICON_HIDDEN \
 							              background.image="app.$appId" \
+										  width=50 \
 		   --set island.notification_expanding drawing=on \
 		   --set island      popup.drawing=true \
 							 background.drawing=false \
@@ -51,7 +53,7 @@ sleep 2.25
 sketchybar --animate tanh 25 --set island.notification_title label.color=$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT \
 		   --animate tanh 25 --set island.notification_subtitle label.color=$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT \
 		   --animate tanh 25 --set island.notification_body label.color=$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT \
-		   --animate tanh 25 --set island.notification_logo background.color=$P_DYNAMIC_ISLAND_COLOR_ICON_HIDDEN
+		   --animate tanh 25 --set island.notification_logo background.color=$P_DYNAMIC_ISLAND_COLOR_BLACK
 
 sleep 0.15
 

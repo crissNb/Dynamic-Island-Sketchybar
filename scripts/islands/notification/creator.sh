@@ -48,7 +48,7 @@ sketchybar --add item	  island.notification_title popup.island \
 		   --add item	  island.notification_logo popup.island \
 		   --set island.notification_logo background.color=$P_DYNAMIC_ISLAND_COLOR_ICON_HIDDEN \
 							 background.padding_left=20 \
-							 background.padding_right=62 \
+							 background.padding_right=12 \
 							 background.image.scale=0.8 \
 							 background.height=0 \
 							 y_offset=-10 \

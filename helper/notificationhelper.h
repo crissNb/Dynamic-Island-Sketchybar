@@ -117,6 +117,11 @@ check_notifications(struct notificationHelper *notificationHelper) {
   rc = sqlite3_open_v2(DBPATH, &db, SQLITE_OPEN_READONLY, NULL);
   if (rc != SQLITE_OK) {
     fprintf(stderr, "Error opening database: %s\n", sqlite3_errmsg(db));
+
+    rc = sqlite3_close(db);
+    if (rc != SQLITE_OK) {
+      fprintf(stderr, "Error closing database: %s\n", sqlite3_errmsg(db));
+    }
     return NULL;
   }
 
@@ -181,6 +186,14 @@ check_notifications(struct notificationHelper *notificationHelper) {
 
         // TODO: HANDLE EXCEPTIONS PROPERLY
         if (strcmp(app, "com.apple.controlcenter.notifications.focus") == 0) {
+          sqlite3_finalize(stmt);
+
+          // Close the database
+          rc = sqlite3_close(db);
+          if (rc != SQLITE_OK) {
+            fprintf(stderr, "Error closing database: %s\n", sqlite3_errmsg(db));
+          }
+
           return NULL;
         }
 
