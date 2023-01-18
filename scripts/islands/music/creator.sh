@@ -8,6 +8,7 @@ sketchybar --add item		island.music_artwork	 popup.island \
 										background.image.scale=0.08 \
 										y_offset=-15 \
 										drawing=off \
+										width=50 \
 		   --add item		island.music_title	popup.island \
 		   --set island.music_title		width=0		\
 										label.color=$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT \

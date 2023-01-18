@@ -30,4 +30,4 @@ if [[ $PLAYER_STATE == "paused" ]]; then
 fi
 
 # music display
-sketchybar --trigger dynamic_island_queue INFO="music" ISLAND_ARGS=""
+sketchybar --trigger dynamic_island_queue INFO="music" ISLAND_ARGS=" "

@@ -32,6 +32,7 @@ fi
 
 if [[ $override == "0" ]]; then
 	sketchybar --set island.music_artwork drawing=on \
+										  background.color=$P_DYNAMIC_ISLAND_COLOR_ICON_HIDDEN \
 			   --set island.music_title drawing=on \
 			   --set island.music_artist drawing=on \
 			   --set island.music_placeholder drawing=on \
@@ -64,7 +65,7 @@ sleep 1.5
 
 sketchybar --animate tanh 25 --set island.music_title label.color=$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT \
 		   --animate tanh 25 --set island.music_artist label.color=$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT \
-		   --animate tanh 25 --set island.music_artwork background.color=$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT
+		   --animate tanh 25 --set island.music_artwork background.color=$P_DYNAMIC_ISLAND_COLOR_ICON_HIDDEN
 
 sleep 0.4
 sketchybar --animate tanh 25 --set island popup.height=$P_DYNAMIC_ISLAND_MUSIC_INFO_DEFAULT_HEIGHT \

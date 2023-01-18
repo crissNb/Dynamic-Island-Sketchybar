@@ -53,7 +53,7 @@ sleep 2.25
 sketchybar --animate tanh 25 --set island.notification_title label.color=$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT \
 		   --animate tanh 25 --set island.notification_subtitle label.color=$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT \
 		   --animate tanh 25 --set island.notification_body label.color=$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT \
-		   --animate tanh 25 --set island.notification_logo background.color=$P_DYNAMIC_ISLAND_COLOR_BLACK
+		   --animate tanh 25 --set island.notification_logo background.color=$P_DYNAMIC_ISLAND_COLOR_ICON_HIDDEN
 
 sleep 0.15
 
