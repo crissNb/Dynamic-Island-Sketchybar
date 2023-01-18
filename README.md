@@ -154,6 +154,7 @@ This requires you to disable system integrity protection (SIP).
 
 Todo
 ====
+- Code cleanup for notification helper
 - Make GitHub Wiki
 - Hide the notch on non-notched laptops
 

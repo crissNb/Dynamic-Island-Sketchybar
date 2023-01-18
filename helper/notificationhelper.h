@@ -224,6 +224,15 @@ check_notifications(struct notificationHelper *notificationHelper) {
         return newNotificationItem;
       }
     }
+    lastNotifCount = notifCount;
+  }
+
+  sqlite3_finalize(stmt);
+
+  // Close the database
+  rc = sqlite3_close(db);
+  if (rc != SQLITE_OK) {
+    fprintf(stderr, "Error closing database: %s\n", sqlite3_errmsg(db));
   }
   return NULL;
 }
