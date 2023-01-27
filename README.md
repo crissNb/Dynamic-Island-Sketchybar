@@ -36,6 +36,7 @@ Installation
 - [Homebrew](https://brew.sh/)
 - [SketchyBar](https://github.com/FelixKratz/SketchyBar)
 - sf-symbols (`brew install --cask sf-symbols`)
+- jq (`brew install jq`)
 
 ### Getting Started (If you're not using SketchyBar already)
 Clone the repository inside `~/.config/sketchybar/plugins`, take the default `sketchybarrc` and restart `sketchybar`,
