@@ -11,7 +11,7 @@ read -ra strarr <<< "$args"
 unset IFS
 
 # $1 - override
-# $2 - front app name
+# $2 - volume
 override="${strarr[0]}"
 volume="${strarr[1]}"
 

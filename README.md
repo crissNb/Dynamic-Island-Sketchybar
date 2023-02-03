@@ -132,15 +132,23 @@ Features
 ========
 The following table describes the capabilities of this dynamic island project (working islands). Some islands do not work properly just yet. Thus, you may experience some glitches when using them.
 
-|               | General Notifications | Volume/Brightness  | Music | Pause/Resume | App Switch |
-| ------------- |:-------------:| :-----: | :---------: | :------: | :--------: |
-| **Cache File**      | no | no | yes* | yes | no |
-| **Event System?**      | no      |   yes | yes | yes | yes |
-| **How well does it work?** | 4/5      |    5/5 | 5/5 | 4/5 | 5/5 |
-| **Known Bugs** | None | - Animation bug when volume changes multiple times while the UI is active | None | - Animation bug when play / pause happens multiple times while the UI is active | None |
-| **Screenshot** | ![](images/notification.png) | ![](images/volume.png) | ![](images/music.png) | ![](images/pause.png) | ![](appswitch.png) |
+- General Notifications
 
-*saves the artwork 'temporarily' (this artwork file is then replaced with a newer artwork file, if requested) to display it on the dynamic island.
+Enabling notifications may have performance impact
+
+- Volume/Brightness
+
+- Music
+
+saves the artwork 'temporarily' (this artwork file is then replaced with a newer artwork file, if requested) to display it on the dynamic island.
+
+- Pause/Resume
+
+- App Switch
+
+- Power Source
+
+- WIFI
 
 Some features (islands) rely on making a "cache" file inside of a SketchyBar config directory.
 

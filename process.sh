@@ -35,6 +35,20 @@ case "$IDENTIFIER" in
 	# arg: pause status
 	bash "$ISLAND_DIR/music/pause_island.sh" "$OVERRIDE|$ARGS"
 	;;
+	"wifi")
+	if [[ $OVERRIDE == 1 ]]; then
+		pkill -f "$ISLAND_DIR/wifi/wifi_island.sh"
+	fi
+	# arg: wifi details
+	bash "$ISLAND_DIR/wifi/wifi_island.sh" "$OVERRIDE|$ARGS"
+	;;
+	"power")
+	if [[ $OVERRIDE == 1 ]]; then
+		pkill -f "$ISLAND_DIR/power/power_island.sh"
+	fi
+	# arg: connection type
+	bash "$ISLAND_DIR/power/power_island.sh" "$OVERRIDE|$ARGS"
+	;;
 	"music")
 	if [[ $OVERRIDE == 1 ]]; then
 		pkill -f "$ISLAND_DIR/music/music_island.sh"
