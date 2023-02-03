@@ -4,7 +4,7 @@ Dynamic Island on iPhone 14 Pro implementation on Mac using SketchyBar
 ***NOTE: Majority of the code are hardcoded. This is my first time making a project using Shell Scripts. Some features require constantly rewriting a file instead of relying on a event system. With that being said, I have yet experienced a large impact on performance on my machine.***
 ***This project is yet to be used daily and be functional. It's more of a concept.***
 
-![](images/full.png)
+![](images/fullupdated.png)
 
 Table of Contents
 =================
