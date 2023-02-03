@@ -134,13 +134,9 @@ The following table describes the capabilities of this dynamic island project (w
 
 - General Notifications
 
-Enabling notifications may have performance impact
-
 - Volume/Brightness
 
 - Music
-
-saves the artwork 'temporarily' (this artwork file is then replaced with a newer artwork file, if requested) to display it on the dynamic island.
 
 - Pause/Resume
 
@@ -150,7 +146,8 @@ saves the artwork 'temporarily' (this artwork file is then replaced with a newer
 
 - WIFI
 
-Some features (islands) rely on making a "cache" file inside of a SketchyBar config directory.
+Enabling notifications may have performance impact.
+Music island saves the artwork 'temporarily' (this artwork file is then replaced with a newer artwork file, if requested) to display it on the dynamic island. It also creates a cache file.
 
 ### Recommended Features
 For General Notification feature, I suggest you to turn on the "Do Not Disturb" on your macOS settings. This way the notifications will only be shown via the dynamic island.
