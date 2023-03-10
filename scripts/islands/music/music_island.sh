@@ -1,10 +1,10 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 source "$HOME/.config/sketchybar/userconfig.sh"
-ARTWORK_LOCATION="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/music/artwork.jpg"
 
-INFO_SQUISH_WIDTH=$(($P_DYNAMIC_ISLAND_MUSIC_INFO_EXPAND_WIDTH-$P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
-INFO_MAX_EXPAND_SQUISH_WIDTH=$(($P_DYNAMIC_ISLAND_MUSIC_INFO_MAX_EXPAND_WIDTH+$P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
-INFO_MAX_EXPAND_HEIGHT=$(($P_DYNAMIC_ISLAND_MUSIC_INFO_EXPAND_HEIGHT+$P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
+ARTWORK_LOCATION="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/music/artwork.jpg"
+INFO_SQUISH_WIDTH=$(("$P_DYNAMIC_ISLAND_MUSIC_INFO_EXPAND_WIDTH" - "$P_DYNAMIC_ISLAND_SQUISH_AMOUNT"))
+INFO_MAX_EXPAND_SQUISH_WIDTH=$(("$P_DYNAMIC_ISLAND_MUSIC_INFO_MAX_EXPAND_WIDTH" + "$P_DYNAMIC_ISLAND_SQUISH_AMOUNT"))
+INFO_MAX_EXPAND_HEIGHT=$(("$P_DYNAMIC_ISLAND_MUSIC_INFO_EXPAND_HEIGHT" + "$P_DYNAMIC_ISLAND_SQUISH_AMOUNT"))
 
 # $1 - override
 override=$1
@@ -23,54 +23,58 @@ else
 fi
 
 if [[ ${#TITLE} -gt 25 ]]; then
-  TITLE=$(printf "$(echo $TITLE | cut -c 1-25)…")
+	TITLE=$(printf "%s..." "$(echo "$TITLE" | cut -c 1-25)")
 fi
 
 if [[ ${#ARTIST} -gt 25 ]]; then
-  ARTIST=$(printf "$(echo $ARTIST | cut -c 1-25)…")
+	ARTIST=$(printf "%s..." "$(echo "$ARTIST" | cut -c 1-25)")
 fi
 
 if [[ $override == "0" ]]; then
+	island=(
+		popup.drawing=true
+		background.drawing=false
+		popup.horizontal=on
+		popup.height="$P_DYNAMIC_ISLAND_MUSIC_INFO_DEFAULT_HEIGHT"
+	)
+
 	sketchybar --set island.music_artwork drawing=on \
-										  background.color=$P_DYNAMIC_ISLAND_COLOR_ICON_HIDDEN \
-			   --set island.music_title drawing=on \
-			   --set island.music_artist drawing=on \
-			   --set island.music_placeholder drawing=on \
-			   --set island popup.drawing=true \
-			                background.drawing=false \
-							popup.horizontal=on \
-							popup.height=$P_DYNAMIC_ISLAND_MUSIC_INFO_DEFAULT_HEIGHT
+		background.color="$P_DYNAMIC_ISLAND_COLOR_ICON_HIDDEN" \
+		--set island.music_title drawing=on \
+		--set island.music_artist drawing=on \
+		--set island.music_placeholder drawing=on \
+		--set island "${island[@]}"
 fi
 
 sketchybar --set island.music_artist label="$ARTIST" \
-	       --set island.music_title label="$TITLE" \
-		   --set island.music_artwork background.image="$ARTWORK_LOCATION"
+	--set island.music_title label="$TITLE" \
+	--set island.music_artwork background.image="$ARTWORK_LOCATION"
 
 if [[ $override == "0" ]]; then
-	sketchybar --animate sin 15 --set island.music_placeholder width=$INFO_SQUISH_WIDTH width=$INFO_MAX_EXPAND_SQUISH_WIDTH width=$P_DYNAMIC_ISLAND_MUSIC_INFO_MAX_EXPAND_WIDTH \
-			   --animate sin 25 --set island popup.height=$INFO_MAX_EXPAND_HEIGHT popup.height=$P_DYNAMIC_ISLAND_MUSIC_INFO_EXPAND_HEIGHT \
-			   --animate sin 20 --set island popup.background.corner_radius=$P_DYNAMIC_ISLAND_MUSIC_INFO_CORNER_RAD
+	sketchybar --animate sin 15 --set island.music_placeholder width="$INFO_SQUISH_WIDTH" width="$INFO_MAX_EXPAND_SQUISH_WIDTH" width="$P_DYNAMIC_ISLAND_MUSIC_INFO_MAX_EXPAND_WIDTH" \
+		--animate sin 25 --set island popup.height="$INFO_MAX_EXPAND_HEIGHT" popup.height="$P_DYNAMIC_ISLAND_MUSIC_INFO_EXPAND_HEIGHT" \
+		--animate sin 20 --set island popup.background.corner_radius="$P_DYNAMIC_ISLAND_MUSIC_INFO_CORNER_RAD"
 else
-	sketchybar --animate sin 15 --set island.music_placeholder width=$INFO_MAX_EXPAND_SQUISH_WIDTH width=$P_DYNAMIC_ISLAND_MUSIC_INFO_MAX_EXPAND_WIDTH \
-			   --animate sin 25 --set island popup.height=$INFO_MAX_EXPAND_HEIGHT popup.height=$P_DYNAMIC_ISLAND_MUSIC_INFO_EXPAND_HEIGHT \
-			   --animate sin 20 --set island popup.background.corner_radius=$P_DYNAMIC_ISLAND_MUSIC_INFO_CORNER_RAD
+	sketchybar --animate sin 15 --set island.music_placeholder width="$INFO_MAX_EXPAND_SQUISH_WIDTH" width="$P_DYNAMIC_ISLAND_MUSIC_INFO_MAX_EXPAND_WIDTH" \
+		--animate sin 25 --set island popup.height="$INFO_MAX_EXPAND_HEIGHT" popup.height="$P_DYNAMIC_ISLAND_MUSIC_INFO_EXPAND_HEIGHT" \
+		--animate sin 20 --set island popup.background.corner_radius="$P_DYNAMIC_ISLAND_MUSIC_INFO_CORNER_RAD"
 fi
 
 sleep 0.15
-sketchybar --animate tanh 25 --set island.music_title label.color=$P_DYNAMIC_ISLAND_COLOR_WHITE \
-		   --animate tanh 25 --set island.music_artist label.color=$P_DYNAMIC_ISLAND_COLOR_WHITE \
-		   --animate tanh 25 --set island.music_artwork background.color=$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT
+sketchybar --animate tanh 25 --set island.music_title label.color="$P_DYNAMIC_ISLAND_COLOR_WHITE" \
+	--animate tanh 25 --set island.music_artist label.color="$P_DYNAMIC_ISLAND_COLOR_WHITE" \
+	--animate tanh 25 --set island.music_artwork background.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
 
 sleep 1.5
 
-sketchybar --animate tanh 25 --set island.music_title label.color=$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT \
-		   --animate tanh 25 --set island.music_artist label.color=$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT \
-		   --animate tanh 25 --set island.music_artwork background.color=$P_DYNAMIC_ISLAND_COLOR_ICON_HIDDEN
+sketchybar --animate tanh 25 --set island.music_title label.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT" \
+	--animate tanh 25 --set island.music_artist label.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT" \
+	--animate tanh 25 --set island.music_artwork background.color="$P_DYNAMIC_ISLAND_COLOR_ICON_HIDDEN"
 
 sleep 0.4
-sketchybar --animate tanh 25 --set island popup.height=$P_DYNAMIC_ISLAND_MUSIC_INFO_DEFAULT_HEIGHT \
-		   --animate  sin 30 --set island popup.background.corner_radius=$P_DYNAMIC_ISLAND_DEFAULT_CORNER_RADIUS \
-		   --animate tanh 20 --set island.music_placeholder width=$INFO_SQUISH_WIDTH width=$P_DYNAMIC_ISLAND_MUSIC_INFO_EXPAND_WIDTH
+sketchybar --animate tanh 25 --set island popup.height="$P_DYNAMIC_ISLAND_MUSIC_INFO_DEFAULT_HEIGHT" \
+	--animate sin 30 --set island popup.background.corner_radius="$P_DYNAMIC_ISLAND_DEFAULT_CORNER_RADIUS" \
+	--animate tanh 20 --set island.music_placeholder width="$INFO_SQUISH_WIDTH" width="$P_DYNAMIC_ISLAND_MUSIC_INFO_EXPAND_WIDTH"
 
 sleep 0.7
 
