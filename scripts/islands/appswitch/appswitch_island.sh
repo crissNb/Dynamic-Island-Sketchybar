@@ -65,4 +65,4 @@ sketchybar --animate tanh 20 --set island popup.height="$P_DYNAMIC_ISLAND_DEFAUL
 
 sleep 0.4
 
-source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/appswitch/reset.sh"
+source "$DYNAMIC_ISLAND_DIR/scripts/islands/appswitch/reset.sh"

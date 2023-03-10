@@ -71,4 +71,4 @@ sketchybar --animate tanh 25 --set island popup.background.corner_radius="$P_DYN
 
 sleep 0.7
 
-source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/notification/reset.sh"
+source "$DYNAMIC_ISLAND_DIR/scripts/islands/notification/reset.sh"

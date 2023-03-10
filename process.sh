@@ -3,10 +3,15 @@
 # $IDENTIFIER - identifier of the dynamic island element
 # $OVERRIDE - whether or not to override the existing dynamic island element
 # $ARGS - necessary arguments to activate the dynamic island element
+export DYNAMIC_ISLAND_DIR
+DYNAMIC_ISLAND_DIR=$(
+	cd "$(dirname "${BASH_SOURCE[0]}")" || exit
+	pwd -P
+)
 
-ISLAND_DIR="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands"
+ISLAND_DIR="$DYNAMIC_ISLAND_DIR/scripts/islands"
 
-case "$IDENTIFIER" in
+case $IDENTIFIER in
 "appswitch")
 	if [[ $OVERRIDE == 1 ]]; then
 		pkill -f "$ISLAND_DIR/appswitch/appswitch_island.sh"

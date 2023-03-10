@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-DYNAMIC_ISLAND_DIR="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar"
+DYNAMIC_ISLAND_DIR="$HOME/.config/sketchybar/plugins/dynamic-island/"
 
 # Define Dynamic island custom configs here
 source "$DYNAMIC_ISLAND_DIR/config.sh" # Loads Dynamic-Island config

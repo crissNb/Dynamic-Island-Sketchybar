@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source "$HOME/.config/sketchybar/userconfig.sh"
 
-ARTWORK_LOCATION="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/music/artwork.jpg"
+ARTWORK_LOCATION="$DYNAMIC_ISLAND_DIR/scripts/islands/music/artwork.jpg"
 INFO_SQUISH_WIDTH=$(("$P_DYNAMIC_ISLAND_MUSIC_INFO_EXPAND_WIDTH" - "$P_DYNAMIC_ISLAND_SQUISH_AMOUNT"))
 INFO_MAX_EXPAND_SQUISH_WIDTH=$(("$P_DYNAMIC_ISLAND_MUSIC_INFO_MAX_EXPAND_WIDTH" + "$P_DYNAMIC_ISLAND_SQUISH_AMOUNT"))
 INFO_MAX_EXPAND_HEIGHT=$(("$P_DYNAMIC_ISLAND_MUSIC_INFO_EXPAND_HEIGHT" + "$P_DYNAMIC_ISLAND_SQUISH_AMOUNT"))
@@ -14,7 +14,7 @@ TITLE=$(osascript -e "tell application \"$P_DYNAMIC_ISLAND_MUSIC_SOURCE\" to get
 ARTIST=$(osascript -e "tell application \"$P_DYNAMIC_ISLAND_MUSIC_SOURCE\" to get artist of current track")
 
 if [[ $P_DYNAMIC_ISLAND_MUSIC_SOURCE == "Music" ]]; then
-	osascript "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/music/get_artwork.scpt"
+	osascript "$DYNAMIC_ISLAND_DIR/scripts/islands/music/get_artwork.scpt"
 elif [[ $P_DYNAMIC_ISLAND_MUSIC_SOURCE == "Spotify" ]]; then
 	COVER=$(osascript -e 'tell application "Spotify" to get artwork url of current track')
 	curl -s --max-time 25 "$COVER" -o "$ARTWORK_LOCATION"
@@ -78,4 +78,4 @@ sketchybar --animate tanh 25 --set island popup.height="$P_DYNAMIC_ISLAND_MUSIC_
 
 sleep 0.7
 
-source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/music/reset.sh"
+source "$DYNAMIC_ISLAND_DIR/scripts/islands/music/reset.sh"

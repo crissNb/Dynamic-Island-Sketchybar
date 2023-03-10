@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
+script_dir=$(
+	cd "$(dirname "${BASH_SOURCE[0]}")" || exit
+	pwd -P
+)
+
+echo "music"
+echo "$INFO"
 
 # $1: MUSIC_SOURCE
 
@@ -12,7 +19,7 @@ if [ "$(echo "$INFO" | jq -r '.["Player State"]')" = "Stopped" ]; then
 	exit 0
 fi
 
-cache="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/music/data/cache"
+cache="$script_dir/data/cache"
 PLAYER_STATE=$(osascript -e "tell application \"$1\" to return (get player state)")
 
 if [[ $(cat "$cache") == 0 ]]; then

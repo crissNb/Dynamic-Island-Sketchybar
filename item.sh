@@ -1,29 +1,42 @@
 #!/usr/bin/env bash
 
+export DYNAMIC_ISLAND_DIR
+DYNAMIC_ISLAND_DIR=$(
+	cd "$(dirname "${BASH_SOURCE[0]}")" || exit
+	pwd -P
+)
+
+source "$DYNAMIC_ISLAND_DIR/helper.sh"
+sleep 0.5
+
+# Load user config overrides
+USER_CONFIG="$HOME/.config/sketchybar/userconfig.sh"
+test -f "$USER_CONFIG" && source "$USER_CONFIG"
+
 island=(
+	drawing=on
+	mach_helper=git.crissnb.islandhelper
+	update_freq=2
 	width="$P_DYNAMIC_ISLAND_DEFAULT_WIDTH"
-	background.height=50
-	background.y_offset=9
 	background.color="$P_DYNAMIC_ISLAND_COLOR_BLACK"
 	background.corner_radius="$P_DYNAMIC_ISLAND_DEFAULT_CORNER_RADIUS"
 	background.drawing=true
+	background.height=50
 	background.padding_left=0
 	background.padding_right=0
-	update_freq=2
-	mach_helper=git.crissnb.islandhelper
-	drawing=on
+	background.y_offset=9
 	popup.background.height=30
-	popup.height="$P_DYNAMIC_ISLAND_DEFAULT_HEIGHT"
 	popup.align=center
-	popup.y_offset=-69
+	popup.drawing=false
+	popup.height="$P_DYNAMIC_ISLAND_DEFAULT_HEIGHT"
 	popup.horizontal=on
+	popup.y_offset=-69
 	popup.background.border_color="$P_DYNAMIC_ISLAND_COLOR_BLACK"
 	popup.background.color="$P_DYNAMIC_ISLAND_COLOR_BLACK"
 	popup.background.corner_radius="$P_DYNAMIC_ISLAND_DEFAULT_CORNER_RADIUS"
 	popup.background.padding_left=0
 	popup.background.padding_right=0
 	popup.background.shadow.drawing=off
-	popup.drawing=false
 )
 
 sketchybar --add event dynamic_island_queue \

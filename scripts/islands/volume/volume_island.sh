@@ -81,4 +81,4 @@ sketchybar --animate tanh 20 --set island popup.height="$P_DYNAMIC_ISLAND_VOLUME
 	--animate sin 25 --set island popup.background.corner_radius="$P_DYNAMIC_ISLAND_DEFAULT_CORNER_RADIUS"
 
 sleep 0.5
-source "$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/volume/reset.sh"
+source "$DYNAMIC_ISLAND_DIR/scripts/islands/volume/reset.sh"

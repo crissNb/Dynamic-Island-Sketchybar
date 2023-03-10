@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
+export DYNAMIC_ISLAND_DIR
+DYNAMIC_ISLAND_DIR=$(
+	cd "$(dirname "${BASH_SOURCE[0]}")" || exit
+	pwd -P
+)
 
 listener=(
-	script="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/process.sh"
+	script="$DYNAMIC_ISLAND_DIR/process.sh"
 	width=0
 )
 
