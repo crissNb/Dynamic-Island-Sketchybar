@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 sketchybar --set island.applogo drawing=off \
-		   --set island.appname drawing=off \
-		   --set island.appbackground drawing=off \
-		   --set island background.drawing=true
+	--set island.appname drawing=off \
+	--set island.appbackground drawing=off \
+	--set island background.drawing=true
 
 sleep 0.1
 
