@@ -44,7 +44,6 @@ void handler(env env) {
   } else if ((strcmp(sender, "routine") == 0) ||
              (strcmp(sender, "forced") == 0)) {
     // Check notifications
-
     if (*getenv("P_DYNAMIC_ISLAND_NOTIFICATION_ENABLED") == (char)'1') {
       struct islandItem *notificationItem =
           check_notifications(&g_notification_helper);

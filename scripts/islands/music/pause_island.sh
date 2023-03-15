@@ -4,6 +4,7 @@ source "$HOME/.config/sketchybar/userconfig.sh"
 RESUME_SQUISH_WIDTH=$(($P_DYNAMIC_ISLAND_MUSIC_RESUME_EXPAND_WIDTH-$P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
 RESUME_MAX_EXPAND_SQUISH_WIDTH=$(($P_DYNAMIC_ISLAND_MUSIC_RESUME_MAX_EXPAND_WIDTH+$P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
 RESUME_MAX_EXPAND_HEIGHT=$(($P_DYNAMIC_ISLAND_MUSIC_RESUME_EXPAND_HEIGHT+$P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
+RESUME_LEFT_PADDING=$(($P_DYNAMIC_ISLAND_MUSIC_RESUME_MAX_EXPAND_WIDTH-26))
 
 args=$*
 IFS='|'
@@ -24,20 +25,27 @@ sketchybar --set island.resume_text drawing=on \
 if [[ $pauseStatus == "0" ]]; then
 	# paused
 	sketchybar --set island.resume_text label="Paused" \
-					 					label.padding_left=0
+										label.padding_left=0
 else
 	# resume
 	sketchybar --set island.resume_text label="Resumed" \
-					 					label.padding_left=258
+										label.padding_left=$RESUME_LEFT_PADDING
 fi
 
-# animate
-sketchybar --animate sin 20 --set island.resume_bar width=$RESUME_SQUISH_WIDTH width=$RESUME_MAX_EXPAND_SQUISH_WIDTH width=$P_DYNAMIC_ISLAND_MUSIC_RESUME_MAX_EXPAND_WIDTH \
-		   --animate sin 35 --set island popup.height=$RESUME_MAX_EXPAND_HEIGHT popup.height=$P_DYNAMIC_ISLAND_MUSIC_RESUME_EXPAND_HEIGHT \
-		   --animate sin 35 --set island popup.background.corner_radius=$P_DYNAMIC_ISLAND_MUSIC_RESUME_CORNER_RAD
+if [[ $override == "0" ]]; then
+	# animate
+	sketchybar --animate sin 20 --set island.resume_bar width=$RESUME_SQUISH_WIDTH width=$RESUME_MAX_EXPAND_SQUISH_WIDTH width=$P_DYNAMIC_ISLAND_MUSIC_RESUME_MAX_EXPAND_WIDTH \
+			   --animate sin 15 --set island popup.height=$RESUME_MAX_EXPAND_HEIGHT popup.height=$P_DYNAMIC_ISLAND_MUSIC_RESUME_EXPAND_HEIGHT \
+			   --animate sin 35 --set island popup.background.corner_radius=$P_DYNAMIC_ISLAND_MUSIC_RESUME_CORNER_RAD
 
-sleep 0.45
-sketchybar --animate sin 25 --set island.resume_text label.color=$P_DYNAMIC_ISLAND_COLOR_WHITE
+	sleep 0.45
+	sketchybar --animate sin 25 --set island.resume_text label.color=$P_DYNAMIC_ISLAND_COLOR_WHITE
+else
+	sketchybar --animate sin 20 --set island.resume_bar width=$RESUME_MAX_EXPAND_SQUISH_WIDTH width $P_DYNAMIC_ISLAND_MUSIC_RESUME_MAX_EXPAND_WIDTH \
+			   --animate sin 15 --set island popup.height=$RESUME_MAX_EXPAND_HEIGHT popup.height=$P_DYNAMIC_ISLAND_MUSIC_RESUME_EXPAND_HEIGHT \
+			   --animate sin 35 --set island popup.background.corner_radius=$P_DYNAMIC_ISLAND_MUSIC_RESUME_CORNER_RAD
+	sketchybar --animate sin 25 --set island.resume_text label.color=$P_DYNAMIC_ISLAND_COLOR_WHITE
+fi
 
 sleep 0.8
 

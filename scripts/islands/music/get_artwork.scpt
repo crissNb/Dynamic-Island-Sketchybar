@@ -1,32 +1,17 @@
 tell application "Music"
-	try
-		if player state is not stopped then
-			set alb to (get album of current track)
-			tell artwork 1 of current track
-				set imgFormat to ".jpg"
-			end tell
-			set rawData to (get raw data of artwork 1 of current track)
-		else
-			return
-		end if
-	on error
-		return
-	end try
+    set currentTrack to current track
+    set artworkData to raw data of artwork 1 of currentTrack
 end tell
 
-tell application "Finder"
-	set baseLoc to container of (path to me) as alias
-end tell
+set tempFile to (path to temporary items folder as string) & "artwork_temp.jpg"
+set fileRef to open for access tempFile with write permission
+write artworkData to fileRef
+close access fileRef
 
-set newPath to ((baseLoc as text) & "artwork" & imgFormat) as text
-try
-	tell me to set fileRef to (open for access newPath with write permission)
-	write rawData to fileRef starting at 0
-	tell me to close access fileRef
-on error m number n
-	log n
-	log m
-	try
-		tell me to close access fileRef
-	end try
-end try
+set resizeCommand to "sips -Z 600 " & quoted form of POSIX path of tempFile
+do shell script resizeCommand
+
+set currentFolder to POSIX path of ((path to me as string) & "::")
+set newFile to currentFolder & "artwork.jpg"
+set moveCommand to "mv " & quoted form of POSIX path of tempFile & " " & quoted form of newFile
+do shell script moveCommand
