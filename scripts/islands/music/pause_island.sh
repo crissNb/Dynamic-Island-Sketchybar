@@ -41,7 +41,7 @@ if [[ $override == "0" ]]; then
 	sleep 0.45
 	sketchybar --animate sin 25 --set island.resume_text label.color=$P_DYNAMIC_ISLAND_COLOR_WHITE
 else
-	sketchybar --animate sin 20 --set island.resume_bar width=$RESUME_MAX_EXPAND_SQUISH_WIDTH width $P_DYNAMIC_ISLAND_MUSIC_RESUME_MAX_EXPAND_WIDTH \
+	sketchybar --animate sin 20 --set island.resume_bar width=$RESUME_MAX_EXPAND_SQUISH_WIDTH width=$P_DYNAMIC_ISLAND_MUSIC_RESUME_MAX_EXPAND_WIDTH \
 			   --animate sin 15 --set island popup.height=$RESUME_MAX_EXPAND_HEIGHT popup.height=$P_DYNAMIC_ISLAND_MUSIC_RESUME_EXPAND_HEIGHT \
 			   --animate sin 35 --set island popup.background.corner_radius=$P_DYNAMIC_ISLAND_MUSIC_RESUME_CORNER_RAD
 	sketchybar --animate sin 25 --set island.resume_text label.color=$P_DYNAMIC_ISLAND_COLOR_WHITE
