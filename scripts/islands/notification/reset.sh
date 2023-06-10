@@ -1,10 +1,10 @@
-#!/usr/bin/env sh 
+#!/usr/bin/env sh
 sketchybar --set island.notification_title drawing=off \
-	       --set island.notification_subtitle drawing=off \
-		   --set island.notification_body drawing=off \
-		   --set island.notification_logo drawing=off \
-		   --set island.notification_expanding drawing=off \
-		   --set island	background.drawing=true
+	--set island.notification_subtitle drawing=off \
+	--set island.notification_body drawing=off \
+	--set island.notification_logo drawing=off \
+	--set island.notification_expanding drawing=off \
+	--set island background.drawing=true
 
 sleep 0.1
 

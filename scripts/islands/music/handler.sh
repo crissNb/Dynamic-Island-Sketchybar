@@ -1,10 +1,17 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+script_dir=$(
+	cd "$(dirname "${BASH_SOURCE[0]}")" || exit
+	pwd -P
+)
+
+echo "music"
+echo "$INFO"
 
 # $1: MUSIC_SOURCE
 
 # check if music app is running
 RUNNING=$(pgrep -x "$1")
-if [[ ! $RUNNING ]]; then
+if [[ ! "$RUNNING" ]]; then
 	exit 0
 fi
 
@@ -12,19 +19,19 @@ if [ "$(echo "$INFO" | jq -r '.["Player State"]')" = "Stopped" ]; then
 	exit 0
 fi
 
-cache="$HOME/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/scripts/islands/music/data/cache"
+cache="$script_dir/data/cache"
 PLAYER_STATE=$(osascript -e "tell application \"$1\" to return (get player state)")
 
-if [[ $(cat $cache) == 0 ]]; then
+if [[ $(cat "$cache") == 0 ]]; then
 	# resume
-	printf 1 > "$cache"
+	printf 1 >"$cache"
 	sketchybar --trigger dynamic_island_queue INFO="pause" ISLAND_ARGS="1"
 	exit 0
 fi
 
 if [[ $PLAYER_STATE == "paused" ]]; then
 	# paused
-	printf 0 > "$cache"
+	printf 0 >"$cache"
 	sketchybar --trigger dynamic_island_queue INFO="pause" ISLAND_ARGS="0"
 	exit 0
 fi
