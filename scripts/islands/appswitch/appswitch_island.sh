@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 source "$HOME/.config/sketchybar/userconfig.sh"
 
-SQUISH_WIDTH=$(("$P_DYNAMIC_ISLAND_APPSWITCH_EXPAND_WIDTH" - "$P_DYNAMIC_ISLAND_SQUISH_AMOUNT"))
-MAX_EXPAND_HEIGHT=$(("$P_DYNAMIC_ISLAND_APPSWITCH_EXPAND_HEIGHT" + "$P_DYNAMIC_ISLAND_SQUISH_AMOUNT"))
+SQUISH_WIDTH=$(($P_DYNAMIC_ISLAND_APPSWITCH_EXPAND_WIDTH - $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
+MAX_EXPAND_HEIGHT=$(($P_DYNAMIC_ISLAND_APPSWITCH_EXPAND_HEIGHT + $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
 
 args=$*
 IFS='|'
@@ -35,7 +35,7 @@ sketchybar --set island.appname label="$appName" \
 # determine expand width based on the character length
 charLength=${#appName}
 expandSize=$(bc -l <<<"$P_DYNAMIC_ISLAND_APPSWITCH_MAX_EXPAND_WIDTH+$charLength*15")
-expand_squish=$(("$expandSize" + "$P_DYNAMIC_ISLAND_SQUISH_AMOUNT"))
+expand_squish=$(($expandSize + $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
 
 if [[ $override == "0" ]]; then
 	sketchybar --animate tanh 15 --set island.appbackground width="$P_DYNAMIC_ISLAND_APPSWITCH_EXPAND_WIDTH" width="$expand_squish" width="$expandSize" \

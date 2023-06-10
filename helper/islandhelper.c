@@ -44,6 +44,12 @@ void handler(env env) {
   } else if ((strcmp(sender, "routine") == 0) ||
              (strcmp(sender, "forced") == 0)) {
     // Check notifications
+
+    // check environment variable exists to prevent seg fault
+    if (getenv("P_DYNAMIC_ISLAND_NOTIFICATION_ENABLED") == NULL) {
+      return;
+    }
+
     if (*getenv("P_DYNAMIC_ISLAND_NOTIFICATION_ENABLED") == (char)'1') {
       struct islandItem *notificationItem =
           check_notifications(&g_notification_helper);
@@ -59,15 +65,16 @@ void handler(env env) {
 }
 
 int main(int argc, char **argv) {
-  dynamic_island_init(&g_dynamic_island);
-
-  if (*getenv("P_DYNAMIC_ISLAND_NOTIFICATION_ENABLED") == (char)'1') {
-    database_init(&g_notification_helper);
-  }
-
   if (argc < 2) {
     printf("Usage: provider \"<bootstrap name>\"\n");
     exit(1);
+  }
+
+  dynamic_island_init(&g_dynamic_island);
+
+  if (getenv("P_DYNAMIC_ISLAND_NOTIFICATION_ENABLED") == NULL &&
+      *getenv("P_DYNAMIC_ISLAND_NOTIFICATION_ENABLED") == (char)'1') {
+    database_init(&g_notification_helper);
   }
 
   event_server_begin(handler, argv[1]);
