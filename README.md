@@ -38,52 +38,38 @@ Installation
 - sf-symbols (`brew install --cask sf-symbols`)
 - jq (`brew install jq`)
 
-### Getting Started (If you're not using SketchyBar already)
-Clone the repository inside `~/.config/sketchybar/plugins`, take the default `sketchybarrc` and restart `sketchybar`,
+### Getting Started
+This program utilizes the "Multiple Bars" feature from SketchyBar. Symlink the SketchyBar binary with a different name and clone the repository inside `~/.config/dynamic-island-sketchybar`
 ```bash
-mkdir -p ~/.config/sketchybar/plugins
-cd ~/.config/sketchybar/plugins
-git clone https://github.com/crissNb/Dynamic-Island-Sketchybar.git
-mv Dynamic-Island-Sketchybar/sketchybarrc.example ../sketchybarrc
+ln -s $(which sketchybar) $(dirname $(which sketchybar))/dynamic-island-sketchybar && git clone https://github.com/crissNb/Dynamic-Island-Sketchybar.git ~/.config/dynamic-island-sketchybar
 ```
 
-Now a `userconfig.sh` file must be copied to `~/.config/sketchybar/` directory. This can be done by copying an appropriate config file for your machine.
+Now a `userconfig.sh` file must be copied to `~/.config/dis-userconfig/` directory (if folder doesn't exist, create one). This can be done by copying an appropriate config file for your machine.
 
 E.g. for 2021 MacBook Pro 14 Inch:
 ```bash
-cp ~/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/userconfigs/mbp2021_14.sh ~/.config/sketchybar/userconfig.sh
+mkdir -p ~/.config/dis-userconfig && cp ~/.config/dynamic-island-sketchybar/userconfigs/mbp2021_14.sh ~/.config/dis-userconfig/userconfig.sh
 ```
-The file must be called `userconfig.sh` and located right under sketchybar config directory for dynamic island to function.
+The file must be called `userconfig.sh` and located right under dis-userconfig directory for dynamic island to function.
 
-Finally, restart SketchyBar.
+Finally, the Dynamic Island can be opened via
 ```bash
-brew services restart sketchybar
+dynamic-island-sketchybar
 ```
 
-NOTE: There appears to be a bug that dynamic island helper program does not run the first time it is installed (after restarting sketchybar). If this is the case, simply restart sketchybar once again by typing in `brew services restart sketchybar` once again.
+NOTE: There appears to be a bug that dynamic island helper program does not run the first time it is installed (after restarting sketchybar). If this is the case, simply restart the program.
 
 ##
 
 ### For existing SketchyBar users
-Add this line of code to the beginning of your `sketchybarrc` file.
-```bash
-PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
-source "$PLUGIN_DIR/Dynamic-Island-Sketchybar/item.sh"
-```
-
-Other Sketchybar configurations should be done after loading the Dynamic-Island, as it also touches the SketchyBar defaults.
-
-You can to adjust default settings with `sketchybar --default`.
-See `sketchybarrc.example` of this repository for example on how to set up Dynamic-Island-Sketchybar.
-
 By default, this plugin is meant to be used with macOS's default menu bar. 
 When using this plugin without macOS's default menu bar (with `Automatically hide and show the menu bar` option turned on), you need to set P_DYNAMIC_ISLAND_TOPMOST option to "off" ([see configuration](#configuration)).
 
 Updating
 =============
-Just go into the `Dynamic-Island-Sketchybar` and pull the changes.
+Just go into the `dynamic-island-sketchybar` directory and pull the changes.
 ```bash
-cd ~/.config/sketchybar/plugins/Dynamic-Island-Sketchybar
+cd ~/.config/dynamic-island-sketchybar
 git pull
 ```
 
@@ -98,7 +84,7 @@ If you prefer to use the macOS's default menu bar, you need to enable P_DYNAMIC_
 
 Configuration
 =============
-All Dynamic Island configuration can be done in `~/.config/sketchybar/userconfig.sh`. There are `userconfig.sh` presets reated in `~/.config/sketchybar/plugins/Dynamic-Island-Sketchybar/userconfigs/`, so copy the appropriate config for your machine during installation.
+All Dynamic Island configuration can be done in `~/.config/dis-userconfig/userconfig.sh`. There are `userconfig.sh` presets reated in `~/.config/dynamic-island-sketchybar/userconfigs/`, so copy the appropriate config for your machine during installation.
 
 By default, dynamic island will take input from Apple Music. If you would like to use Spotify instead, change `P_DYNAMIC_ISLAND_MUSIC_SOURCE` variable in `userconfig.sh` to "Spotify" instead.
 
@@ -115,7 +101,7 @@ P_DYNAMIC_ISLAND_VOLUME_ENABLED=0
 
 Notifications are disabled by default.
 
-It is recommended to restart sketchybar service by `brew services restart sketchybar`, once you have made your changes to `userconfig.sh` (especially disabling or enabling features will only take effect when sketchybar is restarted).
+It is recommended to restart sketchybar service, once you have made your changes to `userconfig.sh` (especially disabling or enabling features will only take effect when sketchybar is restarted).
 
 Features
 ========
