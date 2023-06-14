@@ -2,4 +2,4 @@
 echo "brightness"
 echo "$INFO"
 
-sketchybar --trigger dynamic_island_queue INFO="brightness" ISLAND_ARGS="$INFO"
+dynamic-island-sketchybar --trigger dynamic_island_queue INFO="brightness" ISLAND_ARGS="$INFO"

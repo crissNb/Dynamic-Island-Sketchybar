@@ -59,6 +59,8 @@ dynamic-island-sketchybar
 
 NOTE: There appears to be a bug that dynamic island helper program does not run the first time it is installed (after restarting sketchybar). If this is the case, simply restart the program.
 
+If you'd like to have the `dynamic-island-sketchybar` run automatically, then consider putting the command in `sketchybarrc`.
+
 ##
 
 ### For existing SketchyBar users

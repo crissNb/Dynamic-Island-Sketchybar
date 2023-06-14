@@ -35,7 +35,7 @@ applogo=(
 	drawing=off
 )
 
-sketchybar --add item island.appname popup.island \
+dynamic-island-sketchybar --add item island.appname popup.island \
 	--set island.appname "${appname[@]}" \
 	--add item island.appbackground popup.island \
 	--set island.appbackground "${appbackground[@]}" \

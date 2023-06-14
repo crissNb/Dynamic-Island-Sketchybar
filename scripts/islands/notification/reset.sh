@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-sketchybar --set island.notification_title drawing=off \
+dynamic-island-sketchybar --set island.notification_title drawing=off \
 	--set island.notification_subtitle drawing=off \
 	--set island.notification_body drawing=off \
 	--set island.notification_logo drawing=off \
@@ -8,7 +8,7 @@ sketchybar --set island.notification_title drawing=off \
 
 sleep 0.1
 
-sketchybar --set island popup.drawing=false
+dynamic-island-sketchybar --set island popup.drawing=false
 
 # call end event
-sketchybar --trigger dynamic_island_request
+dynamic-island-sketchybar --trigger dynamic_island_request

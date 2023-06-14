@@ -39,7 +39,7 @@ if [[ $override == "0" ]]; then
 		popup.height="$P_DYNAMIC_ISLAND_BRIGHTNESS_DEFAULT_HEIGHT"
 	)
 
-	sketchybar --set island.brightness_placeholder1 drawing=on \
+	dynamic-island-sketchybar --set island.brightness_placeholder1 drawing=on \
 		--set island.brightness_placeholder2 drawing=on \
 		--set island.brightness_placeholder3 drawing=on \
 		--set island.brightness_icon drawing=on icon="$ICON" \
@@ -48,33 +48,33 @@ if [[ $override == "0" ]]; then
 fi
 
 if [[ $override == "0" ]]; then
-	sketchybar --animate sin 15 --set island.brightness_placeholder1 width="$SQUISH_WIDTH" width="$MAX_EXPAND_SQUISH_WIDTH" width="$P_DYNAMIC_ISLAND_BRIGHTNESS_MAX_EXPAND_WIDTH" \
+	dynamic-island-sketchybar --animate sin 15 --set island.brightness_placeholder1 width="$SQUISH_WIDTH" width="$MAX_EXPAND_SQUISH_WIDTH" width="$P_DYNAMIC_ISLAND_BRIGHTNESS_MAX_EXPAND_WIDTH" \
 		--animate sin 20 --set island popup.background.corner_radius="$P_DYNAMIC_ISLAND_BRIGHTNESS_CORNER_RAD" \
 		--animate sin 20 --set island popup.height="$MAX_EXPAND_HEIGHT" popup.height="$P_DYNAMIC_ISLAND_BRIGHTNESS_EXPAND_HEIGHT"
 else
-	sketchybar --animate sin 15 --set island.brightness_placeholder1 width="$MAX_EXPAND_SQUISH_WIDTH" width="$P_DYNAMIC_ISLAND_BRIGHTNESS_MAX_EXPAND_WIDTH" \
+	dynamic-island-sketchybar --animate sin 15 --set island.brightness_placeholder1 width="$MAX_EXPAND_SQUISH_WIDTH" width="$P_DYNAMIC_ISLAND_BRIGHTNESS_MAX_EXPAND_WIDTH" \
 		--animate sin 20 --set island popup.background.corner_radius="$P_DYNAMIC_ISLAND_BRIGHTNESS_CORNER_RAD" \
 		--animate sin 20 --set island popup.height="$MAX_EXPAND_HEIGHT" popup.height="$P_DYNAMIC_ISLAND_BRIGHTNESS_EXPAND_HEIGHT"
 fi
 
 barWidth=$(bc -l <<<"$brightness/100*240")
 barWidth=$(printf "%.0f" "$barWidth")
-sketchybar --animate tanh 15 --set island.brightness_bar width="$barWidth"
+dynamic-island-sketchybar --animate tanh 15 --set island.brightness_bar width="$barWidth"
 
-sketchybar --animate sin 10 --set island.brightness_bar background.color="$P_DYNAMIC_ISLAND_COLOR_WHITE" \
+dynamic-island-sketchybar --animate sin 10 --set island.brightness_bar background.color="$P_DYNAMIC_ISLAND_COLOR_WHITE" \
 	--animate sin 10 --set island.brightness_bar background.border_color="$P_DYNAMIC_ISLAND_COLOR_WHITE" \
 	--animate sin 10 --set island.brightness_icon icon.color="$P_DYNAMIC_ISLAND_COLOR_WHITE"
 
 sleep 0.8
 
-sketchybar --animate tanh 20 --set island.brightness_icon icon.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT" \
+dynamic-island-sketchybar --animate tanh 20 --set island.brightness_icon icon.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT" \
 	--animate tanh 20 --set island.brightness_bar background.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
 
 sleep 0.2
 
-sketchybar --set island.brightness_bar width=10
+dynamic-island-sketchybar --set island.brightness_bar width=10
 
-sketchybar --animate tanh 20 --set island popup.height="$P_DYNAMIC_ISLAND_BRIGHTNESS_DEFAULT_HEIGHT" \
+dynamic-island-sketchybar --animate tanh 20 --set island popup.height="$P_DYNAMIC_ISLAND_BRIGHTNESS_DEFAULT_HEIGHT" \
 	--animate tanh 20 --set island.brightness_placeholder1 width="$SQUISH_WIDTH" width="$P_DYNAMIC_ISLAND_BRIGHTNESS_EXPAND_WIDTH" \
 	--animate sin 25 --set island popup.background.corner_radius="$P_DYNAMIC_ISLAND_DEFAULT_CORNER_RADIUS"
 

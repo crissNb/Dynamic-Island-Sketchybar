@@ -63,7 +63,7 @@ bar=(
 )
 
 #create brightness items
-sketchybar --set island popup.height="$P_DYNAMIC_ISLAND_BRIGHTNESS_DEFAULT_HEIGHT" \
+dynamic-island-sketchybar --set island popup.height="$P_DYNAMIC_ISLAND_BRIGHTNESS_DEFAULT_HEIGHT" \
 	--add item island.brightness_placeholder1 popup.island \
 	--set island.brightness_placeholder1 "${placeholder1[@]}" \
 	--add item island.brightness_placeholder2 popup.island \

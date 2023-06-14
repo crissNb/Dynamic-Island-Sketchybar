@@ -1,5 +1,5 @@
 #!/usr/bin/env/sh
-sketchybar --add item island.wifi_ssid popup.island \
+dynamic-island-sketchybar --add item island.wifi_ssid popup.island \
 		   --set island.wifi_ssid		width=0 \
 										label.color=$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT \
 										label.padding_left=0 \

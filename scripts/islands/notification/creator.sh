@@ -64,7 +64,7 @@ logo=(
 	drawing=off
 )
 
-sketchybar --add item island.notification_title popup.island \
+dynamic-island-sketchybar --add item island.notification_title popup.island \
 	--set island.notification_title "${title[@]}" \
 	--add item island.notification_subtitle popup.island \
 	--set island.notification_subtitle "${subtitle[@]}" \

@@ -4,6 +4,6 @@ case "$SENDER" in
 	echo "front_app_switched"
 	echo "$INFO"
 
-	sketchybar --trigger dynamic_island_queue INFO="appswitch" ISLAND_ARGS="$INFO"
+	dynamic-island-sketchybar --trigger dynamic_island_queue INFO="appswitch" ISLAND_ARGS="$INFO"
 	;;
 esac

@@ -25,16 +25,16 @@ PLAYER_STATE=$(osascript -e "tell application \"$1\" to return (get player state
 if [[ $(cat "$cache") == 0 ]]; then
 	# resume
 	printf 1 >"$cache"
-	sketchybar --trigger dynamic_island_queue INFO="pause" ISLAND_ARGS="1"
+	dynamic-island-sketchybar --trigger dynamic_island_queue INFO="pause" ISLAND_ARGS="1"
 	exit 0
 fi
 
 if [[ $PLAYER_STATE == "paused" ]]; then
 	# paused
 	printf 0 >"$cache"
-	sketchybar --trigger dynamic_island_queue INFO="pause" ISLAND_ARGS="0"
+	dynamic-island-sketchybar --trigger dynamic_island_queue INFO="pause" ISLAND_ARGS="0"
 	exit 0
 fi
 
 # music display
-sketchybar --trigger dynamic_island_queue INFO="music" ISLAND_ARGS=" "
+dynamic-island-sketchybar --trigger dynamic_island_queue INFO="music" ISLAND_ARGS=" "

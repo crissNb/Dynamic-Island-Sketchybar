@@ -33,7 +33,7 @@ power_icon=(
 	drawing=off
 )
 
-sketchybar --add item island.power_text popup.island \
+dynamic-island-sketchybar --add item island.power_text popup.island \
 	--set island.power_text "${power_text[@]}" \
 	--add item island.power_background popup.island \
 	--set island.power_background "${power_background[@]}" \

@@ -62,7 +62,7 @@ static inline mach_port_t mach_get_bs_port() {
 
   mach_port_t port;
   if (bootstrap_look_up(bs_port,
-                        "git.felix.sketchybar",
+                        "git.felix.dynamic-island-sketchybar",
                         &port                  ) != KERN_SUCCESS) {
     return 0;
   }

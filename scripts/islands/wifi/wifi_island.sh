@@ -28,38 +28,38 @@ if [[ $override == "0" ]]; then
 		popup.horizontal=on
 		popup.height="$P_DYNAMIC_ISLAND_DEFAULT_HEIGHT"
 	)
-	sketchybar --set island.wifi_ssid drawing=on \
+	dynamic-island-sketchybar --set island.wifi_ssid drawing=on \
 		--set island.wifi_background drawing=on \
 		--set island.wifi_icon drawing=on \
 		--set island "${island[@]}"
 fi
 
-sketchybar --set island.wifi_icon label="$icon" \
+dynamic-island-sketchybar --set island.wifi_icon label="$icon" \
 	--set island.wifi_ssid label="$ssid"
 
 if [[ $override == "0" ]]; then
-	sketchybar --animate tanh 15 --set island.wifi_background width="$P_DYNAMIC_ISLAND_WIFI_EXPAND_WIDTH" width="$MAX_EXPAND_SQUISH_WIDTH" width="$P_DYNAMIC_ISLAND_WIFI_MAX_EXPAND_WIDTH" \
+	dynamic-island-sketchybar --animate tanh 15 --set island.wifi_background width="$P_DYNAMIC_ISLAND_WIFI_EXPAND_WIDTH" width="$MAX_EXPAND_SQUISH_WIDTH" width="$P_DYNAMIC_ISLAND_WIFI_MAX_EXPAND_WIDTH" \
 		--animate tanh 20 --set island popup.height="$MAX_EXPAND_HEIGHT" popup.height="$P_DYNAMIC_ISLAND_WIFI_EXPAND_HEIGHT" \
 		--animate tanh 20 --set island popup.background.corner_radius="$P_DYNAMIC_ISLAND_WIFI_CORNER_RAD"
 else
-	sketchybar --animate tanh 15 --set island.wifi_background width="$MAX_EXPAND_SQUISH_WIDTH" width="$P_DYNAMIC_ISLAND_WIFI_EXPAND_WIDTH" \
+	dynamic-island-sketchybar --animate tanh 15 --set island.wifi_background width="$MAX_EXPAND_SQUISH_WIDTH" width="$P_DYNAMIC_ISLAND_WIFI_EXPAND_WIDTH" \
 		--animate tanh 20 --set island popup.height=$MAX_EXPAND_HEIGHT popup.height="$P_DYNAMIC_ISLAND_WIFI_EXPAND_HEIGHT" \
 		--animate tanh 20 --set island popup.background.corner_radius="$P_DYNAMIC_ISLAND_WIFI_CORNER_RAD"
 fi
 
 sleep 0.2
 
-sketchybar --animate sin 15 --set island.wifi_ssid label.color="$P_DYNAMIC_ISLAND_COLOR_WHITE" \
+dynamic-island-sketchybar --animate sin 15 --set island.wifi_ssid label.color="$P_DYNAMIC_ISLAND_COLOR_WHITE" \
 	--animate sin 15 --set island.wifi_icon label.color="$P_DYNAMIC_ISLAND_COLOR_WHITE"
 
 sleep 0.8
 
-sketchybar --animate tanh 15 --set island.wifi_ssid label.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT" \
+dynamic-island-sketchybar --animate tanh 15 --set island.wifi_ssid label.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT" \
 	--animate tanh 15 --set island.wifi_icon label.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
 
 sleep 0.1
 
-sketchybar --animate tanh 20 --set island popup.height="$P_DYNAMIC_ISLAND_DEFAULT_HEIGHT" \
+dynamic-island-sketchybar --animate tanh 20 --set island popup.height="$P_DYNAMIC_ISLAND_DEFAULT_HEIGHT" \
 	--animate sin 25 --set island popup.background.corner_radius="$P_DYNAMIC_ISLAND_DEFAULT_CORNER_RADIUS" \
 	--animate tanh 15 --set island.wifi_background width=$SQUISH_WIDTH width="$P_DYNAMIC_ISLAND_WIFI_EXPAND_WIDTH"
 

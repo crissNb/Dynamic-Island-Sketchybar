@@ -74,7 +74,7 @@ resume_bar=(
 )
 
 # music island
-sketchybar --add item island.music_artwork popup.island \
+dynamic-island-sketchybar --add item island.music_artwork popup.island \
 	--set island.music_artwork "${artwork[@]}" \
 	--add item island.music_title popup.island \
 	--set island.music_title "${title[@]}" \
@@ -84,7 +84,7 @@ sketchybar --add item island.music_artwork popup.island \
 	--set island.music_placeholder "${placeholder[@]}"
 
 # pause island
-sketchybar --add item island.resume_text popup.island \
+dynamic-island-sketchybar --add item island.resume_text popup.island \
 	--set island.resume_text "${resume_text[@]}" \
 	--add item island.resume_bar popup.island \
 	--set island.resume_bar "${resume_bar[@]}"
