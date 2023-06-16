@@ -5,3 +5,4 @@ islandhelper
 # macos files
 .DS_Store
 scripts/islands/music/data/cache
+userconfig.sh

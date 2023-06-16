@@ -10,7 +10,7 @@ source "$DYNAMIC_ISLAND_DIR/helper.sh"
 sleep 0.5
 
 # Load user config overrides
-USER_CONFIG="$HOME/.config/dis-userconfig/userconfig.sh"
+USER_CONFIG="$DYNAMIC_ISLAND_DIR/userconfig.sh"
 test -f "$USER_CONFIG" && source "$USER_CONFIG"
 
 PADDING=3
@@ -50,7 +50,7 @@ sketchy_default=(
 )
 
 dynamic-island-sketchybar --bar "${sketchy_bar[@]}"
-	
+
 dynamic-island-sketchybar --default "${sketchy_default[@]}"
 
 island=(
