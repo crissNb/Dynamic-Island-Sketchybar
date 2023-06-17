@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source "$HOME/.config/dis-userconfig/userconfig.sh"
+source "$HOME/.config/dynamic-island-sketchybar/userconfig.sh"
 
 SQUISH_WIDTH=$(($P_DYNAMIC_ISLAND_BRIGHTNESS_EXPAND_WIDTH - $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
 MAX_EXPAND_SQUISH_WIDTH=$(($P_DYNAMIC_ISLAND_BRIGHTNESS_MAX_EXPAND_WIDTH + $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
