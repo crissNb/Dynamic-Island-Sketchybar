@@ -96,7 +96,7 @@ If you prefer to use the macOS's default menu bar, you need to enable P_DYNAMIC_
 Configuration
 =============
 
-All Dynamic Island configuration can be done in `~/.config/dis-userconfig/userconfig.sh`. There are `userconfig.sh` presets reated in `~/.config/dynamic-island-sketchybar/userconfigs/`, so copy the appropriate config for your machine during installation.
+All Dynamic Island configuration can be done in `~/.config/dynamic-island-sketchybar/userconfig.sh`. There are `userconfig.sh` presets reated in `~/.config/dynamic-island-sketchybar/userconfigs/`, so copy the appropriate config for your machine during installation.
 
 By default, dynamic island will take input from Apple Music. If you would like to use Spotify instead, change `P_DYNAMIC_ISLAND_MUSIC_SOURCE` variable in `userconfig.sh` to "Spotify" instead.
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source "$HOME/.config/dis-userconfig/userconfig.sh"
+source "$HOME/.config/dynamic-island-sketchybar/userconfig.sh"
 
 ARTWORK_LOCATION="$DYNAMIC_ISLAND_DIR/scripts/islands/music/artwork.jpg"
 INFO_SQUISH_WIDTH=$(($P_DYNAMIC_ISLAND_MUSIC_INFO_EXPAND_WIDTH - $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
