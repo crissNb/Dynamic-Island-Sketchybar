@@ -19,7 +19,7 @@ if [ "$(echo "$INFO" | jq -r '.["Player State"]')" = "Stopped" ]; then
 	exit 0
 fi
 
-cache="$script_dir/data/cache"
+cache="$script_dir/artwork.jpg"
 PLAYER_STATE=$(osascript -e "tell application \"$1\" to return (get player state)")
 
 if [[ $(cat "$cache") == 0 ]]; then
