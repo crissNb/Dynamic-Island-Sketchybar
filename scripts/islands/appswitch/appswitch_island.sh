@@ -29,8 +29,8 @@ if [[ $override == "0" ]]; then
 		--set island "${island[@]}"
 fi
 
-dynamic-island-sketchybar --set island.appname label="$appName" \
-	--set island.applogo background.image="app.$BUNDLENAME"
+dynamic-island-sketchybar --set island.appname label="$appName"
+	# --set island.applogo background.image="app.$BUNDLENAME"
 
 # determine expand width based on the character length
 charLength=${#appName}
