@@ -13,19 +13,6 @@ appname=(
 	drawing=off
 )
 
-appbackground=(
-	width="$P_DYNAMIC_ISLAND_APPSWITCH_EXPAND_WIDTH"
-	background.height="$P_DYNAMIC_ISLAND_DEFAULT_HEIGHT"
-	background.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
-	background.border_color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
-	background.corner_radius="$P_DYNAMIC_ISLAND_DEFAULT_CORNER_RADIUS"
-	background.padding_left=0
-	background.padding_right=0
-	background.y_offset=0
-	background.shadow.drawing=off
-	drawing=off
-)
-
 applogo=(
 	background.color="$P_DYNAMIC_ISLAND_COLOR_ICON_HIDDEN"
 	background.padding_left=20
@@ -35,9 +22,7 @@ applogo=(
 	drawing=off
 )
 
-dynamic-island-sketchybar --add item island.appname popup.island \
+dynamic-island-sketchybar --add item island.appname right \
 	--set island.appname "${appname[@]}" \
-	--add item island.appbackground popup.island \
-	--set island.appbackground "${appbackground[@]}" \
-	--add item island.applogo popup.island \
+	--add item island.applogo popup.island left \
 	--set island.applogo "${applogo[@]}"

@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-source "$HOME/.config/dynamic-island-sketchybar/userconfig.sh"
+source "$DYNAMIC_ISLAND_DIR/userconfig.sh"
 
-SQUISH_WIDTH=$(($P_DYNAMIC_ISLAND_APPSWITCH_EXPAND_WIDTH - $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
 MAX_EXPAND_HEIGHT=$(($P_DYNAMIC_ISLAND_APPSWITCH_EXPAND_HEIGHT + $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
 
 args=$*
@@ -16,35 +15,33 @@ appName="${strarr[1]}"
 BUNDLENAME=$(osascript -e "id of app \"$appName\"")
 
 if [[ $override == "0" ]]; then
-	island=(
-		popup.drawing=true
-		background.drawing=false
-		popup.horizontal=on
-		popup.height="$P_DYNAMIC_ISLAND_DEFAULT_HEIGHT"
-	)
-
 	dynamic-island-sketchybar --set island.appname drawing=on \
-		--set island.appbackground drawing=on \
-		--set island.applogo drawing=on \
-		--set island "${island[@]}"
+		--set island.applogo drawing=on
 fi
 
 dynamic-island-sketchybar --set island.appname label="$appName"
 	# --set island.applogo background.image="app.$BUNDLENAME"
 
 # determine expand width based on the character length
-charLength=${#appName}
-expandSize=$(bc -l <<<"$P_DYNAMIC_ISLAND_APPSWITCH_MAX_EXPAND_WIDTH+$charLength*15")
-expand_squish=$(($expandSize + $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
+char_length=${#appName}
+expand_size=$(bc -l <<<"$P_DYNAMIC_ISLAND_APPSWITCH_MAX_EXPAND_WIDTH+$char_length*15")
+expand_squish=$(($expand_size + $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
+
+expand_size_margin=$(($P_DYNAMIC_ISLAND_MONITOR_HORIZONTAL_RESOLUTION / 2 - $expand_size))
+expand_squish_margin=$(($P_DYNAMIC_ISLAND_MONITOR_HORIZONTAL_RESOLUTION / 2 - $expand_squish))
+
 
 if [[ $override == "0" ]]; then
-	dynamic-island-sketchybar --animate tanh 15 --set island.appbackground width="$P_DYNAMIC_ISLAND_APPSWITCH_EXPAND_WIDTH" width="$expand_squish" width="$expandSize" \
-		--animate tanh 20 --set island popup.height="$MAX_EXPAND_HEIGHT" popup.height="$P_DYNAMIC_ISLAND_APPSWITCH_EXPAND_HEIGHT" \
-		--animate tanh 20 --set island popup.background.corner_radius="$P_DYNAMIC_ISLAND_APPSWITCH_CORNER_RAD"
+
+    target_width=$(($P_DYNAMIC_ISLAND_MONITOR_HORIZONTAL_RESOLUTION / 2 - $P_DYNAMIC_ISLAND_DEFAULT_WIDTH - $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
+
+	dynamic-island-sketchybar --animate tanh 15 --bar margin="$target_width" margin="$expand_squish_margin" margin="$expand_size_margin" \
+		--animate tanh 20 --bar height="$MAX_EXPAND_HEIGHT" height="$P_DYNAMIC_ISLAND_APPSWITCH_EXPAND_HEIGHT" \
+		--animate tanh 20 --bar corner_radius="$P_DYNAMIC_ISLAND_APPSWITCH_CORNER_RAD"
 else
-	dynamic-island-sketchybar --animate tanh 15 --set island.appbackground width="$expand_squish" width="$expandSize" \
-		--animate tanh 20 --set island popup.height="$MAX_EXPAND_HEIGHT" popup.height="$P_DYNAMIC_ISLAND_APPSWITCH_EXPAND_HEIGHT" \
-		--animate tanh 20 --set island popup.background.corner_radius="$P_DYNAMIC_ISLAND_APPSWITCH_CORNER_RAD"
+	dynamic-island-sketchybar --animate tanh 15 --bar margin="$expand_squish_margin" margin="$expand_size_margin" \
+		--animate tanh 20 --bar height="$MAX_EXPAND_HEIGHT" height="$P_DYNAMIC_ISLAND_APPSWITCH_EXPAND_HEIGHT" \
+		--animate tanh 20 --bar corner_radius="$P_DYNAMIC_ISLAND_APPSWITCH_CORNER_RAD"
 fi
 
 sleep 0.2
@@ -59,10 +56,7 @@ dynamic-island-sketchybar --animate tanh 15 --set island.appname label.color="$P
 
 sleep 0.1
 
-dynamic-island-sketchybar --animate tanh 20 --set island popup.height="$P_DYNAMIC_ISLAND_DEFAULT_HEIGHT" \
-	--animate sin 25 --set island popup.background.corner_radius="$P_DYNAMIC_ISLAND_DEFAULT_CORNER_RADIUS" \
-	--animate tanh 15 --set island.appbackground width=$SQUISH_WIDTH width="$P_DYNAMIC_ISLAND_APPSWITCH_EXPAND_WIDTH"
-
+source "$DYNAMIC_ISLAND_DIR/scripts/islands/restore.sh"
 sleep 0.4
 
 source "$DYNAMIC_ISLAND_DIR/scripts/islands/appswitch/reset.sh"

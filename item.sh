@@ -16,18 +16,17 @@ test -f "$USER_CONFIG" && source "$USER_CONFIG"
 PADDING=3
 
 sketchy_bar=(
-	height=32
-	color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
+	height="$P_DYNAMIC_ISLAND_DEFAULT_HEIGHT"
+	color="$P_DYNAMIC_ISLAND_COLOR_BLACK"
 	shadow=off
 	position=top
 	sticky=on
-	padding_right=$((10 - $PADDING))
 	topmost="${P_DYNAMIC_ISLAND_TOPMOST:=off}"
-	padding_left=18
-	corner_radius=9
-	y_offset=0
-	margin=10
-	blur_radius=30
+	padding_left=0
+    padding_right=0
+	corner_radius="$P_DYNAMIC_ISLAND_CORNER_RADIUS"
+	y_offset="-$P_DYNAMIC_ISLAND_CORNER_RADIUS"
+    margin=$(($P_DYNAMIC_ISLAND_MONITOR_HORIZONTAL_RESOLUTION / 2 - $P_DYNAMIC_ISLAND_DEFAULT_WIDTH))
 	notch_width=0
 )
 
@@ -43,10 +42,6 @@ sketchy_default=(
 	label.padding_right="$PADDING"
 	background.padding_right="$PADDING"
 	background.padding_left="$PADDING"
-	popup.background.corner_radius=11
-	popup.background.shadow.drawing=off
-	popup.background.border_width=2
-	popup.horizontal=on
 )
 
 dynamic-island-sketchybar --bar "${sketchy_bar[@]}"
@@ -57,26 +52,7 @@ island=(
 	drawing=on
 	mach_helper=git.crissnb.islandhelper
 	update_freq=2
-	width="$P_DYNAMIC_ISLAND_DEFAULT_WIDTH"
-	background.color="$P_DYNAMIC_ISLAND_COLOR_BLACK"
-	background.corner_radius="$P_DYNAMIC_ISLAND_DEFAULT_CORNER_RADIUS"
-	background.drawing=true
-	background.height=50
-	background.padding_left=0
-	background.padding_right=0
-	background.y_offset=9
-	popup.background.height=30
-	popup.align=center
-	popup.drawing=false
-	popup.height="$P_DYNAMIC_ISLAND_DEFAULT_HEIGHT"
-	popup.horizontal=on
-	popup.y_offset=-69
-	popup.background.border_color="$P_DYNAMIC_ISLAND_COLOR_BLACK"
-	popup.background.color="$P_DYNAMIC_ISLAND_COLOR_BLACK"
-	popup.background.corner_radius="$P_DYNAMIC_ISLAND_DEFAULT_CORNER_RADIUS"
-	popup.background.padding_left=0
-	popup.background.padding_right=0
-	popup.background.shadow.drawing=off
+	width=0
 )
 
 dynamic-island-sketchybar --add event dynamic_island_queue \
