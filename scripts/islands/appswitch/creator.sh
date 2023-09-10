@@ -1,22 +1,20 @@
 #!/usr/bin/env/bash
 
 appname=(
-	width=0
+	width=10
 	label.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
-	label.padding_left=0
-	label.padding_right=0
 	label.font="$P_DYNAMIC_ISLAND_FONT:Bold:14.0"
-	label.y_offset=-17
+	label.y_offset=-5
 	label.align=right
-	background.padding_left=5
-	background.padding_right=0
+	padding_left=0
+	padding_right=5
 	drawing=off
 )
 
 applogo=(
 	background.color="$P_DYNAMIC_ISLAND_COLOR_ICON_HIDDEN"
-	background.padding_left=20
-	background.padding_right=5
+	padding_left=20
+	padding_right=5
 	background.image.scale="$P_DYNAMIC_ISLAND_APPSWITCH_ICON_SIZE"
 	y_offset=-16
 	drawing=off

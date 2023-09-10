@@ -35,16 +35,16 @@ if [[ $override == "0" ]]; then
 
     target_width=$(($P_DYNAMIC_ISLAND_MONITOR_HORIZONTAL_RESOLUTION / 2 - $P_DYNAMIC_ISLAND_DEFAULT_WIDTH - $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
 
-	dynamic-island-sketchybar --animate tanh 15 --bar margin="$target_width" margin="$expand_squish_margin" margin="$expand_size_margin" \
-		--animate tanh 20 --bar height="$MAX_EXPAND_HEIGHT" height="$P_DYNAMIC_ISLAND_APPSWITCH_EXPAND_HEIGHT" \
-		--animate tanh 20 --bar corner_radius="$P_DYNAMIC_ISLAND_APPSWITCH_CORNER_RAD"
+	dynamic-island-sketchybar --animate tanh 8 --bar margin="$target_width" margin="$expand_squish_margin" margin="$expand_size_margin" \
+		--animate tanh 10 --bar height="$MAX_EXPAND_HEIGHT" height="$P_DYNAMIC_ISLAND_APPSWITCH_EXPAND_HEIGHT" \
+		--animate tanh 10 --bar corner_radius="$P_DYNAMIC_ISLAND_APPSWITCH_CORNER_RAD"
 else
-	dynamic-island-sketchybar --animate tanh 15 --bar margin="$expand_squish_margin" margin="$expand_size_margin" \
-		--animate tanh 20 --bar height="$MAX_EXPAND_HEIGHT" height="$P_DYNAMIC_ISLAND_APPSWITCH_EXPAND_HEIGHT" \
-		--animate tanh 20 --bar corner_radius="$P_DYNAMIC_ISLAND_APPSWITCH_CORNER_RAD"
+	dynamic-island-sketchybar --animate tanh 10 --bar margin="$expand_squish_margin" margin="$expand_size_margin" \
+		--animate tanh 10 --bar height="$MAX_EXPAND_HEIGHT" height="$P_DYNAMIC_ISLAND_APPSWITCH_EXPAND_HEIGHT" \
+		--animate tanh 10 --bar corner_radius="$P_DYNAMIC_ISLAND_APPSWITCH_CORNER_RAD"
 fi
 
-sleep 0.2
+sleep 0.1
 
 dynamic-island-sketchybar --animate sin 15 --set island.appname label.color="$P_DYNAMIC_ISLAND_COLOR_WHITE" \
 	--animate sin 15 --set island.applogo background.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"

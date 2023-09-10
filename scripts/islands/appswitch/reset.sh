@@ -5,5 +5,3 @@ sleep 0.1
 
 # call end event
 dynamic-island-sketchybar --trigger dynamic_island_request
-
-source "$DYNAMIC_ISLAND_DIR/scripts/islands/restore.sh"
