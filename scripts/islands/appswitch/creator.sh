@@ -22,5 +22,5 @@ applogo=(
 
 dynamic-island-sketchybar --add item island.appname right \
 	--set island.appname "${appname[@]}" \
-	--add item island.applogo popup.island left \
+	--add item island.applogo left \
 	--set island.applogo "${applogo[@]}"

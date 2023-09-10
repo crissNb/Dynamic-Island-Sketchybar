@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 source "$HOME/.config/dynamic-island-sketchybar/userconfig.sh"
 
-SQUISH_WIDTH=$(($P_DYNAMIC_ISLAND_VOLUME_EXPAND_WIDTH - $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
-MAX_EXPAND_SQUISH_WIDTH=$(($P_DYNAMIC_ISLAND_VOLUME_MAX_EXPAND_WIDTH + $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
 MAX_EXPAND_HEIGHT=$(($P_DYNAMIC_ISLAND_VOLUME_EXPAND_HEIGHT + ($P_DYNAMIC_ISLAND_SQUISH_AMOUNT / 2)))
+EXPAND_SIZE=$(($P_DYNAMIC_ISLAND_MONITOR_HORIZONTAL_RESOLUTION / 2 - $P_DYNAMIC_ISLAND_VOLUME_MAX_EXPAND_WIDTH))
 
 args=$*
 IFS='|'
@@ -32,34 +31,27 @@ case $volume in
 esac
 
 if [[ $override == "0" ]]; then
-	island=(
-		popup.drawing=true
-		background.drawing=false
-		popup.horizontal=off
-		popup.height="$P_DYNAMIC_ISLAND_VOLUME_DEFAULT_HEIGHT"
-	)
-
 	# enable
-	dynamic-island-sketchybar --set island.volume_placeholder1 drawing=on \
-		--set island.volume_placeholder2 drawing=on \
-		--set island.volume_placeholder3 drawing=on \
-		--set island.volume_icon drawing=on \
+	dynamic-island-sketchybar --set island.volume_icon drawing=on \
 		icon="$ICON" \
-		--set island.volume_bar drawing=on \
-		--set island "${island[@]}"
+		--set island.volume_bar drawing=on
 fi
 
 if [[ $override == "0" ]]; then
-	dynamic-island-sketchybar --animate sin 15 --set island.volume_placeholder1 width="$SQUISH_WIDTH" width="$MAX_EXPAND_SQUISH_WIDTH" width="$P_DYNAMIC_ISLAND_VOLUME_MAX_EXPAND_WIDTH" \
-		--animate sin 20 --set island popup.background.corner_radius="$P_DYNAMIC_ISLAND_VOLUME_CORNER_RAD" \
-		--animate sin 20 --set island popup.height="$MAX_EXPAND_HEIGHT" popup.height="$P_DYNAMIC_ISLAND_VOLUME_EXPAND_HEIGHT"
+    target_width=$(($P_DYNAMIC_ISLAND_MONITOR_HORIZONTAL_RESOLUTION / 2 - $P_DYNAMIC_ISLAND_DEFAULT_WIDTH - $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
+
+    dynamic-island-sketchybar --animate tanh 8 --bar margin="$target_width" margin="$(($EXPAND_SIZE - $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))" margin="$EXPAND_SIZE" \
+		--animate tanh 10 --bar corner_radius="$P_DYNAMIC_ISLAND_VOLUME_CORNER_RAD" \
+		--animate tanh 10 --bar height="$MAX_EXPAND_HEIGHT" height="$P_DYNAMIC_ISLAND_VOLUME_EXPAND_HEIGHT"
 else
-	dynamic-island-sketchybar --animate sin 15 --set island.volume_placeholder1 width="$MAX_EXPAND_SQUISH_WIDTH" width="$P_DYNAMIC_ISLAND_VOLUME_MAX_EXPAND_WIDTH" \
-		--animate sin 20 --set island popup.background.corner_radius="$P_DYNAMIC_ISLAND_VOLUME_CORNER_RAD" \
-		--animate sin 20 --set island popup.height="$MAX_EXPAND_HEIGHT" popup.height="$P_DYNAMIC_ISLAND_VOLUME_EXPAND_HEIGHT"
+    dynamic-island-sketchybar --animate tanh 10 --bar margin="$(($EXPAND_SIZE + $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))" margin="$EXPAND_SIZE" \
+		--animate tanh 10 --bar corner_radius="$P_DYNAMIC_ISLAND_VOLUME_CORNER_RAD" \
+		--animate tanh 10 --bar height="$MAX_EXPAND_HEIGHT" height="$P_DYNAMIC_ISLAND_VOLUME_EXPAND_HEIGHT"
 fi
 
-barWidth=$(bc -l <<<"$volume/100*240")
+sleep 0.1
+
+barWidth=$(bc -l <<<"$volume/100*220")
 barWidth=$(printf "%.0f" "$barWidth")
 dynamic-island-sketchybar --animate tanh 15 --set island.volume_bar width="$barWidth"
 
@@ -69,16 +61,14 @@ dynamic-island-sketchybar --animate sin 10 --set island.volume_bar background.co
 
 sleep 0.8
 
-dynamic-island-sketchybar --animate tanh 20 --set island.volume_icon icon.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT" \
-	--animate tanh 20 --set island.volume_bar background.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
+dynamic-island-sketchybar --animate tanh 15 --set island.volume_icon icon.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT" \
+	--animate tanh 15 --set island.volume_bar background.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
 
-sleep 0.2
+sleep 0.1
 
-dynamic-island-sketchybar --set island.volume_bar width=10
+dynamic-island-sketchybar --animate tanh 5 --set island.volume_bar width=0
 
-dynamic-island-sketchybar --animate tanh 20 --set island popup.height="$P_DYNAMIC_ISLAND_VOLUME_DEFAULT_HEIGHT" \
-	--animate tanh 20 --set island.volume_placeholder1 width=$SQUISH_WIDTH width="$P_DYNAMIC_ISLAND_VOLUME_EXPAND_WIDTH" \
-	--animate sin 25 --set island popup.background.corner_radius="$P_DYNAMIC_ISLAND_DEFAULT_CORNER_RADIUS"
+source "$DYNAMIC_ISLAND_DIR/scripts/islands/restore.sh"
+sleep 0.4
 
-sleep 0.5
 source "$DYNAMIC_ISLAND_DIR/scripts/islands/volume/reset.sh"
