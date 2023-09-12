@@ -20,7 +20,6 @@ if [[ $override == "0" ]]; then
 fi
 
 dynamic-island-sketchybar --set island.appname label="$appName"
-	# --set island.applogo background.image="app.$BUNDLENAME"
 
 # determine expand width based on the character length
 char_length=${#appName}

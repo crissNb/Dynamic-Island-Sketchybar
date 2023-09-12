@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 source "$HOME/.config/dynamic-island-sketchybar/userconfig.sh"
 
-SQUISH_WIDTH=$(($P_DYNAMIC_ISLAND_BATTERY_EXPAND_WIDTH - $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
-MAX_EXPAND_SQUISH_WIDTH=$(($P_DYNAMIC_ISLAND_BATTERY_MAX_EXPAND_WIDTH + $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
 MAX_EXPAND_HEIGHT=$(($P_DYNAMIC_ISLAND_BATTERY_EXPAND_HEIGHT + $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
+EXPAND_SIZE=$(($P_DYNAMIC_ISLAND_MONITOR_HORIZONTAL_RESOLUTION / 2 - $P_DYNAMIC_ISLAND_BATTERY_MAX_EXPAND_WIDTH))
 
 args=$*
 IFS='|'
@@ -21,33 +20,26 @@ if [ "$power_source" == "AC" ]; then
 fi
 
 if [[ $override == "0" ]]; then
-	island=(
-		popup.drawing=true
-		background.drawing=false
-		popup.horizontal=on
-		popup.height="$P_DYNAMIC_ISLAND_DEFAULT_HEIGHT"
-	)
-
 	dynamic-island-sketchybar --set island.power_text drawing=on \
-		--set island.power_background drawing=on \
 		--set island.power_icon drawing=on \
-		--set island "${island[@]}"
 fi
 
 dynamic-island-sketchybar --set island.power_icon label="$icon" \
 	--set island.power_text label="$power_source"
 
 if [[ $override == "0" ]]; then
-	dynamic-island-sketchybar --animate tanh 15 --set island.power_background width="$P_DYNAMIC_ISLAND_BATTERY_EXPAND_WIDTH" width="$MAX_EXPAND_SQUISH_WIDTH" width="$P_DYNAMIC_ISLAND_BATTERY_MAX_EXPAND_WIDTH" \
-		--animate tanh 20 --set island popup.height="$MAX_EXPAND_HEIGHT" popup.height="$P_DYNAMIC_ISLAND_BATTERY_EXPAND_HEIGHT" \
-		--animate tanh 20 --set island popup.background.corner_radius="$P_DYNAMIC_ISLAND_BATTERY_CORNER_RAD"
+    target_width=$(($P_DYNAMIC_ISLAND_MONITOR_HORIZONTAL_RESOLUTION / 2 - $P_DYNAMIC_ISLAND_DEFAULT_WIDTH - $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
+
+    dynamic-island-sketchybar --animate tanh 8 --bar margin="$target_width" margin="$(($EXPAND_SIZE - $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))" margin="$EXPAND_SIZE" \
+		--animate tanh 10 --set island height="$MAX_EXPAND_HEIGHT" height="$P_DYNAMIC_ISLAND_BATTERY_EXPAND_HEIGHT" \
+		--animate tanh 10 --set island corner_radius="$P_DYNAMIC_ISLAND_BATTERY_CORNER_RAD"
 else
-	dynamic-island-sketchybar --animate tanh 15 --set island.power_background width="$MAX_EXPAND_SQUISH_WIDTH" width="$P_DYNAMIC_ISLAND_BATTERY_EXPAND_WIDTH" \
-		--animate tanh 20 --set island popup.height="$MAX_EXPAND_HEIGHT" popup.height="$P_DYNAMIC_ISLAND_BATTERY_EXPAND_HEIGHT" \
-		--animate tanh 20 --set island popup.background.corner_radius="$P_DYNAMIC_ISLAND_BATTERY_CORNER_RAD"
+    dynamic-island-sketchybar --animate tanh 8 --bar margin="$(($EXPAND_SIZE - $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))" margin="$EXPAND_SIZE" \
+		--animate tanh 10 --set island height="$MAX_EXPAND_HEIGHT" height="$P_DYNAMIC_ISLAND_BATTERY_EXPAND_HEIGHT" \
+		--animate tanh 10 --set island corner_radius="$P_DYNAMIC_ISLAND_BATTERY_CORNER_RAD"
 fi
 
-sleep 0.2
+sleep 0.1
 
 dynamic-island-sketchybar --animate sin 15 --set island.power_text label.color="$P_DYNAMIC_ISLAND_COLOR_WHITE" \
 	--animate sin 15 --set island.power_icon label.color="$P_DYNAMIC_ISLAND_COLOR_WHITE"
@@ -59,10 +51,7 @@ dynamic-island-sketchybar --animate tanh 15 --set island.power_text label.color=
 
 sleep 0.1
 
-dynamic-island-sketchybar --animate tanh 20 --set island popup.height="$P_DYNAMIC_ISLAND_DEFAULT_HEIGHT" \
-	--animate sin 25 --set island popup.background.corner_radius="$P_DYNAMIC_ISLAND_DEFAULT_CORNER_RADIUS" \
-	--animate tanh 15 --set island.power_background width="$SQUISH_WIDTH" width="$P_DYNAMIC_ISLAND_BATTERY_EXPAND_WIDTH"
-
+source "$DYNAMIC_ISLAND_DIR/scripts/islands/restore.sh"
 sleep 0.4
 
 source "$DYNAMIC_ISLAND_DIR/scripts/islands/power/reset.sh"

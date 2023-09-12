@@ -1,76 +1,29 @@
 #!/usr/bin/env bash
 
-placeholder1=(
-	width=192
-	background.height=2
-	background.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
-	background.border_color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
-	background.corner_radius="$P_DYNAMIC_ISLAND_DEFAULT_CORNER_RADIUS"
-	background.padding_left=5
-	background.padding_right=6
-	background.y_offset=0
-	background.shadow.drawing=off
-	drawing=off
-)
-
-placeholder2=(
-	width=10
-	background.height=2
-	background.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
-	background.border_color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
-	background.corner_radius="$P_DYNAMIC_ISLAND_DEFAULT_CORNER_RADIUS"
-	background.padding_left=5
-	background.padding_right=6
-	background.y_offset=0
-	background.shadow.drawing=off
-	drawing=off
-)
-
-placeholder3=(
-	width=10
-	background.height=1
-	background.color="$P_DYNAMIC_ISLAND_COLOR_BLACK"
-	background.border_color="$P_DYNAMIC_ISLAND_COLOR_BLACK"
-	background.corner_radius="$P_DYNAMIC_ISLAND_DEFAULT_CORNER_RADIUS"
-	background.padding_left=5
-	background.padding_right=5
-	background.y_offset=0
-	background.shadow.drawing=off
-	drawing=off
-)
-
 icon=(
 	icon="$ICON"
 	icon.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
 	icon.font="$P_DYNAMIC_ISLAND_FONT:Bold:14.0"
 	icon.y_offset=2
-	icon.padding_left=10
-	icon.padding_right=0
-	width=20
+	padding_left=10
+	padding_right=0
+	width=0
 	drawing=off
 )
 
 bar=(
 	background.height=2
-	width=10
 	background.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
 	background.border_color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
 	background.y_offset=0
 	background.shadow.drawing=off
-	background.padding_left=10
-	background.padding_right=10
 	drawing=off
+    y_offset=-19
+    padding_left=10
 )
 
 #create brightness items
-dynamic-island-sketchybar --set island popup.height="$P_DYNAMIC_ISLAND_BRIGHTNESS_DEFAULT_HEIGHT" \
-	--add item island.brightness_placeholder1 popup.island \
-	--set island.brightness_placeholder1 "${placeholder1[@]}" \
-	--add item island.brightness_placeholder2 popup.island \
-	--set island.brightness_placeholder2 "${placeholder2[@]}" \
-	--add item island.brightness_placeholder3 popup.island \
-	--set island.brightness_placeholder3 "${placeholder3[@]}" \
-	--add item island.brightness_icon popup.island \
+dynamic-island-sketchybar --add item island.brightness_icon left \
 	--set island.brightness_icon "${icon[@]}" \
-	--add item island.brightness_bar popup.island \
+	--add item island.brightness_bar left \
 	--set island.brightness_bar "${bar[@]}"

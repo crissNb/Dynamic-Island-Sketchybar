@@ -19,7 +19,6 @@ volume_bar=(
 	drawing=off
     y_offset=-19
     padding_left=10
-    slider.highlight_color="$P_DYNAMIC_ISLAND_COLOR_WHITE"
 )
 
 dynamic-island-sketchybar --add item island.volume_icon left \

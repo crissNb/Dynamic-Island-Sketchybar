@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 source "$HOME/.config/dynamic-island-sketchybar/userconfig.sh"
 
-SQUISH_WIDTH=$(($P_DYNAMIC_ISLAND_NOTIFICATION_EXPAND_WIDTH - $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
-MAX_EXPAND_SQUISH_WIDTH=$(($P_DYNAMIC_ISLAND_NOTIFICATION_MAX_EXPAND_WIDTH + $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
 MAX_EXPAND_HEIGHT=$(($P_DYNAMIC_ISLAND_NOTIFICATION_EXPAND_HEIGHT + $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
+EXPAND_SIZE=$(($P_DYNAMIC_ISLAND_MONITOR_HORIZONTAL_RESOLUTION / 2 - $P_DYNAMIC_ISLAND_NOTIFICATION_MAX_EXPAND_WIDTH))
 
 args=$*
 IFS='|'
@@ -28,13 +27,6 @@ logo=(
 	width=50
 )
 
-island=(
-	popup.drawing=true
-	background.drawing=false
-	popup.horizontal=on
-	popup.height="$P_DYNAMIC_ISLAND_DEFAULT_HEIGHT"
-)
-
 # Enable
 dynamic-island-sketchybar --set island.notification_title drawing=on \
 	label="$title" \
@@ -43,31 +35,29 @@ dynamic-island-sketchybar --set island.notification_title drawing=on \
 	--set island.notification_body drawing=on \
 	label="$message" \
 	--set island.notification_logo "${logo[@]}" \
-	--set island.notification_expanding drawing=on \
-	--set island "${island[@]}"
 
-dynamic-island-sketchybar --animate sin 20 --set island.notification_expanding width="$SQUISH_WIDTH" width="$MAX_EXPAND_SQUISH_WIDTH" width="$P_DYNAMIC_ISLAND_NOTIFICATION_MAX_EXPAND_WIDTH" \
-	--animate sin 30 --set island popup.height="$MAX_EXPAND_HEIGHT" popup.height="$P_DYNAMIC_ISLAND_NOTIFICATION_EXPAND_HEIGHT" \
-	--animate sin 35 --set island popup.background.corner_radius="$P_DYNAMIC_ISLAND_NOTIFICATION_CORNER_RAD"
+target_width=$(($P_DYNAMIC_ISLAND_MONITOR_HORIZONTAL_RESOLUTION / 2 - $P_DYNAMIC_ISLAND_DEFAULT_WIDTH - $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
+
+dynamic-island-sketchybar --animate tanh 8 --bar margin="$target_width" margin="$(($EXPAND_SIZE - $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))" margin="$EXPAND_SIZE" \
+	--animate tanh 10 --bar height="$MAX_EXPAND_HEIGHT" height="$P_DYNAMIC_ISLAND_NOTIFICATION_EXPAND_HEIGHT" \
+	--animate tanh 10 --bar corner_radius="$P_DYNAMIC_ISLAND_NOTIFICATION_CORNER_RAD"
 
 sleep 0.45
-dynamic-island-sketchybar --animate sin 25 --set island.notification_title label.color="$P_DYNAMIC_ISLAND_COLOR_WHITE" \
-	--animate sin 25 --set island.notification_subtitle label.color="$P_DYNAMIC_ISLAND_COLOR_WHITE" \
-	--animate sin 25 --set island.notification_body label.color="$P_DYNAMIC_ISLAND_COLOR_WHITE" \
-	--animate sin 25 --set island.notification_logo background.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
+dynamic-island-sketchybar --animate sin 20 --set island.notification_title label.color="$P_DYNAMIC_ISLAND_COLOR_WHITE" \
+	--animate sin 20 --set island.notification_subtitle label.color="$P_DYNAMIC_ISLAND_COLOR_WHITE" \
+	--animate sin 20 --set island.notification_body label.color="$P_DYNAMIC_ISLAND_COLOR_WHITE" \
+	--animate sin 20 --set island.notification_logo background.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
 
 sleep 2.25
 
-dynamic-island-sketchybar --animate tanh 25 --set island.notification_title label.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT" \
-	--animate tanh 25 --set island.notification_subtitle label.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT" \
-	--animate tanh 25 --set island.notification_body label.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT" \
-	--animate tanh 25 --set island.notification_logo background.color="$P_DYNAMIC_ISLAND_COLOR_ICON_HIDDEN"
+dynamic-island-sketchybar --animate tanh 20 --set island.notification_title label.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT" \
+	--animate tanh 20 --set island.notification_subtitle label.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT" \
+	--animate tanh 20 --set island.notification_body label.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT" \
+	--animate tanh 20 --set island.notification_logo background.color="$P_DYNAMIC_ISLAND_COLOR_ICON_HIDDEN"
 
 sleep 0.15
 
-dynamic-island-sketchybar --animate tanh 25 --set island popup.background.corner_radius="$P_DYNAMIC_ISLAND_DEFAULT_CORNER_RADIUS" \
-	--animate tanh 15 --set island.notification_expanding width="$SQUISH_WIDTH" width="$P_DYNAMIC_ISLAND_NOTIFICATION_EXPAND_WIDTH" \
-	--animate sin 50 --set island popup.height="$P_DYNAMIC_ISLAND_DEFAULT_HEIGHT"
+source "$DYNAMIC_ISLAND_DIR/scripts/islands/restore.sh"
 
 sleep 0.7
 

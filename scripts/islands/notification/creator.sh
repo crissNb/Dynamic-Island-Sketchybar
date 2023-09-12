@@ -40,19 +40,6 @@ body=(
 	drawing=off
 )
 
-expanding=(
-	width="$P_DYNAMIC_ISLAND_NOTIFICATION_EXPAND_WIDTH"
-	background.height=0
-	background.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
-	background.border_color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
-	background.corner_radius="$P_DYNAMIC_ISLAND_DEFAULT_CORNER_RADIUS"
-	background.padding_left=0
-	background.padding_right=0
-	background.y_offset=0
-	background.shadow.drawing=off
-	drawing=off
-)
-
 logo=(
 	background.color="$P_DYNAMIC_ISLAND_COLOR_ICON_HIDDEN"
 	background.padding_left=20
@@ -70,7 +57,5 @@ dynamic-island-sketchybar --add item island.notification_title popup.island \
 	--set island.notification_subtitle "${subtitle[@]}" \
 	--add item island.notification_body popup.island \
 	--set island.notification_body "${body[@]}" \
-	--add item island.notification_expanding popup.island \
-	--set island.notification_expanding "${expanding[@]}" \
 	--add item island.notification_logo popup.island \
 	--set island.notification_logo "${logo[@]}"

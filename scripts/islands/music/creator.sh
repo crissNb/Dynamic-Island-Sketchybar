@@ -36,19 +36,6 @@ artist=(
 	drawing=off
 )
 
-placeholder=(
-	width="$P_DYNAMIC_ISLAND_MUSIC_INFO_EXPAND_WIDTH"
-	background.height="$P_DYNAMIC_ISLAND_MUSIC_INFO_DEFAULT_HEIGHT"
-	background.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
-	background.border_color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
-	background.corner_radius="$P_DYNAMIC_ISLAND_DEFAULT_CORNER_RADIUS"
-	background.padding_left=0
-	background.padding_right=0
-	background.y_offset=0
-	background.shadow.drawing=off
-	drawing=off
-)
-
 resume_text=(
 	label.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
 	label.padding_right=0
@@ -60,31 +47,15 @@ resume_text=(
 	drawing=off
 )
 
-resume_bar=(
-	width="$P_DYNAMIC_ISLAND_MUSIC_RESUME_EXPAND_WIDTH"
-	background.height="$P_DYNAMIC_ISLAND_MUSIC_RESUME_DEFAULT_HEIGHT"
-	background.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
-	background.border_color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
-	background.corner_radius="$P_DYNAMIC_ISLAND_DEFAULT_CORNER_RADIUS"
-	background.padding_left=0
-	background.padding_right=0
-	background.y_offset=0
-	background.shadow.drawing=off
-	drawing=off
-)
-
 # music island
-dynamic-island-sketchybar --add item island.music_artwork popup.island \
+dynamic-island-sketchybar --add item island.music_artwork \
 	--set island.music_artwork "${artwork[@]}" \
-	--add item island.music_title popup.island \
+	--add item island.music_title \
 	--set island.music_title "${title[@]}" \
-	--add item island.music_artist popup.island \
+	--add item island.music_artist \
 	--set island.music_artist "${artist[@]}" \
-	--add item island.music_placeholder popup.island \
-	--set island.music_placeholder "${placeholder[@]}"
 
 # pause island
-dynamic-island-sketchybar --add item island.resume_text popup.island \
+dynamic-island-sketchybar --add item island.resume_text \
 	--set island.resume_text "${resume_text[@]}" \
-	--add item island.resume_bar popup.island \
-	--set island.resume_bar "${resume_bar[@]}"
+	--add item island.resume_bar \
