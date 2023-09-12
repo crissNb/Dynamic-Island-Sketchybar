@@ -32,7 +32,7 @@ esac
 
 if [[ $override == "0" ]]; then
 	dynamic-island-sketchybar --set island.brightness_icon drawing=on icon="$ICON" \
-		--set island.brightness_bar drawing=on \
+		--set island.brightness_bar drawing=on
 fi
 
 if [[ $override == "0" ]]; then
@@ -40,11 +40,11 @@ if [[ $override == "0" ]]; then
 
     dynamic-island-sketchybar --animate tanh 8 --bar margin="$target_width" margin="$(($EXPAND_SIZE - $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))" margin="$EXPAND_SIZE" \
 		--animate tanh 10 --bar corner_radius="$P_DYNAMIC_ISLAND_BRIGHTNESS_CORNER_RAD" \
-		--animate tanh 10 --set bar height="$MAX_EXPAND_HEIGHT" height="$P_DYNAMIC_ISLAND_BRIGHTNESS_EXPAND_HEIGHT"
+		--animate tanh 10 --bar height="$MAX_EXPAND_HEIGHT" height="$P_DYNAMIC_ISLAND_BRIGHTNESS_EXPAND_HEIGHT"
 else
     dynamic-island-sketchybar --animate tanh 8 --bar margin="$(($EXPAND_SIZE - $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))" margin="$EXPAND_SIZE" \
 		--animate tanh 10 --bar corner_radius="$P_DYNAMIC_ISLAND_BRIGHTNESS_CORNER_RAD" \
-		--animate tanh 10 --set bar height="$MAX_EXPAND_HEIGHT" height="$P_DYNAMIC_ISLAND_BRIGHTNESS_EXPAND_HEIGHT"
+		--animate tanh 10 --bar height="$MAX_EXPAND_HEIGHT" height="$P_DYNAMIC_ISLAND_BRIGHTNESS_EXPAND_HEIGHT"
 fi
 
 barWidth=$(bc -l <<<"$brightness/100*220")

@@ -21,7 +21,7 @@ fi
 
 if [[ $override == "0" ]]; then
 	dynamic-island-sketchybar --set island.power_text drawing=on \
-		--set island.power_icon drawing=on \
+		--set island.power_icon drawing=on
 fi
 
 dynamic-island-sketchybar --set island.power_icon label="$icon" \
@@ -31,12 +31,12 @@ if [[ $override == "0" ]]; then
     target_width=$(($P_DYNAMIC_ISLAND_MONITOR_HORIZONTAL_RESOLUTION / 2 - $P_DYNAMIC_ISLAND_DEFAULT_WIDTH - $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
 
     dynamic-island-sketchybar --animate tanh 8 --bar margin="$target_width" margin="$(($EXPAND_SIZE - $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))" margin="$EXPAND_SIZE" \
-		--animate tanh 10 --set island height="$MAX_EXPAND_HEIGHT" height="$P_DYNAMIC_ISLAND_BATTERY_EXPAND_HEIGHT" \
-		--animate tanh 10 --set island corner_radius="$P_DYNAMIC_ISLAND_BATTERY_CORNER_RAD"
+		--animate tanh 10 --bar height="$MAX_EXPAND_HEIGHT" height="$P_DYNAMIC_ISLAND_BATTERY_EXPAND_HEIGHT" \
+		--animate tanh 10 --bar corner_radius="$P_DYNAMIC_ISLAND_BATTERY_CORNER_RAD"
 else
     dynamic-island-sketchybar --animate tanh 8 --bar margin="$(($EXPAND_SIZE - $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))" margin="$EXPAND_SIZE" \
-		--animate tanh 10 --set island height="$MAX_EXPAND_HEIGHT" height="$P_DYNAMIC_ISLAND_BATTERY_EXPAND_HEIGHT" \
-		--animate tanh 10 --set island corner_radius="$P_DYNAMIC_ISLAND_BATTERY_CORNER_RAD"
+		--animate tanh 10 --bar height="$MAX_EXPAND_HEIGHT" height="$P_DYNAMIC_ISLAND_BATTERY_EXPAND_HEIGHT" \
+		--animate tanh 10 --bar corner_radius="$P_DYNAMIC_ISLAND_BATTERY_CORNER_RAD"
 fi
 
 sleep 0.1

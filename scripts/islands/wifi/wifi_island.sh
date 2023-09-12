@@ -22,7 +22,7 @@ fi
 
 if [[ $override == "0" ]]; then
 	dynamic-island-sketchybar --set island.wifi_ssid drawing=on \
-		--set island.wifi_icon drawing=on \
+		--set island.wifi_icon drawing=on
 fi
 
 dynamic-island-sketchybar --set island.wifi_icon label="$icon" \
