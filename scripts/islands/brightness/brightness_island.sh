@@ -47,7 +47,7 @@ else
 		--animate tanh 10 --bar height="$MAX_EXPAND_HEIGHT" height="$P_DYNAMIC_ISLAND_BRIGHTNESS_EXPAND_HEIGHT"
 fi
 
-barWidth=$(bc -l <<<"$brightness/100*220")
+barWidth=$(bc -l <<<"$brightness/100*240")
 barWidth=$(printf "%.0f" "$barWidth")
 dynamic-island-sketchybar --animate tanh 15 --set island.brightness_bar width="$barWidth"
 

@@ -51,7 +51,7 @@ fi
 
 sleep 0.1
 
-barWidth=$(bc -l <<<"$volume/100*220")
+barWidth=$(bc -l <<<"$volume/100*240")
 barWidth=$(printf "%.0f" "$barWidth")
 dynamic-island-sketchybar --animate tanh 15 --set island.volume_bar width="$barWidth"
 

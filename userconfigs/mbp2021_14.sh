@@ -6,12 +6,9 @@
 ### Main config
 #
 
-# Set this variable to "on", if you are going to use the dynamic island with macOS's menu bar
-P_DYNAMIC_ISLAND_TOPMOST=on
-
 # Which display should the dynamic island be available?
 # Available options: all, main, id of display (e.g. 1, 2, 3)
-P_DYNAMIC_ISLAND_DISPLAY=3
+P_DYNAMIC_ISLAND_DISPLAY=main
 
 # Needs to have Regular, Bold, Semibold, Heavy and Black variants
 # Font icons may not load properly if not SF Pro
@@ -29,9 +26,6 @@ P_DYNAMIC_ISLAND_POWER_ENABLED=1
 # Notch Size
 P_DYNAMIC_ISLAND_DEFAULT_HEIGHT=44
 P_DYNAMIC_ISLAND_DEFAULT_WIDTH=100
-
-P_DYNAMIC_ISLAND_MAX_HEIGHT=90
-P_DYNAMIC_ISLAND_MAX_WIDTH=150
 P_DYNAMIC_ISLAND_CORNER_RADIUS=10
 
 # in case of built-in display, it must be divded by 2, e.g.: MBP 14 has 3024 resolution, so 3024/2=1512
@@ -79,11 +73,11 @@ P_DYNAMIC_ISLAND_ICON_BRIGHTNESS_HIGH=􀆭
 # Music Info
 P_DYNAMIC_ISLAND_MUSIC_SOURCE="Music" # AVAILABLE OPTIONS (case sensitive): Music (apple music), Spotify
 P_DYNAMIC_ISLAND_MUSIC_INFO_MAX_EXPAND_WIDTH=160 # Max size when expanded#
-P_DYNAMIC_ISLAND_MUSIC_INFO_EXPAND_HEIGHT=80
+P_DYNAMIC_ISLAND_MUSIC_INFO_EXPAND_HEIGHT=100
 P_DYNAMIC_ISLAND_MUSIC_INFO_CORNER_RAD=19 # Corner Radius
 
 # Resume Info
-P_DYNAMIC_ISLAND_MUSIC_RESUME_MAX_EXPAND_WIDTH=140
+P_DYNAMIC_ISLAND_MUSIC_RESUME_MAX_EXPAND_WIDTH=155
 P_DYNAMIC_ISLAND_MUSIC_RESUME_EXPAND_HEIGHT=56
 P_DYNAMIC_ISLAND_MUSIC_RESUME_CORNER_RAD=15 # Corner Radius
 

@@ -21,7 +21,7 @@ sketchy_bar=(
 	shadow=off
 	position=top
 	sticky=on
-	topmost="${P_DYNAMIC_ISLAND_TOPMOST:=off}"
+	topmost=on
 	padding_left=0
     padding_right=0
 	corner_radius="$P_DYNAMIC_ISLAND_CORNER_RADIUS"

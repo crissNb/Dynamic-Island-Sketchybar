@@ -57,7 +57,7 @@ dynamic-island-sketchybar --animate tanh 15 --set island.music_title label.color
 	--animate tanh 15 --set island.music_artist label.color="$P_DYNAMIC_ISLAND_COLOR_WHITE" \
 	--animate tanh 15 --set island.music_artwork background.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
 
-sleep 1.5
+sleep 1.7
 
 dynamic-island-sketchybar --animate tanh 15 --set island.music_title label.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT" \
 	--animate tanh 15 --set island.music_artist label.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT" \

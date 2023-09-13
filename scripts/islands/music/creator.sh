@@ -16,9 +16,9 @@ title=(
 	label.padding_left=0
 	label.padding_right=0
 	label.font="$P_DYNAMIC_ISLAND_FONT:Bold:14.0"
-	y_offset=0
-	background.padding_left=0
-	background.padding_right=0
+	y_offset=-10
+	padding_left=-90
+	padding_right=0
 	label.width=550
 	drawing=off
 )
@@ -28,11 +28,11 @@ artist=(
 	label.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
 	label.padding_left=0
 	label.padding_right=0
-	background.padding_left=0
-	background.padding_right=0
+	padding_left=-90
+	padding_right=0
 	label.width=550
 	label.font="$P_DYNAMIC_ISLAND_FONT:Semibold:12.0"
-	label.y_offset=-20
+	label.y_offset=-30
 	drawing=off
 )
 
