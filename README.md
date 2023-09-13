@@ -5,6 +5,10 @@ Dynamic Island on iPhone 14 Pro implementation on Mac using SketchyBar
 ***This project is yet to be used daily and be functional. It's more of a concept.***
 
 ![](images/fullupdated.png)
+
+DEMO
+====
+
 ![](images/demo.gif)
 
 Table of Contents
