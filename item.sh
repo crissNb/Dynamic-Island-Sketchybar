@@ -51,7 +51,7 @@ dynamic-island-sketchybar --default "${sketchy_default[@]}"
 island=(
 	drawing=on
 	mach_helper=git.crissnb.islandhelper
-	update_freq=2
+	update_freq=5
 	width=0
 )
 
@@ -60,11 +60,7 @@ dynamic-island-sketchybar --add event dynamic_island_queue \
 	--add item island center \
 	--set island "${island[@]}"
 
-if [[ $P_DYNAMIC_ISLAND_DISPLAY == "Primary" ]]; then
-	dynamic-island-sketchybar --set island associated_display=1
-elif [[ $P_DYNAMIC_ISLAND_DISPLAY == "Active" ]]; then
-	dynamic-island-sketchybar --set island associated_display=active
-fi
+dynamic-island-sketchybar --bar display="$P_DYNAMIC_ISLAND_DISPLAY"
 
 # subscribe to events to communicate with helper
 dynamic-island-sketchybar --subscribe island dynamic_island_queue \
