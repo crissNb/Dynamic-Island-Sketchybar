@@ -23,7 +23,7 @@ dynamic-island-sketchybar --set island.appname label="$appName"
 
 # determine expand width based on the character length
 char_length=${#appName}
-expand_size=$(bc -l <<<"$P_DYNAMIC_ISLAND_APPSWITCH_MAX_EXPAND_WIDTH+$char_length*15")
+expand_size=$(bc -l <<<"$P_DYNAMIC_ISLAND_APPSWITCH_MAX_EXPAND_WIDTH+$char_length*7")
 expand_squish=$(($expand_size + $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
 
 expand_size_margin=$(($P_DYNAMIC_ISLAND_MONITOR_HORIZONTAL_RESOLUTION / 2 - $expand_size))
