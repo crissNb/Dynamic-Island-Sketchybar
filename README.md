@@ -18,6 +18,8 @@ Table of Contents
 
 [Updating](#updating)
 
+[Uninstallation](#uninstallation)
+
 [Optimal Setup](#optimal-setup)
 
 [Configuration](#configuration)
@@ -81,6 +83,18 @@ Just go into the `dynamic-island-sketchybar` directory and pull the changes from
 cd ~/.config/dynamic-island-sketchybar
 git pull
 ```
+
+Uninstallation
+==============
+
+Uninstalling this project can be done by removing the symlink and the config folder (this repository).
+
+```bash
+rm $(which dynamic-island-sketchybar)
+rm -r ~/.config/dynamic-island-sketchybar/
+```
+
+This will remove dynamic-island-sketchybar. Note that this will not remove sketchybar (see sketchybar documentation for sketchybar uninstallation guide).
 
 Configuration
 =============
