@@ -51,7 +51,8 @@ fi
 
 sleep 0.1
 
-barWidth=$(bc -l <<<"$volume/100*240")
+# subtract 20, because we're using padding value of 10.
+barWidth=$(bc -l <<<"$volume/100*$(($P_DYNAMIC_ISLAND_VOLUME_MAX_EXPAND_WIDTH * 2 - 20))")
 barWidth=$(printf "%.0f" "$barWidth")
 dynamic-island-sketchybar --animate tanh 15 --set island.volume_bar width="$barWidth"
 
