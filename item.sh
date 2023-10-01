@@ -13,6 +13,10 @@ sleep 0.5
 USER_CONFIG="$DYNAMIC_ISLAND_DIR/userconfig.sh"
 test -f "$USER_CONFIG" && source "$USER_CONFIG"
 
+# clear cache
+PREVIOUS_ISLAND_CACHE="$HOME/.config/dynamic-island-sketchybar/scripts/islands/previous_island"
+true > "$PREVIOUS_ISLAND_CACHE"
+
 PADDING=3
 
 sketchy_bar=(
@@ -20,7 +24,7 @@ sketchy_bar=(
 	color="$P_DYNAMIC_ISLAND_COLOR_BLACK"
 	shadow=off
 	position=top
-	sticky=on
+	sticky=off
 	topmost=on
 	padding_left=0
     padding_right=0

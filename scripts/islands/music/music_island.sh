@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source "$HOME/.config/dynamic-island-sketchybar/userconfig.sh"
+source "$DYNAMIC_ISLAND_DIR/scripts/islands/clear.sh"
 
-ARTWORK_LOCATION="$DYNAMIC_ISLAND_DIR/scripts/islands/music/artwork.jpg"
 INFO_MAX_EXPAND_HEIGHT=$(($P_DYNAMIC_ISLAND_MUSIC_INFO_EXPAND_HEIGHT + ($P_DYNAMIC_ISLAND_SQUISH_AMOUNT) / 2))
 INFO_EXPAND_SIZE=$(($P_DYNAMIC_ISLAND_MONITOR_HORIZONTAL_RESOLUTION / 2 - $P_DYNAMIC_ISLAND_MUSIC_INFO_MAX_EXPAND_WIDTH))
 
@@ -37,8 +37,7 @@ if [[ $override == "0" ]]; then
 fi
 
 dynamic-island-sketchybar --set island.music_artist label="$ARTIST" \
-	--set island.music_title label="$TITLE" \
-	--set island.music_artwork background.image="$ARTWORK_LOCATION"
+	--set island.music_title label="$TITLE"
 
 if [[ $override == "0" ]]; then
     target_width=$(($P_DYNAMIC_ISLAND_MONITOR_HORIZONTAL_RESOLUTION / 2 - $P_DYNAMIC_ISLAND_DEFAULT_WIDTH - $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))

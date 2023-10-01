@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 source "$HOME/.config/dynamic-island-sketchybar/userconfig.sh"
+source "$DYNAMIC_ISLAND_DIR/scripts/islands/clear.sh"
 
 MAX_EXPAND_HEIGHT=$(($P_DYNAMIC_ISLAND_VOLUME_EXPAND_HEIGHT + ($P_DYNAMIC_ISLAND_SQUISH_AMOUNT / 2)))
 EXPAND_SIZE=$(($P_DYNAMIC_ISLAND_MONITOR_HORIZONTAL_RESOLUTION / 2 - $P_DYNAMIC_ISLAND_VOLUME_MAX_EXPAND_WIDTH))

@@ -44,6 +44,11 @@ Installation
 - sf-symbols (`brew install --cask sf-symbols`)
 - jq (`brew install jq`)
 
+For music island to work properly you need the following additional requirements
+
+- [cava](https://github.com/karlstav/cava) (`brew install cava`)
+- [Background Music](https://github.com/kyleneideck/BackgroundMusic) (`brew install --cask background-music`)
+
 ### Getting Started
 
 This program utilizes the "Multiple Bars" feature from SketchyBar. Symlink the SketchyBar binary with a different name and clone the repository inside `~/.config/dynamic-island-sketchybar`
@@ -226,3 +231,5 @@ Credits
 =======
 
 Base sketchybarrc was taken from FelixKratz's [dotfiles](https://github.com/FelixKratz/dotfiles).
+
+Base visualizer config was taken from @ColaMint

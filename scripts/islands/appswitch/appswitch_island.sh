@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 source "$DYNAMIC_ISLAND_DIR/userconfig.sh"
+source "$DYNAMIC_ISLAND_DIR/scripts/islands/clear.sh"
 
 MAX_EXPAND_HEIGHT=$(($P_DYNAMIC_ISLAND_APPSWITCH_EXPAND_HEIGHT + ($P_DYNAMIC_ISLAND_SQUISH_AMOUNT / 2)))
 
