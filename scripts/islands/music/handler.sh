@@ -32,6 +32,9 @@ if [[ $(cat "$cache") == 0 ]]; then
 	# resume
 	printf 1 >"$cache"
 	dynamic-island-sketchybar --trigger dynamic_island_queue INFO="pause" ISLAND_ARGS="1"
+    if [[ ! $(grep -Fxq "music" "$PREVIOUS_ISLAND_CACHE") ]]; then
+        echo "music" >> "$PREVIOUS_ISLAND_CACHE"
+    fi
 	exit 0
 fi
 
@@ -39,6 +42,9 @@ if [[ $PLAYER_STATE == "paused" ]]; then
 	# paused
 	printf 0 >"$cache"
 	dynamic-island-sketchybar --trigger dynamic_island_queue INFO="pause" ISLAND_ARGS="0"
+    if [[ ! $(grep -Fxq "music" "$PREVIOUS_ISLAND_CACHE") ]]; then
+        true > "$PREVIOUS_ISLAND_CACHE"
+    fi
 	exit 0
 fi
 
