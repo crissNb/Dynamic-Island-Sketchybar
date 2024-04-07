@@ -3,13 +3,14 @@ ARTWORK_LOCATION="$DYNAMIC_ISLAND_DIR/scripts/islands/music/artwork.jpg"
 
 artwork=(
 	background.color="$P_DYNAMIC_ISLAND_COLOR_ICON_HIDDEN"
-	padding_left=5
+	padding_left=10
 	padding_right=0
-	background.image.scale=0.12
+	background.image.scale=2.0
+  background.image.corner_radius="$P_DYNAMIC_ISLAND_MUSIC_INFO_CORNER_RAD"
 	y_offset=0
 	drawing=off
 	width=50
-	background.image="$ARTWORK_LOCATION"
+  background.image.string="media.artwork"
 )
 
 title=(
@@ -62,11 +63,11 @@ small_artwork=(
 	background.color="$P_DYNAMIC_ISLAND_COLOR_ICON_HIDDEN"
 	padding_left=10
 	padding_right=0
-	background.image.scale=0.04
+	background.image.scale=1.0
 	y_offset=-5
 	drawing=off
 	width=50
-	background.image="$ARTWORK_LOCATION"
+  background.image.string="media.artwork"
 )
 
 # music island

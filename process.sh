@@ -58,8 +58,8 @@ case $IDENTIFIER in
 	if [[ $OVERRIDE == 1 ]]; then
 		pkill -f "$ISLAND_DIR/music/music_island.sh"
 	fi
-	# arg: none
-	bash "$ISLAND_DIR/music/music_island.sh" "$OVERRIDE"
+	# arg: playback details
+	bash "$ISLAND_DIR/music/music_island.sh" "$OVERRIDE|$ARGS"
 	;;
 "notifications")
 	if [[ $OVERRIDE == 1 ]]; then

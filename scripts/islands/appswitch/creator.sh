@@ -13,10 +13,10 @@ appname=(
 
 applogo=(
 	background.color="$P_DYNAMIC_ISLAND_COLOR_ICON_HIDDEN"
-	padding_left=20
+	padding_left=10
 	padding_right=5
 	background.image.scale="$P_DYNAMIC_ISLAND_APPSWITCH_ICON_SIZE"
-	y_offset=-16
+	y_offset=-5
 	drawing=off
 )
 

@@ -72,21 +72,12 @@ dynamic-island-sketchybar --subscribe island dynamic_island_queue \
 
 # module initalization
 if [[ $P_DYNAMIC_ISLAND_MUSIC_ENABLED == 1 ]]; then
-	if [[ $P_DYNAMIC_ISLAND_MUSIC_SOURCE == "Music" ]]; then
-		MUSIC_EVENT="com.apple.Music.playerInfo"
-	elif [[ $P_DYNAMIC_ISLAND_MUSIC_SOURCE == "Spotify" ]]; then
-		MUSIC_EVENT="com.spotify.client.PlaybackStateChanged"
-	else
-		exit 0
-	fi
-
 	source "$DYNAMIC_ISLAND_DIR/scripts/islands/music/creator.sh"
 
-	dynamic-island-sketchybar --add event music_change $MUSIC_EVENT \
-		--add item musicListener center \
-		--set musicListener script="$DYNAMIC_ISLAND_DIR/scripts/islands/music/handler.sh $P_DYNAMIC_ISLAND_MUSIC_SOURCE" \
+	dynamic-island-sketchybar --add item musicListener center \
+		--set musicListener script="$DYNAMIC_ISLAND_DIR/scripts/islands/music/handler.sh" \
 		width=0 \
-		--subscribe musicListener music_change
+		--subscribe musicListener media_change
 fi
 
 if [[ $P_DYNAMIC_ISLAND_APPSWITCH_ENABLED == 1 ]]; then

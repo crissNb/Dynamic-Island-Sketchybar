@@ -5,12 +5,12 @@
 #define MAX_QUEUE_SIZE 16
 
 struct dynamicIsland {
-  char command[512];
+  char command[2048];
 };
 
 struct islandItem {
   char identifier[32];
-  char args[512];
+  char args[2048];
 };
 
 struct islandItemNode {
@@ -44,15 +44,35 @@ static inline void pop_head() {
   }
 }
 
+char* remove_newlines_and_spaces(const char* json) {
+    int len = strlen(json);
+    char* result = (char*)malloc(len + 1); // Allocate memory for the result string
+    if (result == NULL) {
+        printf("Memory allocation failed!\n");
+        exit(EXIT_FAILURE);
+    }
+
+    int j = 0; // Index for the result string
+
+    for (int i = 0; i < len; i++) {
+        if (json[i] != '\n' && json[i] != '\t') {
+            result[j++] = json[i]; // Copy non-newline and non-space characters
+        }
+    }
+    result[j] = '\0'; // Null-terminate the result string
+    return result;
+}
+
 static inline void sendCommand(struct dynamicIsland *dynamic_island,
                                int overrideSetting) {
   if (head == NULL) {
     return;
   }
+
   snprintf(dynamic_island->command, 512,
            "--trigger di_helper_listener_event IDENTIFIER=\"%s\" OVERRIDE=%d "
-           "ARGS=\"%s\"",
-           head->data->identifier, overrideSetting, head->data->args);
+           "ARGS=\'%s\'",
+           head->data->identifier, overrideSetting, remove_newlines_and_spaces(head->data->args));
   strcpy(currentDisplaying, head->data->identifier);
   isDisplaying = 1;
 }

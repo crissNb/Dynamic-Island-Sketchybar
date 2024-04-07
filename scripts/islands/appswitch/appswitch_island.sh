@@ -20,6 +20,8 @@ if [[ $override == "0" ]]; then
 		--set island.applogo drawing=on
 fi
 
+dynamic-island-sketchybar --set island.applogo background.image.string="app.$BUNDLENAME"
+
 dynamic-island-sketchybar --set island.appname label="$appName"
 
 # determine expand width based on the character length
@@ -46,13 +48,13 @@ fi
 
 sleep 0.1
 
-dynamic-island-sketchybar --animate sin 15 --set island.appname label.color="$P_DYNAMIC_ISLAND_COLOR_WHITE" \
-	--animate sin 15 --set island.applogo background.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
+dynamic-island-sketchybar --animate sin 15 --set island.appname label.color="$P_DYNAMIC_ISLAND_COLOR_WHITE"
 
 sleep 0.8
 
 dynamic-island-sketchybar --animate tanh 15 --set island.appname label.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT" \
-	--animate tanh 15 --set island.applogo background.color="$P_DYNAMIC_ISLAND_COLOR_ICON_HIDDEN"
+		--set island.applogo drawing=off
+
 
 sleep 0.1
 
