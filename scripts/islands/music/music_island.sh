@@ -31,6 +31,9 @@ if [[ $override == "0" ]]; then
 	dynamic-island-sketchybar --set island.music_artwork drawing=on \
 		--set island.music_title drawing=on \
 		--set island.music_artist drawing=on \
+        --set island.music_title label.color="$P_DYNAMIC_ISLAND_COLOR_WHITE" \
+        --set island.music_artist label.color="$P_DYNAMIC_ISLAND_COLOR_WHITE" \
+        --set island.music_artwork background.image.drawing=on \
 		--set island "${island[@]}"
 fi
 
