@@ -4,6 +4,8 @@ Dynamic Island on iPhone 14 Pro implementation on Mac using SketchyBar
 
 ## If you're interested in supporting me and want a completely written in Swift version (with more features and GUI), then checkout my [FluidNoti](https://fluidnoti.vercel.app/) app.
 
+I will still be updating this sketchybar version of dynamic island as well, but FluidNoti will be more actively developed.
+
 ![](images/fullupdated.png)
 
 DEMO
