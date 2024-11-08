@@ -56,7 +56,7 @@ For music island to work properly you need the following additional requirements
 Installation can be done with `brew`:
 
 ```bash
-brew tap crissnb/dynamic-island
+brew tap crissnb/dynamicisland
 brew install DynamicIslandSketchybar
 ```
 
