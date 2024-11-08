@@ -73,12 +73,12 @@ The file must be called `userconfig.sh` and located right under dynamic-island-s
 Finally, the Dynamic Island can be opened via
 
 ```bash
-dynamic-island-sketchybar
+dynamic-island
 ```
 
 NOTE: There appears to be a bug that dynamic island helper program does not run the first time it is installed (after restarting sketchybar). If this is the case, simply restart the program.
 
-If you'd like to have the `dynamic-island-sketchybar` run automatically, then have the command at the end of `sketchybarrc`.
+If you'd like to have the `dynamic-island` run automatically, then have the command at the end of `sketchybarrc` (in case you are using sketchybar).
 
 ##
 
