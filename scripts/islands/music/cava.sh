@@ -1,4 +1,4 @@
-CONF_FILE="$HOME/.config/dynamic-island-sketchybar/scripts/islands/music/cava.conf"
+CONF_FILE="$DYNAMIC_ISLAND_DIR/scripts/islands/music/cava.conf"
 
 while true
 do

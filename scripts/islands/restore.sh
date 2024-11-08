@@ -1,5 +1,5 @@
 #!/usr/bin/env/bash
-PREVIOUS_ISLAND_CACHE="$HOME/.config/dynamic-island-sketchybar/scripts/islands/previous_island"
+PREVIOUS_ISLAND_CACHE="$DYNAMIC_ISLAND_DIR/scripts/islands/previous_island"
 
 dynamic-island-sketchybar --animate tanh 10 --bar height="$P_DYNAMIC_ISLAND_DEFAULT_HEIGHT" \
     --animate sin 10 --bar corner_radius="$P_DYNAMIC_ISLAND_CORNER_RADIUS"

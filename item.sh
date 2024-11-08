@@ -14,7 +14,7 @@ USER_CONFIG="$DYNAMIC_ISLAND_DIR/userconfig.sh"
 test -f "$USER_CONFIG" && source "$USER_CONFIG"
 
 # clear cache
-PREVIOUS_ISLAND_CACHE="$HOME/.config/dynamic-island-sketchybar/scripts/islands/previous_island"
+PREVIOUS_ISLAND_CACHE="$DYNAMIC_ISLAND_DIR/scripts/islands/previous_island"
 true > "$PREVIOUS_ISLAND_CACHE"
 
 PADDING=3
