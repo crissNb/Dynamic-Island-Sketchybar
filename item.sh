@@ -10,7 +10,7 @@ source "$DYNAMIC_ISLAND_DIR/helper.sh"
 sleep 0.5
 
 # Load user config overrides
-USER_CONFIG="$DYNAMIC_ISLAND_DIR/userconfig.sh"
+USER_CONFIG="$HOME/.config/dynamic-island-sketchybar/userconfig.sh"
 test -f "$USER_CONFIG" && source "$USER_CONFIG"
 
 # clear cache
