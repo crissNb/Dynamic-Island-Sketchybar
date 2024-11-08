@@ -53,10 +53,11 @@ For music island to work properly you need the following additional requirements
 
 ### Getting Started
 
-This program utilizes the "Multiple Bars" feature from SketchyBar. Symlink the SketchyBar binary with a different name and clone the repository inside `~/.config/dynamic-island-sketchybar`
+Installation can be done with `brew`:
 
 ```bash
-ln -s $(which sketchybar) $(dirname $(which sketchybar))/dynamic-island-sketchybar && git clone https://github.com/crissNb/Dynamic-Island-Sketchybar.git ~/.config/dynamic-island-sketchybar
+brew tap crissnb/dynamic-island
+brew install DynamicIslandSketchybar
 ```
 
 Now a `userconfig.sh` file must be copied to `~/.config/dynamic-island-sketchybar/` directory. This can be done by copying an appropriate config file for your machine.
