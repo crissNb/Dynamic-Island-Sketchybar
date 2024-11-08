@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-DYNAMIC_ISLAND_DIR="/opt/homebrew/etc/dynamic-island-sketchybar"
+export DYNAMIC_ISLAND_DIR="/opt/homebrew/etc/dynamic-island-sketchybar"
 
 source "$DYNAMIC_ISLAND_DIR/item.sh" # Loads Dynamic-Island item
 

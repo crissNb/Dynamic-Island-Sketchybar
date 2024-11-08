@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-export DYNAMIC_ISLAND_DIR
-DYNAMIC_ISLAND_DIR=$(
-	cd "$(dirname "${BASH_SOURCE[0]}")" || exit
-	pwd -P
-)
-
 source "$DYNAMIC_ISLAND_DIR/helper.sh"
 sleep 0.5
 
