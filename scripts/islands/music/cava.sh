@@ -1,4 +1,10 @@
-CONF_FILE="$DYNAMIC_ISLAND_DIR/scripts/islands/music/cava.conf"
+CURR_DIR=$(
+	cd "$(dirname "${BASH_SOURCE[0]}")" || exit
+	pwd -P
+)
+
+CONF_FILE="$CURR_DIR/cava.conf"
+
 
 while true
 do

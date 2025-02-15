@@ -1,6 +1,6 @@
 #!/usr/bin/env/bash
 if [[ $P_DYNAMIC_ISLAND_MUSIC_ENABLED == 1 ]]; then
-    dynamic-island-sketchybar --animate tanh 10 --set island.small_artwork background.color="$P_DYNAMIC_ISLAND_COLOR_ICON_HIDDEN" \
+    dynamic-island-sketchybar --animate tanh 10 --set island.small_artwork background.image.scale=0 \
         --animate tanh 10 --set island.music_visualizer label.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
 fi
 

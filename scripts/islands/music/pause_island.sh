@@ -2,6 +2,8 @@
 source "$HOME/.config/dynamic-island-sketchybar/userconfig.sh"
 source "$DYNAMIC_ISLAND_DIR/scripts/islands/clear.sh"
 
+PREVIOUS_ISLAND_CACHE="$DYNAMIC_ISLAND_DIR/scripts/islands/previous_island"
+
 RESUME_MAX_EXPAND_HEIGHT=$(($P_DYNAMIC_ISLAND_MUSIC_RESUME_EXPAND_HEIGHT + $P_DYNAMIC_ISLAND_SQUISH_AMOUNT))
 EXPAND_SIZE=$(($P_DYNAMIC_ISLAND_MONITOR_HORIZONTAL_RESOLUTION / 2 - $P_DYNAMIC_ISLAND_MUSIC_RESUME_MAX_EXPAND_WIDTH))
 
@@ -12,6 +14,13 @@ unset IFS
 
 override="${strarr[0]}"
 pauseStatus="${strarr[1]}"
+
+
+if [[ $pauseStatus == "0" ]]; then
+    echo "paused" > "$PREVIOUS_ISLAND_CACHE"
+else
+    echo "music" > "$PREVIOUS_ISLAND_CACHE"
+fi
 
 # enable
 dynamic-island-sketchybar --set island.resume_text drawing=on

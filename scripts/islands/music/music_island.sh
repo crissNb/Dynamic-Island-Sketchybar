@@ -18,6 +18,23 @@ override="${strarr[0]}"
 # fetch music info
 ARTIST="${strarr[1]}"
 TITLE="${strarr[2]}"
+STATE="${strarr[3]}"
+
+PREVIOUS_ISLAND_CACHE="$DYNAMIC_ISLAND_DIR/scripts/islands/previous_island"
+
+if [[ $STATE == "playing" ]]; then
+  if ! grep -Fxq "music" "$PREVIOUS_ISLAND_CACHE"; then
+      echo "music" >> "$PREVIOUS_ISLAND_CACHE"
+  fi
+
+  if grep -Fxq "paused" "$PREVIOUS_ISLAND_CACHE"; then
+      source "$DYNAMIC_ISLAND_DIR/scripts/islands/music/pause_island.sh" "$override|1"
+      exit
+  fi
+else
+  source "$DYNAMIC_ISLAND_DIR/scripts/islands/music/pause_island.sh" "$override|0"
+  exit
+fi
 
 if [[ ${#TITLE} -gt 25 ]]; then
 	TITLE=$(printf "%s..." "$(echo "$TITLE" | cut -c 1-25)")

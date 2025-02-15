@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-ARTWORK_LOCATION="$DYNAMIC_ISLAND_DIR/scripts/islands/music/artwork.jpg"
-
 artwork=(
 	background.color="$P_DYNAMIC_ISLAND_COLOR_ICON_HIDDEN"
 	padding_left=10
@@ -56,13 +54,14 @@ visualizer=(
     y_offset=-10
     label.font="$P_DYNAMIC_ISLAND_FONT:Bold:10.0"
     script="$DYNAMIC_ISLAND_DIR/scripts/islands/music/cava.sh"
-	label.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
+    label.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
 )
 
 small_artwork=(
 	background.color="$P_DYNAMIC_ISLAND_COLOR_ICON_HIDDEN"
 	padding_left=10
 	padding_right=0
+  background.image.corner_radius=10
 	background.image.scale=1.0
 	y_offset=-5
 	drawing=off

@@ -8,7 +8,6 @@ TARGET_WIDTH="$P_DYNAMIC_ISLAND_DEFAULT_WIDTH"
 
 while IFS= read -r line
 do
-    echo "$line"
   if [[ $line == "music" ]]; then
     if [[ $TARGET_WIDTH -lt $P_DYNAMIC_ISLAND_MUSIC_IDLE_EXPAND_WIDTH ]]; then
         TARGET_WIDTH="$P_DYNAMIC_ISLAND_MUSIC_IDLE_EXPAND_WIDTH"
@@ -29,6 +28,6 @@ do
                                 --set island.small_artwork drawing=on
 
       dynamic-island-sketchybar --animate tanh 10 --set island.music_visualizer label.color="$P_DYNAMIC_ISLAND_COLOR_WHITE" \
-          --animate tanh 10 --set island.small_artwork background.color="$P_DYNAMIC_ISLAND_COLOR_TRANSPARENT"
+          --animate tanh 10 --set island.small_artwork background.image.scale=1
   fi
 done < "$PREVIOUS_ISLAND_CACHE"
