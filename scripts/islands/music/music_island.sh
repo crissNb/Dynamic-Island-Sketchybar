@@ -2,6 +2,15 @@
 source "$HOME/.config/dynamic-island-sketchybar/userconfig.sh"
 source "$DYNAMIC_ISLAND_DIR/scripts/islands/clear.sh"
 
+# Debug logging function
+debug_log() {
+    if [[ "${P_DYNAMIC_ISLAND_MUSIC_DEBUG:-0}" == "1" ]]; then
+        echo "[MUSIC_DEBUG] $*" >&2
+    fi
+}
+
+debug_log "Music island script started with args: $*"
+
 # Validate configuration values
 validate_config() {
     local errors=0
@@ -54,6 +63,8 @@ override="${strarr[0]}"
 ARTIST="${strarr[1]}"
 TITLE="${strarr[2]}"
 STATE="${strarr[3]}"
+
+debug_log "Parsed arguments - Override: $override, Artist: '$ARTIST', Title: '$TITLE', State: '$STATE'"
 
 PREVIOUS_ISLAND_CACHE="$DYNAMIC_ISLAND_DIR/scripts/islands/previous_island"
 

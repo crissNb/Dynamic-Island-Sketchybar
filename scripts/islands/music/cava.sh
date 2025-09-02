@@ -7,9 +7,16 @@ CONF_FILE="$CURR_DIR/cava.conf"
 
 # Function to cleanup on exit
 cleanup() {
-    echo "Cleaning up cava process..." >&2
+    if [[ "${P_DYNAMIC_ISLAND_MUSIC_DEBUG:-0}" == "1" ]]; then
+        echo "[CAVA_DEBUG] Cleaning up cava process..." >&2
+    fi
+    
     # Kill any existing cava processes started by this script
     pkill -f "cava -p $CONF_FILE" 2>/dev/null
+    
+    # Kill any child processes
+    jobs -p | xargs -r kill 2>/dev/null
+    
     exit 0
 }
 
@@ -18,15 +25,31 @@ trap cleanup EXIT TERM INT
 
 # Function to check if cava is available
 check_cava() {
+    # Debug logging for cava
+    if [[ "${P_DYNAMIC_ISLAND_MUSIC_DEBUG:-0}" == "1" ]]; then
+        echo "[CAVA_DEBUG] Checking cava availability..." >&2
+    fi
+    
     if ! command -v cava &> /dev/null; then
         echo "Warning: cava not found, music visualizer disabled" >&2
         return 1
     fi
     
-    # Check if Background Music is available (required for audio input)
-    if ! cava -p "$CONF_FILE" -h &>/dev/null; then
-        echo "Warning: cava configuration issue, music visualizer disabled" >&2
+    # Check if the config file exists
+    if [[ ! -f "$CONF_FILE" ]]; then
+        echo "Warning: cava config file not found at $CONF_FILE" >&2
         return 1
+    fi
+    
+    # Check if Background Music is available (or any audio input)
+    # Try a quick test run of cava
+    if ! timeout 2s cava -p "$CONF_FILE" >/dev/null 2>&1; then
+        echo "Warning: cava cannot access audio input, check Background Music or audio setup" >&2
+        return 1
+    fi
+    
+    if [[ "${P_DYNAMIC_ISLAND_MUSIC_DEBUG:-0}" == "1" ]]; then
+        echo "[CAVA_DEBUG] Cava is available and working" >&2
     fi
     
     return 0
