@@ -5,11 +5,65 @@ CURR_DIR=$(
 
 CONF_FILE="$CURR_DIR/cava.conf"
 
+# Function to cleanup on exit
+cleanup() {
+    echo "Cleaning up cava process..." >&2
+    # Kill any existing cava processes started by this script
+    pkill -f "cava -p $CONF_FILE" 2>/dev/null
+    exit 0
+}
 
-while true
-do
-  cava -p "$CONF_FILE" | sed -u 's/ //g; s/0/▁/g; s/1/▂/g; s/2/▃/g; s/3/▄/g; s/4/▅/g; s/5/▆/g; s/6/▇/g; s/7/█/g; s/8/█/g' | while read line; do
-    dynamic-island-sketchybar --set $NAME label=$line
-  done
-  sleep 5
-done
+# Set up signal handlers
+trap cleanup EXIT TERM INT
+
+# Function to check if cava is available
+check_cava() {
+    if ! command -v cava &> /dev/null; then
+        echo "Warning: cava not found, music visualizer disabled" >&2
+        return 1
+    fi
+    
+    # Check if Background Music is available (required for audio input)
+    if ! cava -p "$CONF_FILE" -h &>/dev/null; then
+        echo "Warning: cava configuration issue, music visualizer disabled" >&2
+        return 1
+    fi
+    
+    return 0
+}
+
+# Main loop with error handling
+main_loop() {
+    local retry_count=0
+    local max_retries=3
+    
+    while true; do
+        if ! check_cava; then
+            sleep 30  # Wait longer if cava is not available
+            continue
+        fi
+        
+        # Start cava with error handling
+        if cava -p "$CONF_FILE" 2>/dev/null | sed -u 's/ //g; s/0/▁/g; s/1/▂/g; s/2/▃/g; s/3/▄/g; s/4/▅/g; s/5/▆/g; s/6/▇/g; s/7/█/g; s/8/█/g' | while read -r line; do
+            if [[ -n "$NAME" && -n "$line" ]]; then
+                dynamic-island-sketchybar --set "$NAME" label="$line" 2>/dev/null
+            fi
+        done; then
+            retry_count=0
+        else
+            retry_count=$((retry_count + 1))
+            echo "Cava failed (attempt $retry_count/$max_retries)" >&2
+            
+            if [[ $retry_count -ge $max_retries ]]; then
+                echo "Max retries reached, disabling visualizer for this session" >&2
+                sleep 300  # Sleep for 5 minutes before retrying
+                retry_count=0
+            else
+                sleep $((retry_count * 2))  # Exponential backoff
+            fi
+        fi
+    done
+}
+
+# Run main loop
+main_loop
